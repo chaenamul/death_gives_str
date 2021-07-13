@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float attackDelay;
     public float attackDamage;
-    public HitBox hb;
 
     private float delay = 0;
 
@@ -32,15 +31,16 @@ public class PlayerController : MonoBehaviour
         float diry = Input.GetAxisRaw("Vertical");
         transform.Translate(new Vector2(dirx, diry) * speed * Time.deltaTime);
     }
+
     IEnumerator Attack()
     {
         Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousepos.z -= Camera.main.transform.position.z;
         Vector3 attackDir = mousepos - transform.position;
         attackDir = attackDir.normalized;
-        hb.transform.position = transform.position + attackDir;
-        hb.gameObject.SetActive(true);
+        GameManager.instance.hitBox.transform.position = transform.position + attackDir;
+        GameManager.instance.hitBox.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        hb.gameObject.SetActive(false);
+        GameManager.instance.hitBox.gameObject.SetActive(false);
     }
 }
