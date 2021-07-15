@@ -26,16 +26,21 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
+        Jump();
         attackManager.weaponType.DelayUpdate();
         attackManager.AttackUpdate();
     }
 
     void Move()
     {
-        float dirx = Input.GetAxisRaw("Horizontal");
-        float diry = Input.GetAxisRaw("Vertical");
-        transform.Translate(new Vector2(dirx, diry) * speed * Time.deltaTime);
+        // ±Ë¡ÿ«œ
     }
+
+    void Jump()
+    {
+        // ±Ë¡ÿ«œ
+    }
+
     /*IEnumerator Attack()
     {
         Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
