@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitBox: {fileID: 1277535040153179420, guid: 0439ca43e1effaa40bb02fadde6cdaf3, type: 3}
-  playerController: {fileID: 6191683118722259448, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
+  playerController: {fileID: 0}
+  hp: 0
 --- !u!114 &579557884
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,15 +49,4 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    /*IEnumerator Attack()
-    {
-        Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousepos.z -= Camera.main.transform.position.z;
-        Vector3 attackDir = mousepos - PlayerController.singleton.transform.position;
-        attackDir = attackDir.normalized;
-        hb.transform.position = PlayerController.singleton.transform.position + attackDir;
-        hb.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-        hb.gameObject.SetActive(false);
-    }*/
 }

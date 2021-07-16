@@ -13,18 +13,26 @@ public class Skeleton : MonoBehaviour
     private float speed;
     [SerializeField]
     private float sight;
+    [SerializeField]
+    private float attackdelay;
+    [SerializeField]
+    private HitBox skeletonSword;
+    [SerializeField]
+    private float attackLange;
 
+    private Attack attack;
     private bool isAggressive;
 
     void Start()
     {
+        attack = new SwordAttack(dmg, attackdelay, skeletonSword, gameObject);
         isAggressive = false;
     }
 
     void Update()
     {
         FindPlayer();
-        Attack();
+        MonsterAttack();
     }
 
     void FindPlayer()
@@ -35,11 +43,18 @@ public class Skeleton : MonoBehaviour
         }
     }
 
-    void Attack()
+    void MonsterAttack()
     {
+        attack.DelayUpdate();
         if (isAggressive)
         {
-            // ÀÌ½ÂÀ±
+            //Debug.Log("Aggressive");
+            if (Vector3.Distance(GameManager.instance.playerController.transform.position, transform.position) > attackLange)
+            {
+                transform.position += (GameManager.instance.playerController.transform.position - transform.position).normalized * speed * Time.deltaTime;
+            }
+            else
+                attack.Execute(Attack.attackType.normal);
         }
     }
 }
