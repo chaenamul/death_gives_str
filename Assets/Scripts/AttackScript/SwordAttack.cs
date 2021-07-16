@@ -19,7 +19,7 @@ public class SwordAttack : Attack
         }
         else
         {
-            attackDir = PlayerController.singleton.transform.position - subject.transform.position;
+            attackDir = GameManager.instance.playerController.transform.position - subject.transform.position;
             attackDir = attackDir.normalized;
         }
         return subject.transform.position + attackDir;

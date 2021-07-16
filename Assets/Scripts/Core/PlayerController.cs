@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     public HitBox Initsword;
-    public static PlayerController singleton;
     private enum weapon
     {
         InitSword
@@ -17,7 +16,6 @@ public class PlayerController : MonoBehaviour
         
     void Awake()
     {
-        singleton = this;
         weapons = new Dictionary<weapon, Attack>();
         weapons[weapon.InitSword] = new SwordAttack(5, 1, Initsword, gameObject);
         attackManager = new PlayerAttackManager(weapons[weapon.InitSword]);
@@ -39,6 +37,16 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         // ±Ë¡ÿ«œ
+    }
+
+    void Die()
+    {
+        
+    }
+
+    void Revive()
+    {
+        
     }
 
     /*IEnumerator Attack()

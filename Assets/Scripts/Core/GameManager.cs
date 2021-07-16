@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public HitBox hitBox;
+    public PlayerController playerController;
+
+    public int hp;
 
     void Awake()
     {
@@ -19,5 +22,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    void Update()
+    {
+        
     }
 }
