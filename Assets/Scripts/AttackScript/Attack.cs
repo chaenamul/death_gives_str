@@ -14,8 +14,10 @@ public abstract class Attack
     public float attackDamage;
     public float attackDelay;
     public float skillCoolTime;
+
     private float curNormalDelay = 0;
     private float curSkillDelay = 0;
+
     public HitBox hb;
     public GameObject subject; 
     
