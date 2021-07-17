@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 
     public HitBox hitBox;
     public PlayerController playerController;
-
     public int hp;
 
     void Awake()
