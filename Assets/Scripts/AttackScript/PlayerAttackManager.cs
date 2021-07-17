@@ -23,15 +23,15 @@ public class PlayerAttackManager
     {
         if (Input.GetMouseButtonDown(0))
         {
-            weaponType.Execute(Attack.attackType.normal);
+            weaponType.Execute(attackType.normal);
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            weaponType.Execute(Attack.attackType.skill);
+            weaponType.Execute(attackType.skill);
         }
         else
         {
-            weaponType.Execute(Attack.attackType.neither);
+            weaponType.Execute(attackType.neither);
         }
         
     }

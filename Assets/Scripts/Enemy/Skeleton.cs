@@ -14,18 +14,18 @@ public class Skeleton : MonoBehaviour
     [SerializeField]
     private float sight;
     [SerializeField]
-    private float attackdelay;
+    private float attackDelay;
     [SerializeField]
     private HitBox skeletonSword;
     [SerializeField]
-    private float attackLange;
+    private float attackRange;
 
     private Attack attack;
     private bool isAggressive;
 
     void Start()
     {
-        attack = new SwordAttack(dmg, attackdelay, skeletonSword, gameObject);
+        attack = new SwordAttack(dmg, attackDelay, skeletonSword, gameObject);
         isAggressive = false;
     }
 
@@ -49,12 +49,12 @@ public class Skeleton : MonoBehaviour
         if (isAggressive)
         {
             //Debug.Log("Aggressive");
-            if (Vector3.Distance(GameManager.instance.playerController.transform.position, transform.position) > attackLange)
+            if (Vector3.Distance(GameManager.instance.playerController.transform.position, transform.position) > attackRange)
             {
                 transform.position += (GameManager.instance.playerController.transform.position - transform.position).normalized * speed * Time.deltaTime;
             }
             else
-                attack.Execute(Attack.attackType.normal);
+                attack.Execute(attackType.normal);
         }
     }
 }

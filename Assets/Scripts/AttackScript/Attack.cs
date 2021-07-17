@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum attackType
+{
+    normal,
+    skill,
+    neither
+};
+
 public abstract class Attack
 {
-    public enum attackType{
-        normal,
-        skill,
-        neither
-    };
     public float attackDamage;
     public float attackDelay;
     public float skillCoolTime;
@@ -36,14 +38,14 @@ public abstract class Attack
             case attackType.skill:
                 if (curSkillDelay == 0)
                 {
-                    CoroutineManager.singleton.Coroutine(Skill());
+                    CoroutineManager.instance.Coroutine(Skill());
                     curSkillDelay = skillCoolTime;
                 }
                 break;
             case attackType.normal:
                 if(curNormalDelay == 0)
                 {
-                    CoroutineManager.singleton.Coroutine(Normal());
+                    CoroutineManager.instance.Coroutine(Normal());
                     curNormalDelay = attackDelay;
                 }
                 break;
