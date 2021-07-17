@@ -41,6 +41,7 @@ public class Skeleton : MonoBehaviour
         {
             isAggressive = true;
         }
+        else isAggressive = false;
     }
 
     void MonsterAttack()
