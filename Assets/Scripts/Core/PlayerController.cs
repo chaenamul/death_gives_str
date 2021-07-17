@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -46,7 +47,11 @@ public class PlayerController : MonoBehaviour
 
     void Revive()
     {
-        
+        string data = SaveManager.instance.popData();
+        if (data != null)
+        {
+            SceneManager.LoadScene(data);
+        }
     }
 
 }

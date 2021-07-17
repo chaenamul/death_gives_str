@@ -228,6 +228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HitBox
       objectReference: {fileID: 0}
+    - target: {fileID: 5689267046478954083, guid: 0439ca43e1effaa40bb02fadde6cdaf3, type: 3}
+      propertyPath: m_TagString
+      value: EnemyCreatedHitBox
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0439ca43e1effaa40bb02fadde6cdaf3, type: 3}
 --- !u!4 &1359430699729701250 stripped
