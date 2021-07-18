@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum attackType
+public enum AttackType
 {
     normal,
     skill,
@@ -33,18 +33,18 @@ public abstract class Attack
         curSkillDelay = curSkillDelay < 0 ? 0 : curSkillDelay;
     }
 
-    public void Execute(attackType type) 
+    public void Execute(AttackType type) 
     {
         switch (type)
         {
-            case attackType.skill:
+            case AttackType.skill:
                 if (curSkillDelay == 0)
                 {
                     CoroutineManager.instance.Coroutine(Skill());
                     curSkillDelay = skillCoolTime;
                 }
                 break;
-            case attackType.normal:
+            case AttackType.normal:
                 if(curNormalDelay == 0)
                 {
                     CoroutineManager.instance.Coroutine(Normal());
@@ -55,6 +55,7 @@ public abstract class Attack
                 break;
         }
     }
+
     public Attack(float attackdmg, float delay, HitBox hitbox, GameObject sub)
     {
         this.attackDamage = attackdmg;

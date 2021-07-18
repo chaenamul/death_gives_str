@@ -13,13 +13,11 @@ public class SwordAttack : Attack
         {
             Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousepos.z -= Camera.main.transform.position.z;
-            attackDir = mousepos - subject.transform.position;
-            attackDir = attackDir.normalized;
+            attackDir = (mousepos - subject.transform.position).normalized;
         }
         else
         {
-            attackDir = GameManager.instance.playerController.transform.position - subject.transform.position;
-            attackDir = attackDir.normalized;
+            attackDir = (GameManager.instance.playerController.transform.position - subject.transform.position).normalized;
         }
         return subject.transform.position + attackDir;
     }

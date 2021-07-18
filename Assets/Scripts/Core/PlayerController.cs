@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float power;
     public HitBox Initsword;
     private enum weapon
     {
@@ -29,6 +32,18 @@ public class PlayerController : MonoBehaviour
         attackManager.AttackUpdate();
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Skeleton")
+        {
+            GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
+            if (GameManager.instance.hp <= 0)
+            {
+                Die(MonsterType.skeleton);
+            }
+        }
+    }
+
     void Move()
     {
         // 김준하
@@ -39,9 +54,17 @@ public class PlayerController : MonoBehaviour
         // 김준하
     }
 
-    void Die()
+    void Die(MonsterType type)
     {
-        
+        switch(type)
+        {
+            case MonsterType.skeleton:
+                power += 5f;
+                print("능력 '원한'을 얻었습니다.");
+                break;
+            default:
+                break;
+        }
     }
 
     void Revive()

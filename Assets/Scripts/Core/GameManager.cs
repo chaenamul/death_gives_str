@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public HitBox hitBox;
     public PlayerController playerController;
+    public Skeleton skeleton;
 
     public int hp;
 

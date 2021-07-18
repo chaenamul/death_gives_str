@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : MonoBehaviour
+public class Skeleton : Monster
 {
     // Mob Settings
     [SerializeField]
-    private float hp;
-    [SerializeField]
-    private float dmg;
+    private int hp;
+    public int dmg;
     [SerializeField]
     private float speed;
     [SerializeField]
@@ -40,8 +39,12 @@ public class Skeleton : MonoBehaviour
         if (Vector3.Distance(GameManager.instance.playerController.transform.position, transform.position) <= sight)
         {
             isAggressive = true;
+            speed = 4f;
         }
-        else isAggressive = false;
+        else
+        {
+            isAggressive = false;
+        }
     }
 
     void MonsterAttack()
@@ -55,7 +58,9 @@ public class Skeleton : MonoBehaviour
                 transform.position += (GameManager.instance.playerController.transform.position - transform.position).normalized * speed * Time.deltaTime;
             }
             else
-                attack.Execute(attackType.normal);
+            {
+                attack.Execute(AttackType.normal);
+            }
         }
     }
 }

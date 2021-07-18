@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerAttackManager
 {
@@ -23,15 +19,15 @@ public class PlayerAttackManager
     {
         if (Input.GetMouseButtonDown(0))
         {
-            weaponType.Execute(attackType.normal);
+            weaponType.Execute(AttackType.normal);
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            weaponType.Execute(attackType.skill);
+            weaponType.Execute(AttackType.skill);
         }
         else
         {
-            weaponType.Execute(attackType.neither);
+            weaponType.Execute(AttackType.neither);
         }
         
     }
