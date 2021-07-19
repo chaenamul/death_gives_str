@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &45942186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 496143973846784249, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
+  m_PrefabInstance: {fileID: 365405184}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &202456327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,6 +248,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8931120380136756436, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8931120380136756436, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
 --- !u!1001 &393458617
@@ -263,6 +276,18 @@ PrefabInstance:
     - target: {fileID: 40625196195272959, guid: 6571ac64aa7d14048bc7ef000bb96c3d, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359430699729701250, guid: 6571ac64aa7d14048bc7ef000bb96c3d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784799373851432362, guid: 6571ac64aa7d14048bc7ef000bb96c3d, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 45942186}
+    - target: {fileID: 3784799373851432362, guid: 6571ac64aa7d14048bc7ef000bb96c3d, type: 3}
+      propertyPath: attackRange
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4787577448619438961, guid: 6571ac64aa7d14048bc7ef000bb96c3d, type: 3}
       propertyPath: m_RootOrder
@@ -419,7 +444,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2053037913, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
   m_PrefabInstance: {fileID: 365405184}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 45942186}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 738741bd55c186b41bf5061680f6f690, type: 3}

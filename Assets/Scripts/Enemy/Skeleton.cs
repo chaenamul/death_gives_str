@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : Monster
+public class Skeleton : MonoBehaviour
 {
     // Mob Settings
-    [SerializeField]
-    private int hp;
+    public int hp;
     public int dmg;
     [SerializeField]
     private float speed;
@@ -19,12 +18,15 @@ public class Skeleton : Monster
     [SerializeField]
     private float attackRange;
 
-    private Attack attack;
+    [SerializeField]
+    private GameObject target;
+
+    private float timer;
     private bool isAggressive;
 
     void Start()
     {
-        attack = new SwordAttack(dmg, attackDelay, skeletonSword, gameObject);
+        timer = attackDelay;
         isAggressive = false;
     }
 
@@ -44,23 +46,34 @@ public class Skeleton : Monster
         else
         {
             isAggressive = false;
+            speed = 2f;
         }
     }
 
     void MonsterAttack()
     {
-        attack.DelayUpdate();
+        timer += Time.deltaTime;
+
         if (isAggressive)
         {
-            //Debug.Log("Aggressive");
-            if (Vector3.Distance(GameManager.instance.playerController.transform.position, transform.position) > attackRange)
+            if (Vector3.Distance(target.transform.position, transform.position) > attackRange)
             {
-                transform.position += (GameManager.instance.playerController.transform.position - transform.position).normalized * speed * Time.deltaTime;
+                transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
             }
-            else
+            else if (timer >= attackDelay)
             {
-                attack.Execute(AttackType.normal);
+                StartCoroutine(SwordAttackCoroutine());
+                timer = 0f;
             }
         }
+    }
+
+    IEnumerator SwordAttackCoroutine()
+    {
+        skeletonSword.transform.position = (target.transform.position - transform.position).normalized * attackRange + transform.position;
+        yield return new WaitForSeconds(0.5f);
+        skeletonSword.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        skeletonSword.gameObject.SetActive(false);
     }
 }
