@@ -70,8 +70,8 @@ public class Skeleton : MonoBehaviour
 
     IEnumerator SwordAttackCoroutine()
     {
-        skeletonSword.transform.position = (target.transform.position - transform.position).normalized * attackRange + transform.position;
         yield return new WaitForSeconds(0.5f);
+        skeletonSword.transform.position = (target.transform.position - transform.position).normalized * attackRange + transform.position;
         skeletonSword.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         skeletonSword.gameObject.SetActive(false);
