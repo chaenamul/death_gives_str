@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     };
     private Dictionary<weapon, Attack> weapons;
     private PlayerAttackManager attackManager;
-        
+
     void Awake()
     {
         singleton = this;
@@ -40,7 +40,11 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        // ±Ë¡ÿ«œ
+        Rigidbody2D rigid;
+        rigid = GetComponent<Rigidbody2D>();
+        float jumppower=12; 
+        if (Input.GetButtonDown("Jump"))
+            rigid.AddForce(Vector2.up * jumppower, ForceMode2D.Impulse);
     }
 
     /*IEnumerator Attack()
