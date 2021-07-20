@@ -42,9 +42,16 @@ public class PlayerController : MonoBehaviour
     {
         Rigidbody2D rigid;
         rigid = GetComponent<Rigidbody2D>();
-        float jumppower=12; 
-        if (Input.GetButtonDown("Jump"))
-            rigid.AddForce(Vector2.up * jumppower, ForceMode2D.Impulse);
+
+        RaycastHit2D rayhit;
+        rayhit = Physics2D.Raycast(rigid.position , Vector3.down, 2 , LayerMask.GetMask("Ground"));
+        
+        float jumppower = 12;
+        if (rayhit.collider != null)
+            if (Input.GetButtonDown("Jump") && rayhit.distance < 1.1f )
+            {
+                rigid.AddForce(Vector2.up * jumppower, ForceMode2D.Impulse);
+            }
     }
 
     /*IEnumerator Attack()
