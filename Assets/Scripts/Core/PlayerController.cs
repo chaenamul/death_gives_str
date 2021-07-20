@@ -9,6 +9,13 @@ public class PlayerController : MonoBehaviour
     private float speed;
     [SerializeField]
     private float power;
+    [SerializeField]
+    private float jumpForce;
+
+    private Rigidbody2D rb;
+
+    public bool isGrounded;
+
     public HitBox Initsword;
     private enum weapon
     {
@@ -17,8 +24,9 @@ public class PlayerController : MonoBehaviour
     private Dictionary<weapon, Attack> weapons;
     private PlayerAttackManager attackManager;
 
-    void Awake()
+    void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         weapons = new Dictionary<weapon, Attack>();
         weapons[weapon.InitSword] = new SwordAttack(5, 1, Initsword, gameObject);
         attackManager = new PlayerAttackManager(weapons[weapon.InitSword]);
@@ -34,6 +42,10 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
         if (collision.gameObject.tag == "Skeleton")
         {
             GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
@@ -44,27 +56,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = false;
+        }
+    }
+
     void Move()
     {
-        float xAxis = Input.GetAxisRaw("Horizontal");
-        Vector3 move = new Vector3(xAxis, 0, 0);
-        transform.position += move * speed * Time.deltaTime;
+        float dx = Input.GetAxisRaw("Horizontal");
+        transform.Translate(new Vector3(dx, 0, 0) * speed * Time.deltaTime);
     }
 
     void Jump()
     {
-        Rigidbody2D rigid;
-        rigid = GetComponent<Rigidbody2D>();
-
-        RaycastHit2D rayhit;
-        rayhit = Physics2D.Raycast(rigid.position , Vector3.down, 2 , LayerMask.GetMask("Ground"));
-        
-        float jumppower = 12;
-        if (rayhit.collider != null)
-            if (Input.GetButtonDown("Jump") && rayhit.distance < 1.1f )
-            {
-                rigid.AddForce(Vector2.up * jumppower, ForceMode2D.Impulse);
-            }
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
     }
 
     void Die(MonsterType type)

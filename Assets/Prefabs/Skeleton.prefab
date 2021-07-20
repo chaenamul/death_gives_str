@@ -121,7 +121,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3784799373851432362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   attackDelay: 1
   skeletonSword: {fileID: 1607703067536098375}
   attackRange: 1
+  target: {fileID: 0}
 --- !u!1 &4819045339863966000
 GameObject:
   m_ObjectHideFlags: 0
