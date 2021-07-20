@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     };
     private Dictionary<weapon, Attack> weapons;
     private PlayerAttackManager attackManager;
-        
+
     void Awake()
     {
         weapons = new Dictionary<weapon, Attack>();
@@ -46,12 +46,25 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        // ±Ë¡ÿ«œ
+        float xAxis = Input.GetAxisRaw("Horizontal");
+        Vector3 move = new Vector3(xAxis, 0, 0);
+        transform.position += move * speed * Time.deltaTime;
     }
 
     void Jump()
     {
-        // ±Ë¡ÿ«œ
+        Rigidbody2D rigid;
+        rigid = GetComponent<Rigidbody2D>();
+
+        RaycastHit2D rayhit;
+        rayhit = Physics2D.Raycast(rigid.position , Vector3.down, 2 , LayerMask.GetMask("Ground"));
+        
+        float jumppower = 12;
+        if (rayhit.collider != null)
+            if (Input.GetButtonDown("Jump") && rayhit.distance < 1.1f )
+            {
+                rigid.AddForce(Vector2.up * jumppower, ForceMode2D.Impulse);
+            }
     }
 
     void Die(MonsterType type)
