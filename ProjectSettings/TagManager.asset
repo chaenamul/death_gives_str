@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - PlayerCreatedHitBox
-  - EnemyCreatedHitBox
+  - Ground
+  - Skeleton
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private float jumpForce;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    private Animator anim;
 
     public bool isGrounded;
 
@@ -22,9 +24,11 @@ public class PlayerController : MonoBehaviour
     private Dictionary<weapon, Attack> weapons;
     private PlayerAttackManager attackManager;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         weapons = new Dictionary<weapon, Attack>();
         weapons[weapon.InitSword] = new SwordAttack(5, 1, Initsword, gameObject);
         attackManager = new PlayerAttackManager(weapons[weapon.InitSword]);
@@ -34,6 +38,8 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
+        Flip();
+
         attackManager.weaponType.DelayUpdate();
         attackManager.AttackUpdate();
     }
@@ -47,7 +53,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Skeleton")
         {
             GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
-            print(GameManager.instance.hp);
+            Damaged(collision.transform.position);
             if (GameManager.instance.hp <= 0)
             {
                 Die(MonsterType.skeleton);
@@ -68,7 +74,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Skeleton")
         {
             GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
-            print(GameManager.instance.hp);
             if (GameManager.instance.hp <= 0)
             {
                 Die(MonsterType.skeleton);
@@ -80,6 +85,14 @@ public class PlayerController : MonoBehaviour
     {
         float dx = Input.GetAxisRaw("Horizontal");
         transform.Translate(new Vector3(dx, 0, 0) * speed * Time.deltaTime);
+        if (dx == 0)
+        {
+            anim.SetBool("isWalking", false);
+        }
+        else
+        {
+            anim.SetBool("isWalking", true);
+        }
     }
 
     void Jump()
@@ -87,6 +100,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+    }
+
+    void Flip()
+    {
+        if (Input.GetButtonDown("Horizontal"))
+        {
+            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == 1;
         }
     }
 
@@ -114,4 +135,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Damaged(Vector2 targetPos)
+    {
+        int dirx = transform.position.x - targetPos.x > 0 ? 1 : -1;
+        rb.AddForce(new Vector2(dirx, 1) * 3, ForceMode2D.Impulse);
+    }
 }
