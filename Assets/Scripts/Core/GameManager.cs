@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Skeleton skeleton;
 
     public int hp;
+    public int dmg;
 
     void Awake()
     {

@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float speed;
     [SerializeField]
-    private float power;
-    [SerializeField]
     private float jumpForce;
 
     private Rigidbody2D rb;
@@ -49,6 +47,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Skeleton")
         {
             GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
+            print(GameManager.instance.hp);
             if (GameManager.instance.hp <= 0)
             {
                 Die(MonsterType.skeleton);
@@ -61,6 +60,19 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Skeleton")
+        {
+            GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
+            print(GameManager.instance.hp);
+            if (GameManager.instance.hp <= 0)
+            {
+                Die(MonsterType.skeleton);
+            }
         }
     }
 
@@ -80,10 +92,12 @@ public class PlayerController : MonoBehaviour
 
     void Die(MonsterType type)
     {
+        gameObject.SetActive(false);
+
         switch(type)
         {
             case MonsterType.skeleton:
-                power += 5f;
+                GameManager.instance.dmg += 5;
                 print("능력 '원한'을 얻었습니다.");
                 break;
             default:

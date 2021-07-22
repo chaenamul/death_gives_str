@@ -36,6 +36,18 @@ public class Skeleton : MonoBehaviour
         MonsterAttack();
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            hp -= GameManager.instance.dmg;
+            if (hp <= 0f)
+            {
+                Die();
+            }
+        }
+    }
+
     void FindPlayer()
     {
         if (Vector3.Distance(GameManager.instance.playerController.transform.position, transform.position) <= sight)
@@ -75,5 +87,13 @@ public class Skeleton : MonoBehaviour
         skeletonSword.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         skeletonSword.gameObject.SetActive(false);
+    }
+
+    void Die()
+    {
+        if (hp <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
