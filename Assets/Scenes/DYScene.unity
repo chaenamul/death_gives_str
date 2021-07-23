@@ -157,7 +157,7 @@ PrefabInstance:
     - target: {fileID: 3784799373851432362, guid: 6571ac64aa7d14048bc7ef000bb96c3d, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 506270748}
     - target: {fileID: 3784799373851432362, guid: 6571ac64aa7d14048bc7ef000bb96c3d, type: 3}
       propertyPath: attackRange
       value: 2
@@ -242,6 +242,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6470565612054610464, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
   m_PrefabInstance: {fileID: 6470565612492068412}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &506270750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6470565612054610465, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
+  m_PrefabInstance: {fileID: 6470565612492068412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506270748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738741bd55c186b41bf5061680f6f690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &506270754
 Animator:
   serializedVersion: 3
@@ -434,7 +445,7 @@ PrefabInstance:
     - target: {fileID: 6757853504146639293, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
       propertyPath: playerController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 506270750}
     - target: {fileID: 8632795781245725970, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
       propertyPath: m_RootOrder
       value: 1
