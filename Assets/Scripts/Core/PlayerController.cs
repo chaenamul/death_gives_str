@@ -58,7 +58,16 @@ public class PlayerController : MonoBehaviour
             Damaged(collision.transform.position);
             if (GameManager.instance.playerController.hp <= 0)
             {
-                Die(MonsterType.skeleton);
+                Die(EnemyType.skeleton);
+            }
+        }
+        if (collision.gameObject.tag == "Bandit")
+        {
+            GameManager.instance.playerController.hp -= GameManager.instance.bandit.dmg;
+            Damaged(collision.transform.position);
+            if (GameManager.instance.playerController.hp <= 0)
+            {
+                Die(EnemyType.bandit);
             }
         }
     }
@@ -78,7 +87,7 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.playerController.hp -= GameManager.instance.skeleton.dmg;
             if (GameManager.instance.playerController.hp <= 0)
             {
-                Die(MonsterType.skeleton);
+                Die(EnemyType.skeleton);
             }
         }
     }
@@ -121,15 +130,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Die(MonsterType type)
+    void Die(EnemyType type)
     {
         gameObject.SetActive(false);
 
         switch(type)
         {
-            case MonsterType.skeleton:
+            case EnemyType.skeleton:
                 dmg += 5;
                 print("능력 '원한'을 얻었습니다.");
+                break;
+            case EnemyType.bandit:
+                print("능력 '소매치기'를 얻었습니다.");
                 break;
             default:
                 break;

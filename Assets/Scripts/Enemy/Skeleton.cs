@@ -2,24 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : MonoBehaviour
+public class Skeleton : Enemy
 {
-    // Mob Settings
-    public int hp;
-    public int dmg;
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float sight;
     [SerializeField]
     private float attackDelay;
     [SerializeField]
     private HitBox skeletonSword;
     [SerializeField]
     private float attackRange;
-
-    [SerializeField]
-    private GameObject target;
 
     private float timer;
     private bool isAggressive;
@@ -33,7 +23,7 @@ public class Skeleton : MonoBehaviour
     void Update()
     {
         FindPlayer();
-        MonsterAttack();
+        EnemyAttack();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -50,7 +40,7 @@ public class Skeleton : MonoBehaviour
 
     void FindPlayer()
     {
-        if (Vector3.Distance(GameManager.instance.playerController.transform.position, transform.position) <= sight)
+        if (Vector2.Distance(target.transform.position, transform.position) <= sight)
         {
             isAggressive = true;
             speed = 4f;
@@ -62,13 +52,13 @@ public class Skeleton : MonoBehaviour
         }
     }
 
-    void MonsterAttack()
+    void EnemyAttack()
     {
         timer += Time.deltaTime;
 
         if (isAggressive)
         {
-            if (Vector3.Distance(target.transform.position, transform.position) > attackRange)
+            if (Vector2.Distance(target.transform.position, transform.position) > attackRange)
             {
                 transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
             }
