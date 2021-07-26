@@ -10,9 +10,6 @@ public class GameManager : MonoBehaviour
     public PlayerController playerController;
     public Skeleton skeleton;
 
-    public int hp;
-    public int dmg;
-
     void Awake()
     {
         if (instance == null)

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public int hp;
+    public int dmg;
     [SerializeField]
     private float speed;
     [SerializeField]
@@ -52,9 +54,9 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Skeleton")
         {
-            GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
+            GameManager.instance.playerController.hp -= GameManager.instance.skeleton.dmg;
             Damaged(collision.transform.position);
-            if (GameManager.instance.hp <= 0)
+            if (GameManager.instance.playerController.hp <= 0)
             {
                 Die(MonsterType.skeleton);
             }
@@ -73,11 +75,19 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Skeleton")
         {
-            GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
-            if (GameManager.instance.hp <= 0)
+            GameManager.instance.playerController.hp -= GameManager.instance.skeleton.dmg;
+            if (GameManager.instance.playerController.hp <= 0)
             {
                 Die(MonsterType.skeleton);
             }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Door" && Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            SceneManager.LoadScene("Room1");
         }
     }
 
@@ -118,7 +128,7 @@ public class PlayerController : MonoBehaviour
         switch(type)
         {
             case MonsterType.skeleton:
-                GameManager.instance.dmg += 5;
+                dmg += 5;
                 print("능력 '원한'을 얻었습니다.");
                 break;
             default:

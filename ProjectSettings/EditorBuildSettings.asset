@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DYScene.unity
     guid: 477b069ba372a1e48a2204010ed81683
+  - enabled: 1
+    path: Assets/Scenes/Room1.unity
+    guid: 9391d5d8c4bd10343b88178e320c6be1
   m_configObjects: {}

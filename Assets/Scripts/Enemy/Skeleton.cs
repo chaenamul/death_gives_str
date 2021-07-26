@@ -40,8 +40,8 @@ public class Skeleton : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            hp -= GameManager.instance.dmg;
-            if (hp <= 0f)
+            hp -= GameManager.instance.playerController.dmg;
+            if (hp <= 0)
             {
                 Die();
             }
@@ -91,9 +91,6 @@ public class Skeleton : MonoBehaviour
 
     void Die()
     {
-        if (hp <= 0)
-        {
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
     }
 }
