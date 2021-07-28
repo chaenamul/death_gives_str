@@ -19,8 +19,10 @@ public abstract class Attack
     private float curSkillDelay = 0;
 
     public HitBox hb;
-    public GameObject subject; 
-    
+    public GameObject subject;
+
+    public abstract Vector3 TargetUpdate();
+
     public abstract IEnumerator Normal();
 
     public abstract IEnumerator Skill();

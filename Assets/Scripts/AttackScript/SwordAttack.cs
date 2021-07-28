@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class SwordAttack : Attack
 {
-    private Vector3 targetLoc;
-
-    private Vector3 TargetUpdate()
+    public override Vector3 TargetUpdate()
     {
         Vector3 attackDir;
         if(subject.tag == "Player")

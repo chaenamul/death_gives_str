@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitBox : MonoBehaviour
 {
     // Start is called before the first frame update
+    public int dmg;
     void Start()
     {
 
@@ -15,4 +16,5 @@ public class HitBox : MonoBehaviour
     void Update()
     {
     }
+
 }
