@@ -12,10 +12,10 @@ public class Sniper : Enemy
     private HitBox bullet;
     private float delay;
     private Attack sniping;
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     void Start() 
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         delay = 5.0f;
         hp = 100;
         dmg = 50;
@@ -41,10 +41,10 @@ public class Sniper : Enemy
         float sizeHRatio = Camera.main.orthographicSize / (float)Screen.height;
         return (math.abs(transform.position.x - Camera.main.transform.position.x) <= Screen.height * whRatio * sizeHRatio) & (math.abs(transform.position.y - Camera.main.transform.position.y) <= Screen.height * sizeHRatio);
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (other.tag.Contains("Player"))
+        if (collision.gameObject.tag == "Player")
         {
             hp -= GameManager.instance.playerController.dmg;
             if (hp <= 0)

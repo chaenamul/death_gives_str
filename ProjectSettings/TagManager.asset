@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Skeleton
   - Door
+  - Bandit
+  - Ninja
+  - Sniper
   layers:
   - Default
   - TransparentFX

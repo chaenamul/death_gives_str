@@ -10,20 +10,18 @@ public class Bandit : Enemy
     private Rigidbody2D rb;
 
     private bool isGrounded;
+    private bool isAggressive;
     private int nextMove;
 
     void Awake()
     {
         isGrounded = false;
+        isAggressive = false;
         nextMove = 1;
         rb = GetComponent<Rigidbody2D>();
 
         Invoke("Jump", Random.Range(1f, 2.5f));
         Move();
-    }
-    void Start()
-    {
-        
     }
 
     void Update()
@@ -33,7 +31,7 @@ public class Bandit : Enemy
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(nextMove, rb.velocity.y);
+        rb.velocity = new Vector2(nextMove * speed, rb.velocity.y);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -56,18 +54,20 @@ public class Bandit : Enemy
     {
         if (Vector2.Distance(target.transform.position, transform.position) <= sight && GameManager.instance.playerController.isGrounded)
         {
-            speed = 12.5f;
-            transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
+            speed = 6f;
+            isAggressive = true;
+            nextMove = (target.transform.position.x - transform.position.x) > 0 ? 1 : -1;
         }
         else
         {
+            isAggressive = false;
             speed = 4f;
         }
     }
 
     void Jump()
     {
-        if (isGrounded)
+        if (isGrounded && isAggressive)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -79,6 +79,6 @@ public class Bandit : Enemy
     {
         nextMove = nextMove == 1 ? -1 : 1;
 
-        Invoke("Move", 5f);
+        Invoke("Move", 1f);
     }
 }

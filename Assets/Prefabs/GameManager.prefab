@@ -47,8 +47,7 @@ MonoBehaviour:
   hitBox: {fileID: 1277535040153179420, guid: 0439ca43e1effaa40bb02fadde6cdaf3, type: 3}
   playerController: {fileID: 0}
   skeleton: {fileID: 0}
-  hp: 100
-  dmg: 10
+  bandit: {fileID: 0}
 --- !u!114 &579557884
 MonoBehaviour:
   m_ObjectHideFlags: 0

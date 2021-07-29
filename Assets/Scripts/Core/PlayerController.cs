@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Door" && Input.GetKeyDown(KeyCode.UpArrow))
+        if (collision.gameObject.tag == "Door" && Input.GetKey(KeyCode.UpArrow))
         {
             SceneManager.LoadScene("Room1");
         }

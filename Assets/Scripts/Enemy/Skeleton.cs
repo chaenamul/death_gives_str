@@ -11,19 +11,30 @@ public class Skeleton : Enemy
     [SerializeField]
     private float attackRange;
 
+    private Rigidbody2D rb;
+
     private float timer;
+    private int nextMove;
     private bool isAggressive;
 
-    void Start()
+    void Awake()
     {
         timer = attackDelay;
         isAggressive = false;
+        rb = GetComponent<Rigidbody2D>();
+
+        Move();
     }
 
     void Update()
     {
         FindPlayer();
         EnemyAttack();
+    }
+
+    void FixedUpdate()
+    {
+        rb.velocity = new Vector2(nextMove * speed, rb.velocity.y);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -36,6 +47,13 @@ public class Skeleton : Enemy
                 Die();
             }
         }
+    }
+
+    void Move()
+    {
+        nextMove = nextMove == 1 ? -1 : 1;
+
+        Invoke("Move", 1.5f);
     }
 
     void FindPlayer()
@@ -60,7 +78,7 @@ public class Skeleton : Enemy
         {
             if (Vector2.Distance(target.transform.position, transform.position) > attackRange)
             {
-                transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
+                nextMove = (target.transform.position.x - transform.position.x) > 0 ? 1 : -1;
             }
             else if (timer >= attackDelay)
             {
