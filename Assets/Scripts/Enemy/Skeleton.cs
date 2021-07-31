@@ -41,7 +41,7 @@ public class Skeleton : Enemy
     {
         if (collision.gameObject.tag == "Player")
         {
-            hp -= GameManager.instance.playerController.dmg;
+            hp -= GameManager.instance.dmg;
             if (hp <= 0)
             {
                 Die();

@@ -5,7 +5,10 @@ using UnityEngine;
 public enum EnemyType
 {
     skeleton,
-    bandit
+    bandit,
+    ninja,
+    sniper,
+    zombie
 };
 
 public class Enemy : MonoBehaviour

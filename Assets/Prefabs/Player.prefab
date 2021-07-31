@@ -102,7 +102,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -121,9 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  maxHp: 100
   dmg: 10
   speed: 10
-  jumpForce: 5
+  jumpForce: 30
   isGrounded: 0
   Initsword: {fileID: 5221543877130121968}
 --- !u!61 &6470565612054610467

@@ -50,6 +50,18 @@ public class Bandit : Enemy
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            hp -= GameManager.instance.dmg;
+            if (hp <= 0)
+            {
+                Die();
+            }
+        }
+    }
+
     void FindPlayer()
     {
         if (Vector2.Distance(target.transform.position, transform.position) <= sight && GameManager.instance.playerController.isGrounded)
@@ -80,5 +92,10 @@ public class Bandit : Enemy
         nextMove = nextMove == 1 ? -1 : 1;
 
         Invoke("Move", 1f);
+    }
+
+    void Die()
+    {
+        gameObject.SetActive(false);
     }
 }

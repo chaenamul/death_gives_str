@@ -22,7 +22,7 @@ public class RangeAttackHitBox : HitBox
             gameObject.SetActive(false);
             if(collision.gameObject.tag == "Player")
             {
-                GameManager.instance.playerController.hp -= dmg;
+                GameManager.instance.hp -= dmg;
             }
         }
 
