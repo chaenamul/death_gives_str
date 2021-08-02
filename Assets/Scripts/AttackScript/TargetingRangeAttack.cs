@@ -5,6 +5,7 @@ using UnityEngine;
 public class TargetingRangeAttack : Attack
 {
     float bulletSpeed;
+    float aimingDelay;
     public override Vector3 TargetUpdate()
     {
         Vector3 attackDir = new Vector3(0,0,0);
@@ -21,7 +22,7 @@ public class TargetingRangeAttack : Attack
 
     public override IEnumerator Normal()
     {
-        yield return new WaitForSeconds(3.0f); // Aiming
+        yield return new WaitForSeconds(aimingDelay); // Aiming
         hb.gameObject.SetActive(true);
         Vector3 target = TargetUpdate();
         hb.transform.position = subject.transform.position + (target - subject.transform.position).normalized;
@@ -33,8 +34,9 @@ public class TargetingRangeAttack : Attack
         return null;
     }
 
-    public TargetingRangeAttack(float dmg, float delay, HitBox hitbox, GameObject sub, float hbSpeed) : base(dmg, delay, hitbox, sub)
+    public TargetingRangeAttack(int dmg, float delay, HitBox hitbox, GameObject sub, float hbSpeed, float aimingDel) : base(dmg, delay, hitbox, sub)
     {
+        aimingDelay = aimingDel;
         bulletSpeed = hbSpeed;
     }
 }
