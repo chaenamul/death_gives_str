@@ -6,7 +6,6 @@ using UnityEngine;
 public class Sniper : Enemy
 {
     [SerializeField]
-    private HitBox bullet;
     private float delay;
     private Attack sniping;
     private Rigidbody2D rb;
@@ -16,10 +15,9 @@ public class Sniper : Enemy
         delay = 5.0f;
         hp = 100;
         dmg = 50;
-        bullet.dmg = 50;
         speed = 0;
         target = GameManager.instance.playerController.gameObject;
-        sniping = new TargetingRangeAttack(dmg, delay, bullet, gameObject, 30.0f);
+        sniping = new HitScanRangeAttack(dmg, delay, gameObject, 3.0f);
     }
 
     void Update()

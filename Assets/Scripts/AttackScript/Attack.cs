@@ -11,7 +11,7 @@ public enum AttackType
 
 public abstract class Attack
 {
-    public float attackDamage;
+    public int attackDamage;
     public float attackDelay;
     public float skillCoolTime;
 
@@ -58,7 +58,7 @@ public abstract class Attack
         }
     }
 
-    public Attack(float attackdmg, float delay, HitBox hitbox, GameObject sub)
+    public Attack(int attackdmg, float delay, HitBox hitbox, GameObject sub)
     {
         this.attackDamage = attackdmg;
         this.attackDelay = delay;

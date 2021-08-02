@@ -35,7 +35,7 @@ public class SwordAttack : Attack
         return null;
     }
 
-    public SwordAttack(float attackdmg, float delay, HitBox sword, GameObject subject) : base(attackdmg, delay, sword, subject)
+    public SwordAttack(int attackdmg, float delay, HitBox sword, GameObject subject) : base(attackdmg, delay, sword, subject)
     {
         
     }

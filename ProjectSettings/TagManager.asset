@@ -9,13 +9,12 @@ TagManager:
   - Door
   - Bandit
   - Ninja
-  - Sniper
-  - Zombie
+  - EnemySniper
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 
