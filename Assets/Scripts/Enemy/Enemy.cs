@@ -8,7 +8,8 @@ public enum EnemyType
     bandit,
     ninja,
     sniper,
-    zombie
+    zombie,
+    shadow
 };
 
 public class Enemy : MonoBehaviour

@@ -11,6 +11,7 @@ TagManager:
   - Ninja
   - Sniper
   - Zombie
+  - Shadow
   layers:
   - Default
   - TransparentFX

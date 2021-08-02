@@ -81,6 +81,13 @@ public class PlayerController : MonoBehaviour
                 Die(EnemyType.zombie);
             }
         }
+        if (collision.gameObject.tag == "Shadow") {
+            GameManager.instance.hp -= GameManager.instance.shadow.dmg;
+            Damaged(collision.transform.position);
+            if (GameManager.instance.hp <= 0) {
+                Die(EnemyType.shadow);
+            }
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -99,6 +106,13 @@ public class PlayerController : MonoBehaviour
             if (GameManager.instance.hp <= 0)
             {
                 Die(EnemyType.skeleton);
+            }
+        }
+        if (collision.gameObject.tag == "Shadow") {
+            GameManager.instance.hp -= GameManager.instance.shadow.dmg;
+            Damaged(collision.transform.position);
+            if (GameManager.instance.hp <= 0) {
+                Die(EnemyType.shadow);
             }
         }
     }
@@ -174,6 +188,9 @@ public class PlayerController : MonoBehaviour
             case EnemyType.zombie:
                 GameManager.instance.maxHp += 20;
                 print("능력 '한도 증가'를 얻었습니다.");
+                break;
+            case EnemyType.shadow:
+                print("능력 '도플갱어'를 얻었습니다.");
                 break;
             default:
                 break;
