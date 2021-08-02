@@ -25,7 +25,7 @@ public class HitScanRangeAttack : Attack
         yield return new WaitForSeconds(aimingDelay); // Aiming
         Vector3 target = TargetUpdate();
         RaycastHit2D hit = Physics2D.Raycast(subject.transform.position, target - subject.transform.position, Mathf.Infinity, ~(1<<subject.layer));
-        Debug.DrawRay(subject.transform.position, (target - subject.transform.position)*hit.distance, Color.red, 0.3f);
+        Debug.DrawRay(subject.transform.position, (target - subject.transform.position).normalized*hit.distance, Color.red, 0.3f);
         Debug.Log(hit.distance);
         if (hit)
         {

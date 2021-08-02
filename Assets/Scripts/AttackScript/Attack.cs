@@ -63,6 +63,8 @@ public abstract class Attack
         this.attackDamage = attackdmg;
         this.attackDelay = delay;
         this.hb = hitbox;
+        if(hb)
+          hb.dmg = attackdmg;
         subject = sub;
     }
 }

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public int hp;
     public int dmg;
     [SerializeField]
-    private float speed;
+    public float speed;
     [SerializeField]
     private float jumpForce;
 
@@ -142,6 +142,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case EnemyType.bandit:
                 print("능력 '소매치기'를 얻었습니다.");
+                break;
+            case EnemyType.ranger:
+                print("능력 '화약개조'를 얻었습니다."); // 스킬 사거리 증가 구현 필요
                 break;
             default:
                 break;

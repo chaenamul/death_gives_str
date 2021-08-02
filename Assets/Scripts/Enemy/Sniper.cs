@@ -42,7 +42,7 @@ public class Sniper : Enemy
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "PlayerCreatedHitBox")
         {
             hp -= GameManager.instance.playerController.dmg;
             if (hp <= 0)

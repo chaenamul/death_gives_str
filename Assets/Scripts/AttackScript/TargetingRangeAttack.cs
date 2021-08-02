@@ -8,10 +8,10 @@ public class TargetingRangeAttack : Attack
     float aimingDelay;
     public override Vector3 TargetUpdate()
     {
-        Vector3 attackDir = new Vector3(0,0,0);
+        Vector3 attackDir = new Vector3(0, 0, 0);
         if (subject.tag == "Player")
         {
-            
+
         }
         else
         {
@@ -34,8 +34,9 @@ public class TargetingRangeAttack : Attack
         return null;
     }
 
-    public TargetingRangeAttack(int dmg, float delay, HitBox hitbox, GameObject sub, float hbSpeed, float aimingDel) : base(dmg, delay, hitbox, sub)
+    public TargetingRangeAttack(int dmg, float delay, HitBox hitbox, GameObject sub, float hbSpeed, float aimingDel, Vector3 target) : base(dmg, delay, hitbox, sub)
     {
+
         aimingDelay = aimingDel;
         bulletSpeed = hbSpeed;
     }
