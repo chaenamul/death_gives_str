@@ -70,6 +70,22 @@ public class PlayerController : MonoBehaviour
                 Die(EnemyType.bandit);
             }
         }
+        if (collision.gameObject.tag == "Zombie")
+        {
+            GameManager.instance.hp -= GameManager.instance.zombie.dmg;
+            Damaged(collision.transform.position);
+            if (GameManager.instance.hp <= 0)
+            {
+                Die(EnemyType.zombie);
+            }
+        }
+        if (collision.gameObject.tag == "Shadow") {
+            GameManager.instance.hp -= GameManager.instance.shadow.dmg;
+            Damaged(collision.transform.position);
+            if (GameManager.instance.hp <= 0) {
+                Die(EnemyType.shadow);
+            }
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -88,6 +104,13 @@ public class PlayerController : MonoBehaviour
             if (GameManager.instance.playerController.hp <= 0)
             {
                 Die(EnemyType.skeleton);
+            }
+        }
+        if (collision.gameObject.tag == "Shadow") {
+            GameManager.instance.hp -= GameManager.instance.shadow.dmg;
+            Damaged(collision.transform.position);
+            if (GameManager.instance.hp <= 0) {
+                Die(EnemyType.shadow);
             }
         }
     }
@@ -145,6 +168,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case EnemyType.ranger:
                 print("능력 '화약개조'를 얻었습니다."); // 스킬 사거리 증가 구현 필요
+                break;
+            case EnemyType.shadow:
+                print("능력 '도플갱어'를 얻었습니다.");
                 break;
             default:
                 break;

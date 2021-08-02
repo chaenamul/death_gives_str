@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Ninja ninja;
     public Sniper sniper;
     public Zombie zombie;
+    public Shadow shadow;
 
     void Awake()
     {

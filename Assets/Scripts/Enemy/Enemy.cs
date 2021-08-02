@@ -6,6 +6,10 @@ public enum EnemyType
 {
     skeleton,
     bandit,
+    ninja,
+    sniper,
+    zombie,
+    shadow,
     ranger
 };
 
