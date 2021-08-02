@@ -2,28 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Zombie : MonoBehaviour
+public class Zombie : Enemy
 {
-    public int hp;
-    public int dmg;
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float sight;
     [SerializeField]
     private float attackDelay;
     [SerializeField]
-    private HitBox Zombieattack;
+    private HitBox zombieAttack;
     [SerializeField]
     private float attackRange;
-
-    [SerializeField]
-    private GameObject target;
 
     private float timer;
     private bool isAggressive;
 
-    void Start()
+    void Awake()
     {
         timer = attackDelay;
         isAggressive = false;
@@ -32,14 +23,14 @@ public class Zombie : MonoBehaviour
     void Update()
     {
         FindPlayer();
-        MonsterAttack();
+        EnemyAttack();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            hp -= GameManager.instance.playerController.dmg;
+            hp -= GameManager.instance.dmg;
             if(hp<=0)
             {
                 Die();
@@ -59,13 +50,13 @@ public class Zombie : MonoBehaviour
         }
     }
     
-    void MonsterAttack()
+    void EnemyAttack()
     {
         timer += Time.deltaTime;
 
         if(isAggressive)
         {
-            if(Vector2.Distance(target.transform.position,transform.position)>attackRange)
+            if(Vector2.Distance(target.transform.position,transform.position) > attackRange)
             {
                 transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
             }
@@ -81,10 +72,10 @@ public class Zombie : MonoBehaviour
     IEnumerator SwordAttackCoroutine()
     {
         yield return new WaitForSeconds(1.0f);
-        Zombieattack.transform.position = (target.transform.position - transform.position).normalized * attackRange + transform.position;
-        Zombieattack.gameObject.SetActive(true);
+        zombieAttack.transform.position = (target.transform.position - transform.position).normalized * attackRange + transform.position;
+        zombieAttack.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        Zombieattack.gameObject.SetActive(false);
+        zombieAttack.gameObject.SetActive(false);
     }
 
     void Die()

@@ -420,13 +420,17 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6757853504146639293, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
+      propertyPath: shadow
+      value: 
+      objectReference: {fileID: 504463558489097250, guid: c446bdda22603574483944804b4844a9, type: 3}
+    - target: {fileID: 6757853504146639293, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
       propertyPath: sniper
       value: 
       objectReference: {fileID: 4861295778697245292, guid: fce4f7627c874314eb393f54375dd371, type: 3}
     - target: {fileID: 6757853504146639293, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
       propertyPath: zombie
       value: 
-      objectReference: {fileID: 8439450185642354079, guid: 84b04c679182f374d868696302fd8285, type: 3}
+      objectReference: {fileID: 9212342253672902234, guid: be19f9bd982c2694ba4a99b255a46097, type: 3}
     - target: {fileID: 6757853504146639293, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
       propertyPath: skeleton
       value: 

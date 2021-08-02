@@ -5,13 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Skeleton
   - Door
-  - Bandit
-  - Ninja
   - EnemySniper
   - Enemy
   - EnemyPirate
+  - EnemySkeleton
+  - EnemyBandit
+  - EnemyShadow
+  - EnemyZombie
+  - EnemyNinja
   layers:
   - Default
   - TransparentFX

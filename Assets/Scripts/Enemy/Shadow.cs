@@ -8,45 +8,58 @@ public class Shadow : Enemy
 
     private bool isAggressive = false;
 
-    private void Update() {
-        if (!isAggressive) {
+    void Update()
+    {
+        if (!isAggressive)
+        {
             FindPlayer();
         }
     }
 
-    private void FixedUpdate() {
-        if (isAggressive) {
+    void FixedUpdate()
+    {
+        if (isAggressive)
+        {
             Move();
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Player") {
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
             hp -= GameManager.instance.dmg;
-            if (hp <= 0) {
+            if (hp <= 0)
+            {
                 Die();
             }
         }
     }
 
-    void FindPlayer() {
-        if (Vector2.Distance(target.transform.position, transform.position) <= sight) {
+    void FindPlayer()
+    {
+        if (Vector2.Distance(target.transform.position, transform.position) <= sight)
+        {
             isAggressive = true;
             cloneRb.gameObject.SetActive(true);
         }
-        else {
+        else
+        {
             cloneRb.gameObject.SetActive(false);
         }
     }
 
-    void Move() {
+    void Move()
+    {
         cloneRb.velocity += ((Vector2)(target.transform.position - cloneRb.transform.position)).normalized * 2 * Time.deltaTime;
-        if (cloneRb.velocity.magnitude > 8) {
+        if (cloneRb.velocity.magnitude > 8)
+        {
             cloneRb.velocity = cloneRb.velocity.normalized * 8;
         }
     }
 
-    void Die() {
+    void Die()
+    {
         gameObject.SetActive(false);
     }
 }

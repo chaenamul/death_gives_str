@@ -10,10 +10,8 @@ public class Door : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        print("¾È³ç");
         if (collision.gameObject.tag == "Player" && Input.GetKey(KeyCode.W))
         {
-            print("¾È³ç2");
             SaveManager.instance.pushData(curScene);
             SceneManager.LoadScene(sceneToLoad);
         }
