@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Sniper : Enemy
 {
+    // Start is called before the first frame update
     [SerializeField]
     private float delay;
     private Attack sniping;
@@ -20,6 +23,7 @@ public class Sniper : Enemy
         sniping = new HitScanRangeAttack(dmg, delay, gameObject, 3.0f);
     }
 
+    // Update is called once per frame
     void Update()
     {
         sniping.DelayUpdate();
@@ -29,26 +33,25 @@ public class Sniper : Enemy
         }
     }
 
-    bool InScreen()
+    private bool InScreen()
     {
         float whRatio = Screen.width / (float)Screen.height;
         float sizeHRatio = Camera.main.orthographicSize / (float)Screen.height;
         return (math.abs(transform.position.x - Camera.main.transform.position.x) <= Screen.height * whRatio * sizeHRatio) & (math.abs(transform.position.y - Camera.main.transform.position.y) <= Screen.height * sizeHRatio);
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+
+        if (collision.gameObject.tag == "PlayerCreatedHitBox")
         {
-            hp -= GameManager.instance.dmg;
+            hp -= GameManager.instance.playerController.dmg;
             if (hp <= 0)
             {
                 Die();
             }
         }
     }
-
-    void Die()
+    private void Die()
     {
         gameObject.SetActive(false);
     }

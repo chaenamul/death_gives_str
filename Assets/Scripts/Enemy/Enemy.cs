@@ -6,9 +6,7 @@ public enum EnemyType
 {
     skeleton,
     bandit,
-    ninja,
-    sniper,
-    zombie
+    ranger
 };
 
 public class Enemy : MonoBehaviour

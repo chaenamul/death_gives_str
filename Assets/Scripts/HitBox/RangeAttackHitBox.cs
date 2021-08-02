@@ -17,7 +17,7 @@ public class RangeAttackHitBox : HitBox
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Enemy")
+        if (!collision.gameObject.tag.Contains("Enemy"))
         {
             gameObject.SetActive(false);
             if(collision.gameObject.tag == "Player")

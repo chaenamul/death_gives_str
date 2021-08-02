@@ -7,16 +7,19 @@ TagManager:
   - Ground
   - Skeleton
   - Door
-  - PlayerCreatedHitBox
-  - Zombie
+  - Bandit
+  - Ninja
+  - EnemySniper
+  - Enemy
+  - EnemyPirate
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

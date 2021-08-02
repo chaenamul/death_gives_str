@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public int hp;
+    public int dmg;
     [SerializeField]
-    private float speed;
+    public float speed;
     [SerializeField]
     private float jumpForce;
 
@@ -36,16 +38,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Move();
         Jump();
         Flip();
 
         attackManager.weaponType.DelayUpdate();
         attackManager.AttackUpdate();
-    }
-
-    void FixedUpdate()
-    {
-        Move();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -56,29 +54,20 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Skeleton")
         {
-            GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
+            GameManager.instance.playerController.hp -= GameManager.instance.skeleton.dmg;
             Damaged(collision.transform.position);
-            if (GameManager.instance.hp <= 0)
+            if (GameManager.instance.playerController.hp <= 0)
             {
                 Die(EnemyType.skeleton);
             }
         }
         if (collision.gameObject.tag == "Bandit")
         {
-            GameManager.instance.hp -= GameManager.instance.bandit.dmg;
+            GameManager.instance.playerController.hp -= GameManager.instance.bandit.dmg;
             Damaged(collision.transform.position);
-            if (GameManager.instance.hp <= 0)
+            if (GameManager.instance.playerController.hp <= 0)
             {
                 Die(EnemyType.bandit);
-            }
-        }
-        if (collision.gameObject.tag == "Zombie")
-        {
-            GameManager.instance.hp -= GameManager.instance.zombie.dmg;
-            Damaged(collision.transform.position);
-            if (GameManager.instance.hp <= 0)
-            {
-                Die(EnemyType.zombie);
             }
         }
     }
@@ -95,8 +84,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Skeleton")
         {
-            GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
-            if (GameManager.instance.hp <= 0)
+            GameManager.instance.playerController.hp -= GameManager.instance.skeleton.dmg;
+            if (GameManager.instance.playerController.hp <= 0)
             {
                 Die(EnemyType.skeleton);
             }
@@ -107,7 +96,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Door" && Input.GetKey(KeyCode.UpArrow))
         {
-            SaveManager.instance.pushData("DYScene");
             SceneManager.LoadScene("Room1");
         }
     }
@@ -115,24 +103,14 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         float dx = Input.GetAxisRaw("Horizontal");
-        rb.AddForce(Vector2.right * dx, ForceMode2D.Impulse);
-
-        if (rb.velocity.x > speed)
+        transform.Translate(new Vector3(dx, 0, 0) * speed * Time.deltaTime);
+        if (dx == 0)
         {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
-        }
-        else if (rb.velocity.x < -speed)
-        {
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
-        }
-
-        if (dx != 0)
-        {
-            anim.SetBool("isWalking", true);
+            anim.SetBool("isWalking", false);
         }
         else
         {
-            anim.SetBool("isWalking", false);
+            anim.SetBool("isWalking", true);
         }
     }
 
@@ -146,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     void Flip()
     {
-        if (Input.GetButton("Horizontal"))
+        if (Input.GetButtonDown("Horizontal"))
         {
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == 1;
         }
@@ -159,27 +137,18 @@ public class PlayerController : MonoBehaviour
         switch(type)
         {
             case EnemyType.skeleton:
-                GameManager.instance.dmg += 5;
+                dmg += 5;
                 print("능력 '원한'을 얻었습니다.");
                 break;
             case EnemyType.bandit:
                 print("능력 '소매치기'를 얻었습니다.");
                 break;
-            case EnemyType.ninja:
-                print("능력 ' '를 얻었습니다.");
-                break;
-            case EnemyType.sniper:
-                print("능력 ' '를 얻었습니다.");
-                break;
-            case EnemyType.zombie:
-                GameManager.instance.maxHp += 20;
-                print("능력 '한도 증가'를 얻었습니다.");
+            case EnemyType.ranger:
+                print("능력 '화약개조'를 얻었습니다."); // 스킬 사거리 증가 구현 필요
                 break;
             default:
                 break;
         }
-
-        Invoke("Revive", 3f);
     }
 
     void Revive()
@@ -188,13 +157,12 @@ public class PlayerController : MonoBehaviour
         if (data != null)
         {
             SceneManager.LoadScene(data);
-            GameManager.instance.hp = GameManager.instance.maxHp;
         }
     }
 
     void Damaged(Vector2 targetPos)
     {
         int dirx = transform.position.x - targetPos.x > 0 ? 1 : -1;
-        rb.AddForce(new Vector2(dirx, 1) * 15, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(dirx, 1) * 3, ForceMode2D.Impulse);
     }
 }
