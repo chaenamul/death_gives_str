@@ -7,14 +7,13 @@ TagManager:
   - Ground
   - Skeleton
   - Door
-  - Bandit
-  - Ninja
-  - EnemySniper
+  - PlayerCreatedHitBox
+  - Zombie
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Enemy
+  - 
   - Water
   - UI
   - 
