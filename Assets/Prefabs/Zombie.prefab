@@ -51,10 +51,10 @@ MonoBehaviour:
   dmg: 10
   speed: 3.3
   sight: 7
-  attackDelay: 3
-  zombieAttack: {fileID: 0}
-  attackRange: 1
   target: {fileID: 6470565612054610464, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
+  attackDelay: 3
+  zombieattack: {fileID: 0}
+  attackRange: 1.5
 --- !u!70 &8844571757386604878
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
