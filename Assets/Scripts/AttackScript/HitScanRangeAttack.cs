@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,7 +35,7 @@ public class HitScanRangeAttack : Attack
             else if(subject.tag.Contains("Enemy") && hit.transform.gameObject.tag == "Player")
             {
                 Debug.Log("Hit");
-                GameManager.instance.playerController.hp -= attackDamage; // 수정 필요
+                GameManager.instance.hp -= attackDamage; // 수정 필요
             }
         }
     }
