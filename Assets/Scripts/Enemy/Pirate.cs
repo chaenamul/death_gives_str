@@ -43,10 +43,19 @@ public class Pirate : Enemy
         {
             if (delay == 0)
             {
-                if(!isGhost)
-                    ((ParabolaAttack)attack).xSpeed = (GameManager.instance.playerController.transform.position.x - transform.position.x) / 3.0f ;
-                attack.Execute(AttackType.normal);
-                delay = delayMax;
+                if (!isGhost)
+                {
+                    ((ParabolaAttack)attack).xSpeed = (GameManager.instance.playerController.transform.position.x - transform.position.x) / 3.0f;
+                    attack.Execute(AttackType.normal);
+                    delay = delayMax;
+                }
+                else if(sword.transform.localScale.x>Mathf.Abs(transform.position.x - GameManager.instance.playerController.transform.position.x))
+                {                     
+                    attack.Execute(AttackType.normal);
+                    delay = delayMax;
+                }
+                    
+                
             }
         }
         
@@ -56,8 +65,9 @@ public class Pirate : Enemy
     {
         if (found)
         {
-            if (delay <= stiffAfterAttack && Mathf.Abs(transform.position.x - GameManager.instance.playerController.transform.position.x) > 0.1f)
+            if (delayMax - delay >= stiffAfterAttack && Mathf.Abs(transform.position.x - GameManager.instance.playerController.transform.position.x) > 1.5f)
             {
+                Debug.Log(Mathf.Abs(transform.position.x - GameManager.instance.playerController.transform.position.x));
                 transform.position += new Vector3(GameManager.instance.playerController.transform.position.x - transform.position.x, 0, 0).normalized * speed * Time.deltaTime;
             }
         }
