@@ -12,6 +12,8 @@ TagManager:
   - EnemySniper
   - Enemy
   - EnemyPirate
+  - Sniper
+  - PlayerHitBox
   layers:
   - Default
   - TransparentFX
