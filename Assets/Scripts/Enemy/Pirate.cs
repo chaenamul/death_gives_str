@@ -118,7 +118,7 @@ public class Pirate : Enemy
     {
         if(collision.tag == "PlayerHitBox")
         {
-            GetDmg(GameManager.instance.playerController.dmg);
+            GetDmg(GameManager.instance.dmg);
         }
     }
 
