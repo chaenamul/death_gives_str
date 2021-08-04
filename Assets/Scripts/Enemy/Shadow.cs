@@ -51,7 +51,7 @@ public class Shadow : Enemy
 
     void Move()
     {
-        cloneRb.velocity += ((Vector2)(target.transform.position - cloneRb.transform.position)).normalized * 2 * Time.deltaTime;
+        cloneRb.velocity += ((Vector2)(target.transform.position - cloneRb.transform.position)).normalized * 2;
         if (cloneRb.velocity.magnitude > 8)
         {
             cloneRb.velocity = cloneRb.velocity.normalized * 8;

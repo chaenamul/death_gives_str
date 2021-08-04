@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public float speed;
     [SerializeField]
+    public float dashSpeed;
+    [SerializeField]
     private float jumpForce;
 
     private Rigidbody2D rb;
@@ -15,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     public bool isGrounded;
+    private bool canDash = false;
+    private bool checkDash = false;
+    private float dashTimer = 0.3f;
 
     public HitBox Initsword;
     private enum weapon
@@ -36,12 +41,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Move();
         Jump();
         Flip();
+        if (canDash)
+        {
+            Dash();
+        }
 
         attackManager.weaponType.DelayUpdate();
         attackManager.AttackUpdate();
+    }
+
+    void FixedUpdate()
+    {
+        Move();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -66,6 +79,15 @@ public class PlayerController : MonoBehaviour
             if (GameManager.instance.hp <= 0)
             {
                 Die(EnemyType.bandit);
+            }
+        }
+        if (collision.gameObject.tag == "EnemyNinja")
+        {
+            GameManager.instance.hp -= GameManager.instance.ninja.dmg;
+            Damaged(collision.transform.position);
+            if (GameManager.instance.hp <= 0)
+            {
+                Die(EnemyType.ninja);
             }
         }
         if (collision.gameObject.tag == "EnemyZombie")
@@ -104,6 +126,14 @@ public class PlayerController : MonoBehaviour
                 Die(EnemyType.skeleton);
             }
         }
+        if (collision.gameObject.tag == "EnemyNinja")
+        {
+            GameManager.instance.hp -= GameManager.instance.ninja.dmg;
+            if (GameManager.instance.hp <= 0)
+            {
+                Die(EnemyType.ninja);
+            }
+        }
         if (collision.gameObject.tag == "EnemyZombie")
         {
             GameManager.instance.hp -= GameManager.instance.zombie.dmg;
@@ -132,7 +162,17 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         float dx = Input.GetAxisRaw("Horizontal");
-        transform.Translate(new Vector3(dx, 0, 0) * speed * Time.deltaTime);
+        rb.AddForce(Vector2.right * dx, ForceMode2D.Impulse);
+
+        if (rb.velocity.x > speed)
+        {
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+        else if (rb.velocity.x < -speed)
+        {
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
+        }
+
         if (dx == 0)
         {
             anim.SetBool("isWalking", false);
@@ -159,6 +199,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Dash()
+    {
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            checkDash = true;
+        }
+
+        if (checkDash)
+        {
+            dashTimer -= Time.deltaTime;
+            if (dashTimer <= 0)
+            {
+                checkDash = false;
+                dashTimer = 0.3f;
+            }
+        }
+
+        if (Input.GetButtonDown("Horizontal") && !checkDash)
+        {
+            speed = 10f;
+        }
+        else if (Input.GetButtonDown("Horizontal") && checkDash)
+        {
+            speed = dashSpeed;
+        }
+    }
+
     void Die(EnemyType type)
     {
         gameObject.SetActive(false);
@@ -171,6 +238,10 @@ public class PlayerController : MonoBehaviour
                 break;
             case EnemyType.bandit:
                 print("능력 '소매치기'를 얻었습니다.");
+                break;
+            case EnemyType.ninja:
+                canDash = true;
+                print("능력 '대쉬'를 얻었습니다.");
                 break;
             case EnemyType.zombie:
                 GameManager.instance.maxHp += 20;

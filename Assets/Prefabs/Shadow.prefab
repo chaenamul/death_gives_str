@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 8223227490866529382}
   m_Layer: 0
   m_Name: Clone
-  m_TagString: Shadow
+  m_TagString: EnemyShadow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
