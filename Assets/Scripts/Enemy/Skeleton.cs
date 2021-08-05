@@ -19,9 +19,13 @@ public class Skeleton : Enemy
 
     void Awake()
     {
+        abilityName = "ฟ๘วั";
         timer = attackDelay;
         isAggressive = false;
         rb = GetComponent<Rigidbody2D>();
+
+        skeletonSword.dmg = dmg;
+        skeletonSword.subject = this;
 
         Move();
     }
@@ -37,17 +41,6 @@ public class Skeleton : Enemy
         rb.velocity = new Vector2(nextMove * speed, rb.velocity.y);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            hp -= GameManager.instance.dmg;
-            if (hp <= 0)
-            {
-                Die();
-            }
-        }
-    }
 
     void Move()
     {
@@ -88,6 +81,12 @@ public class Skeleton : Enemy
         }
     }
 
+    public override void GiveStr()
+    {
+        base.GiveStr();
+        GameManager.instance.dmg += 5;
+    }
+
     IEnumerator SwordAttackCoroutine()
     {
         yield return new WaitForSeconds(0.5f);
@@ -95,10 +94,5 @@ public class Skeleton : Enemy
         skeletonSword.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         skeletonSword.gameObject.SetActive(false);
-    }
-
-    void Die()
-    {
-        gameObject.SetActive(false);
     }
 }

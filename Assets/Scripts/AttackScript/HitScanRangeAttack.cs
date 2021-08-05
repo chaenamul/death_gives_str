@@ -35,7 +35,7 @@ public class HitScanRangeAttack : Attack
             else if(subject.tag.Contains("Enemy") && hit.transform.gameObject.tag == "Player")
             {
                 Debug.Log("Hit");
-                GameManager.instance.hp -= attackDamage; // 수정 필요
+                GameManager.instance.playerController.GetDmg((Enemy)subjectClass, attackDamage);
             }
         }
     }
@@ -45,7 +45,7 @@ public class HitScanRangeAttack : Attack
         return null;
     }
 
-    public HitScanRangeAttack(int dmg, float delay, GameObject sub, float aimingDel) : base(dmg, delay, null, sub)
+    public HitScanRangeAttack(int dmg, float delay, GameObject sub, object component, float aimingDel) : base(dmg, delay, null, sub, component)
     {
         hb = null;
         aimingDelay = aimingDel;

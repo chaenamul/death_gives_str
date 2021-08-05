@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     public bool isGrounded;
-    private bool canDash = false;
+    public bool canDash = false;
     private bool checkDash = false;
     private float dashTimer = 0.3f;
 
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         weapons = new Dictionary<weapon, Attack>();
-        weapons[weapon.InitSword] = new SwordAttack(5, 1, Initsword, gameObject);
+        weapons[weapon.InitSword] = new SwordAttack(5, 1, Initsword, gameObject, this);
         attackManager = new PlayerAttackManager(weapons[weapon.InitSword]);
     }
 
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
-        }
+        }/*
         if (collision.gameObject.tag == "EnemySkeleton")
         {
             GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
             if (GameManager.instance.hp <= 0) {
                 Die(EnemyType.shadow);
             }
-        }
+        }*/
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        /*
         if (collision.gameObject.tag == "EnemySkeleton")
         {
             GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
@@ -148,7 +149,7 @@ public class PlayerController : MonoBehaviour
             if (GameManager.instance.hp <= 0) {
                 Die(EnemyType.shadow);
             }
-        }
+        }*/
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -226,10 +227,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Die(EnemyType type)
+    public void GetDmg(Enemy sub, int dmg)
+    {
+        GameManager.instance.hp -= dmg;
+        if(GameManager.instance.hp <= 0)
+        {
+            Die();
+            sub.GiveStr();
+        }
+    }
+    void Die()
     {
         gameObject.SetActive(false);
 
+        /*
         switch(type)
         {
             case EnemyType.skeleton:
@@ -255,7 +266,7 @@ public class PlayerController : MonoBehaviour
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     void Revive()

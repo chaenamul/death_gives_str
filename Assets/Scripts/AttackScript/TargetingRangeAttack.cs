@@ -34,7 +34,7 @@ public class TargetingRangeAttack : Attack
         return null;
     }
 
-    public TargetingRangeAttack(int dmg, float delay, HitBox hitbox, GameObject sub, float hbSpeed, float aimingDel, Vector3 target) : base(dmg, delay, hitbox, sub)
+    public TargetingRangeAttack(int dmg, float delay, HitBox hitbox, object component, GameObject sub, float hbSpeed, float aimingDel, Vector3 target) : base(dmg, delay, hitbox, sub, component)
     {
 
         aimingDelay = aimingDel;

@@ -20,6 +20,7 @@ public abstract class Attack
 
     public HitBox hb;
     public GameObject subject;
+    protected object subjectClass;
 
     public abstract Vector3 TargetUpdate();
 
@@ -58,13 +59,17 @@ public abstract class Attack
         }
     }
 
-    public Attack(int attackdmg, float delay, HitBox hitbox, GameObject sub)
+    public Attack(int attackdmg, float delay, HitBox hitbox, GameObject sub, object component)
     {
         this.attackDamage = attackdmg;
         this.attackDelay = delay;
         this.hb = hitbox;
-        if(hb)
-          hb.dmg = attackdmg;
+        this.subjectClass = component;
+        if (hb)
+        {
+            hb.dmg = attackdmg;
+            hb.subject = component;
+        }
         subject = sub;
     }
 }

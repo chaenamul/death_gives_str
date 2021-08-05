@@ -52,7 +52,7 @@ public class ParabolaAttack : Attack
     {
         return null;
     }
-    public ParabolaAttack(int dmg, float delay, HitBox hitbox, GameObject sub, float xSpeed, bool ground) : base(dmg, delay, hitbox, sub)
+    public ParabolaAttack(int dmg, float delay, HitBox hitbox, GameObject sub, object component, float xSpeed, bool ground) : base(dmg, delay, hitbox, sub, component)
     {
         this.xSpeed = xSpeed;
         this.ground = ground;

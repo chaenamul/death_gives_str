@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class RangeAttackHitBox : HitBox
 {
-    void Start()
-    {
-        
-    }
 
-    void Update()
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.gameObject.tag.Contains("Enemy"))
+        base.OnTriggerEnter2D(collision);
+        if (subject as PlayerController && collision.tag != "Player" || subject as Enemy && collision.tag != "Enemy")
         {
             gameObject.SetActive(false);
-            if(collision.gameObject.tag == "Player")
-            {
-                GameManager.instance.hp -= dmg;
-            }
         }
-
     }
 }

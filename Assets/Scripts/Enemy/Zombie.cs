@@ -19,6 +19,10 @@ public class Zombie : Enemy
 
     void Awake()
     {
+        zombieattack.dmg = dmg;
+        zombieattack.subject = this;
+
+        abilityName = "한도 증가";
         timer = attackDelay;
         isAggressive = false;
         rb = GetComponent<Rigidbody2D>();
@@ -28,19 +32,6 @@ public class Zombie : Enemy
     {
         FindPlayer();
         EnemyAttack();
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            hp -= GameManager.instance.dmg;
-            if (hp <= 0)
-            {
-                Die();
-            }
-
-        }
     }
 
     void FindPlayer()
@@ -88,9 +79,9 @@ public class Zombie : Enemy
         
     }
 
-
-    void Die()
+    public override void GiveStr()
     {
-        gameObject.SetActive(false);
+        base.GiveStr();
+        GameManager.instance.maxHp += 20;
     }
 }

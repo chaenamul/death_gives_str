@@ -8,6 +8,10 @@ public class Shadow : Enemy
 
     private bool isAggressive = false;
 
+    private void Awake()
+    {
+        abilityName = "도플갱어";
+    }
     void Update()
     {
         if (!isAggressive)
@@ -21,18 +25,6 @@ public class Shadow : Enemy
         if (isAggressive)
         {
             Move();
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            hp -= GameManager.instance.dmg;
-            if (hp <= 0)
-            {
-                Die();
-            }
         }
     }
 
@@ -57,9 +49,9 @@ public class Shadow : Enemy
             cloneRb.velocity = cloneRb.velocity.normalized * 8;
         }
     }
-
-    void Die()
+    public override void GiveStr()
     {
-        gameObject.SetActive(false);
+        base.GiveStr();
+        ///나중에 구현
     }
 }

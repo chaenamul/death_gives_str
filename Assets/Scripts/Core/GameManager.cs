@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int hp;
     public int maxHp;
     public int dmg;
+    public List<string> abilities;
 
     public HitBox hitBox;
     public PlayerController playerController;
@@ -22,5 +23,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        abilities = new List<string>();
     }
 }

@@ -24,11 +24,15 @@ public class Ninja : Enemy
 
     void Awake()
     {
+        abilityName = "´ë½¬";
         knifeTimer = 2f;
         knifeAttackTimer = 1f;
         daggerTimer = 0f;
         nextMove = 0;
         rb = GetComponent<Rigidbody2D>();
+
+        hitbox.dmg = dmg;
+        hitbox.subject = this;
     }
 
     void Update()
@@ -95,5 +99,10 @@ public class Ninja : Enemy
     {
         hitbox.gameObject.SetActive(true);
         hitbox.GetComponent<Rigidbody2D>().AddForce((target.transform.position - transform.position).normalized * 4 * Time.deltaTime, ForceMode2D.Impulse);
+    }
+    public override void GiveStr()
+    {
+        base.GiveStr();
+        GameManager.instance.playerController.canDash = true;
     }
 }

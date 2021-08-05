@@ -5,14 +5,19 @@ using UnityEngine;
 public class ExplosionHitBox : HitBox
 {
     public HitBox explosion;
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Awake()
     {
-        if (!collision.gameObject.tag.Contains("Enemy"))
+        explosion.subject = subject;
+
+    }
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        if (subject as Enemy && !collision.gameObject.tag.Contains("Enemy") || subject as PlayerController && !(collision.gameObject.tag == "Player"))
         {
             gameObject.SetActive(false);
             CoroutineManager.instance.Coroutine(Explosion(transform.position));
         }
-
     }
     IEnumerator Explosion(Vector3 pos)
     {

@@ -14,10 +14,14 @@ public class Sniper : Enemy
 
     void Start() 
     {
+        abilityName = "화약개조";
         rb = GetComponent<Rigidbody2D>();
         delay = 5.0f;
+        hp = 100;
+        dmg = 50;
+        
         target = GameManager.instance.playerController.gameObject;
-        sniping = new HitScanRangeAttack(dmg, delay, gameObject, 3.0f);
+        sniping = new HitScanRangeAttack(dmg, delay, gameObject,this, 3.0f);
     }
 
     void Update()
@@ -35,21 +39,9 @@ public class Sniper : Enemy
         float sizeHRatio = Camera.main.orthographicSize / (float)Screen.height;
         return (math.abs(transform.position.x - Camera.main.transform.position.x) <= Screen.height * whRatio * sizeHRatio) & (math.abs(transform.position.y - Camera.main.transform.position.y) <= Screen.height * sizeHRatio);
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
+    public override void GiveStr()
     {
-
-        if (collision.gameObject.tag == "Player")
-        {
-            hp -= GameManager.instance.dmg;
-            if (hp <= 0)
-            {
-                Die();
-            }
-        }
-    }
-    void Die()
-    {
-        gameObject.SetActive(false);
+        base.GiveStr();
+        ///마법 구현 후 구현 필요
     }
 }

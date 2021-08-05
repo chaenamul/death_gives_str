@@ -15,6 +15,7 @@ public class Bandit : Enemy
 
     void Awake()
     {
+        abilityName = "소매치기";
         isGrounded = false;
         isAggressive = false;
         nextMove = 1;
@@ -50,18 +51,6 @@ public class Bandit : Enemy
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            hp -= GameManager.instance.dmg;
-            if (hp <= 0)
-            {
-                Die();
-            }
-        }
-    }
-
     void FindPlayer()
     {
         if (Vector2.Distance(target.transform.position, transform.position) <= sight && GameManager.instance.playerController.isGrounded)
@@ -94,8 +83,9 @@ public class Bandit : Enemy
         Invoke("Move", 1f);
     }
 
-    void Die()
+    public override void GiveStr()
     {
-        gameObject.SetActive(false);
+        base.GiveStr();
+        ///상자 구현 후 구현 필요
     }
 }

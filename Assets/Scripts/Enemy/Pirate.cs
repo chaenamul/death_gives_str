@@ -17,6 +17,7 @@ public class Pirate : Enemy
     private float stiffAfterAttack;
     private float delayMax;
     bool isGhost = false;
+
     void Start()
     {
         delayMax = 6.0f;
@@ -29,7 +30,7 @@ public class Pirate : Enemy
         dmg = 30;
         speed = GameManager.instance.playerController.speed * 2f / 3f;
         sight = 25f;
-        attack = new ParabolaAttack(dmg, 6.0f, bomb, gameObject, 0, true);
+        attack = new ParabolaAttack(dmg, 6.0f, bomb, gameObject, this, 0, true);
     }
 
     // Update is called once per frame
@@ -67,7 +68,6 @@ public class Pirate : Enemy
         {
             if (delayMax - delay >= stiffAfterAttack && Mathf.Abs(transform.position.x - GameManager.instance.playerController.transform.position.x) > 1.5f)
             {
-                Debug.Log(Mathf.Abs(transform.position.x - GameManager.instance.playerController.transform.position.x));
                 transform.position += new Vector3(GameManager.instance.playerController.transform.position.x - transform.position.x, 0, 0).normalized * speed * Time.deltaTime;
             }
         }
@@ -90,7 +90,7 @@ public class Pirate : Enemy
             found = false;
     }
 
-    void Die()
+    protected override void Die()
     {
         if (isGhost)
             gameObject.SetActive(false);
@@ -103,24 +103,10 @@ public class Pirate : Enemy
             stiffAfterAttack = 2.0f;
             delayMax = 2.0f;
             delay = 0.0f;
-            attack = new SwordAttack(dmg, delayMax, sword, gameObject);
+            attack = new SwordAttack(dmg, delayMax, sword, gameObject, this);
         }
     }
 
-    void GetDmg(int dmg)
-    {
-        hp = hp - dmg;
-        if (hp <= 0)
-            Die();
-
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "PlayerHitBox")
-        {
-            GetDmg(GameManager.instance.dmg);
-        }
-    }
 
 
 }
