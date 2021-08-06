@@ -8,12 +8,15 @@ public class Shadow : Enemy
 
     private bool isAggressive = false;
 
-    private void Awake()
+    protected override void Start()
     {
+        base.Start();
+
         abilityName = "도플갱어";
     }
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (!isAggressive)
         {
             FindPlayer();

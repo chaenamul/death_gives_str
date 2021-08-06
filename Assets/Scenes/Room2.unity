@@ -19154,6 +19154,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8263770101793554693, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
+      propertyPath: maxHp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263770101793554693, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1510422958}
+    - target: {fileID: 8263770101793554693, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1633184033}
@@ -19161,6 +19169,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8263770101793554693, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
+      propertyPath: hpBarPrefab
+      value: 
+      objectReference: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
     - target: {fileID: 8263770101793554693, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
       propertyPath: skeletonSword
       value: 
@@ -19411,6 +19423,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curScene: Room2
   sceneToLoad: Room3
+--- !u!1 &2046903828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8761515590833345836, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
+  m_PrefabInstance: {fileID: 1425353293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2046903834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046903828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26f4564531f8e54a980b11936f7825c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
+  canvas: {fileID: 1510422958}
+  hp: 10
+  maxHp: 10
+  height: 1.5
 --- !u!1 &2100878288
 GameObject:
   m_ObjectHideFlags: 0

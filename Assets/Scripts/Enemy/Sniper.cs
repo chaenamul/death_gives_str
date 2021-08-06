@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Sniper : Enemy
 {
@@ -12,8 +10,10 @@ public class Sniper : Enemy
     private Attack sniping;
     private Rigidbody2D rb;
 
-    void Start() 
+    protected override void Start() 
     {
+        base.Start();
+
         abilityName = "화약개조";
         rb = GetComponent<Rigidbody2D>();
         delay = 5.0f;
@@ -24,8 +24,9 @@ public class Sniper : Enemy
         sniping = new HitScanRangeAttack(dmg, delay, gameObject,this, 3.0f);
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         sniping.DelayUpdate();
         if (InScreen())
         {

@@ -136,10 +136,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 60
+  maxHp: 60
   dmg: 12
   speed: 0
   sight: 6
   target: {fileID: 0}
+  hpBarPrefab: {fileID: 0}
+  canvas: {fileID: 0}
+  height: 1.5
   cloneRb: {fileID: 8223227490866529382}
 --- !u!1 &8223227490866529384
 GameObject:

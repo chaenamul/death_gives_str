@@ -17,8 +17,10 @@ public class Skeleton : Enemy
     private int nextMove;
     private bool isAggressive;
 
-    void Awake()
+    protected override void Start()
     {
+        base.Start();
+
         abilityName = "ฟ๘วั";
         timer = attackDelay;
         isAggressive = false;
@@ -30,8 +32,9 @@ public class Skeleton : Enemy
         Move();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         FindPlayer();
         EnemyAttack();
     }

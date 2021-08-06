@@ -18,8 +18,10 @@ public class Pirate : Enemy
     private float delayMax;
     bool isGhost = false;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         delayMax = 6.0f;
         stiffAfterAttack = 3.0f;
         delay = 0.0f;
@@ -34,8 +36,9 @@ public class Pirate : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         delay = delay - Time.deltaTime < 0 ? 0 : delay - Time.deltaTime;
         FindPlayer();
         Move();
@@ -106,7 +109,4 @@ public class Pirate : Enemy
             attack = new SwordAttack(dmg, delayMax, sword, gameObject, this);
         }
     }
-
-
-
 }

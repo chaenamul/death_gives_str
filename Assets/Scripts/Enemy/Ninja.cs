@@ -22,8 +22,10 @@ public class Ninja : Enemy
     private float daggerTimer;
     private int nextMove;
 
-    void Awake()
+    protected override void Start()
     {
+        base.Start();
+
         abilityName = "´ë½¬";
         knifeTimer = 2f;
         knifeAttackTimer = 1f;
@@ -35,8 +37,9 @@ public class Ninja : Enemy
         hitbox.subject = this;
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         FindPlayer();
     }
 

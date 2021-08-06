@@ -48,10 +48,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 50
+  maxHp: 50
   dmg: 10
   speed: 3.3
   sight: 7
   target: {fileID: 6470565612054610464, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
+  hpBarPrefab: {fileID: 0}
+  canvas: {fileID: 0}
+  height: 1.5
   attackDelay: 3
   zombieattack: {fileID: 0}
   attackRange: 1.5

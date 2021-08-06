@@ -13,8 +13,10 @@ public class Bandit : Enemy
     private bool isAggressive;
     private int nextMove;
 
-    void Awake()
+    protected override void Start()
     {
+        base.Start();
+
         abilityName = "소매치기";
         isGrounded = false;
         isAggressive = false;
@@ -25,8 +27,9 @@ public class Bandit : Enemy
         Move();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         FindPlayer();
     }
 

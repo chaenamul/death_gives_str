@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  maxHp: 10
   dmg: 5
   speed: 2
   sight: 4

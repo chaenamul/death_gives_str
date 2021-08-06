@@ -17,8 +17,10 @@ public class Zombie : Enemy
     private int nextMove;
     private bool isAggressive;
 
-    void Awake()
+    protected override void Start()
     {
+        base.Start();
+
         zombieattack.dmg = dmg;
         zombieattack.subject = this;
 
@@ -28,8 +30,9 @@ public class Zombie : Enemy
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         FindPlayer();
         EnemyAttack();
     }
