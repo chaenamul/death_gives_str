@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public GameObject target;
     protected virtual void Die()
     {
+        GameManager.instance.money += Random.Range(2, 5);
         gameObject.SetActive(false);
     }
     public virtual void GetDmg(int dmg)
