@@ -19,12 +19,18 @@ public class HitBox : MonoBehaviour
         }
         else if(subject as PlayerController && collision.tag.Contains("Enemy"))
         {
-            ///여기 화면 흔들림 구현
-            ///
-            ///
-            ///
-            ///
+            InvokeRepeating("Shaking", 0f, 0.005f);
+            Invoke("StopShaking", 0.2f);
             collision.GetComponent<Enemy>().GetDmg(dmg);
         }
+    }
+    void Shaking()
+    {
+        Camera.main.transform.position = Random.insideUnitSphere * 0.05f + new Vector3(0f, 0f, -10f);
+    }
+    void StopShaking()
+    {
+        CancelInvoke("Shaking");
+        Camera.main.transform.position = new Vector3(0f, 0f, -10f);
     }
 }
