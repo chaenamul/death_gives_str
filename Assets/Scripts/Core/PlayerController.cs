@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -50,8 +51,17 @@ public class PlayerController : MonoBehaviour
 
         attackManager.weaponType.DelayUpdate();
         attackManager.AttackUpdate();
-    }
 
+
+        /// <summary>
+        /// 개발자도구 8 ==> Die 실행
+        /// </summary>
+        /// 
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            Die();
+        }
+    }
     void FixedUpdate()
     {
         Move();
@@ -239,7 +249,13 @@ public class PlayerController : MonoBehaviour
     void Die()
     {
         gameObject.SetActive(false);
-
+        GameManager.instance.life -= 1;
+        if(GameManager.instance.life == 0)
+        {
+            GameOver();
+            return;
+        }
+        Revive();
         /*
         switch(type)
         {
@@ -269,13 +285,16 @@ public class PlayerController : MonoBehaviour
         }*/
     }
 
+    void GameOver()
+    {
+        GameManager.instance.gameOverPanel.SetActive(true);
+    }
+
     void Revive()
     {
-        string data = SaveManager.instance.popData();
-        if (data != null)
-        {
-            SceneManager.LoadScene(data);
-        }
+        GameManager.instance.hp = GameManager.instance.maxHp;
+        gameObject.SetActive(true);
+        SaveManager.instance.MoveToPrevScene();
     }
 
     void Damaged(Vector2 targetPos)

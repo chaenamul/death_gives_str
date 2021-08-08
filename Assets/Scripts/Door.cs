@@ -12,8 +12,25 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && Input.GetKey(KeyCode.W))
         {
-            SaveManager.instance.pushData(curScene);
-            SceneManager.LoadScene(sceneToLoad);
+            SaveManager.instance.MoveToNextScene(curScene, sceneToLoad);
+        }
+    }
+
+    /// <summary>
+    /// 개발자도구
+    /// 9 == > 이전씬
+    /// 0 == > 다음씬
+    /// Door가 있는 Scene에서만 작동함
+    /// </summary>
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            SaveManager.instance.MoveToPrevScene();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SaveManager.instance.MoveToNextScene(curScene, sceneToLoad);
         }
     }
 }

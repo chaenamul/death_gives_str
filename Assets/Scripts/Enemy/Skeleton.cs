@@ -51,7 +51,7 @@ public class Skeleton : Enemy
 
     void FindPlayer()
     {
-        if (Vector2.Distance(target.transform.position, transform.position) <= sight)
+        if (Vector2.Distance(GameManager.instance.playerController.transform.position, transform.position) <= sight)
         {
             isAggressive = true;
             speed = 4f;
@@ -69,9 +69,9 @@ public class Skeleton : Enemy
 
         if (isAggressive)
         {
-            if (Vector2.Distance(target.transform.position, transform.position) > attackRange)
+            if (Vector2.Distance(GameManager.instance.playerController.transform.position, transform.position) > attackRange)
             {
-                nextMove = (target.transform.position.x - transform.position.x) > 0 ? 1 : -1;
+                nextMove = (GameManager.instance.playerController.transform.position.x - transform.position.x) > 0 ? 1 : -1;
             }
             else if (timer >= attackDelay)
             {
@@ -90,7 +90,7 @@ public class Skeleton : Enemy
     IEnumerator SwordAttackCoroutine()
     {
         yield return new WaitForSeconds(0.5f);
-        skeletonSword.transform.position = (target.transform.position - transform.position).normalized * attackRange + transform.position;
+        skeletonSword.transform.position = (GameManager.instance.playerController.transform.position - transform.position).normalized * attackRange + transform.position;
         skeletonSword.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         skeletonSword.gameObject.SetActive(false);

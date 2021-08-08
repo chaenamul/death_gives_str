@@ -120,12 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738741bd55c186b41bf5061680f6f690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  maxHp: 100
-  dmg: 10
   speed: 10
+  dashSpeed: 0
   jumpForce: 30
   isGrounded: 0
+  canDash: 0
   Initsword: {fileID: 5221543877130121968}
 --- !u!61 &6470565612054610467
 BoxCollider2D:
