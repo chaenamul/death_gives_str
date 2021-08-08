@@ -18,6 +18,7 @@ public class Sniper : Enemy
         rb = GetComponent<Rigidbody2D>();
         delay = 5.0f;
         hp = 100;
+        maxHp = 100;
         dmg = 50;
         
         target = GameManager.instance.playerController.gameObject;

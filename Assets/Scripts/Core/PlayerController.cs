@@ -152,14 +152,6 @@ public class PlayerController : MonoBehaviour
         }*/
     }
 
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Door" && Input.GetKey(KeyCode.UpArrow))
-        {
-            SceneManager.LoadScene("Room1");
-        }
-    }
-
     void Move()
     {
         float dx = Input.GetAxisRaw("Horizontal");
@@ -230,7 +222,8 @@ public class PlayerController : MonoBehaviour
     public void GetDmg(Enemy sub, int dmg)
     {
         GameManager.instance.hp -= dmg;
-        if(GameManager.instance.hp <= 0)
+        Damaged(sub.transform.position);
+        if (GameManager.instance.hp <= 0)
         {
             Die();
             sub.GiveStr();
@@ -239,7 +232,7 @@ public class PlayerController : MonoBehaviour
     void Die()
     {
         gameObject.SetActive(false);
-
+        Invoke("Revive", 3f);
         /*
         switch(type)
         {
@@ -275,6 +268,7 @@ public class PlayerController : MonoBehaviour
         if (data != null)
         {
             SceneManager.LoadScene(data);
+            GameManager.instance.hp = GameManager.instance.maxHp;
         }
     }
 
