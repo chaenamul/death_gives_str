@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Room2.unity
     guid: 45b1236fa1196fe4b876c8854eda17ce
   - enabled: 1
+    path: Assets/Scenes/Merchant.unity
+    guid: e025f2773f9a05e40a6f9254670576e4
+  - enabled: 1
     path: Assets/Scenes/Room3.unity
     guid: 8c08aee4527a5644086f7558ca2f6501
   m_configObjects: {}

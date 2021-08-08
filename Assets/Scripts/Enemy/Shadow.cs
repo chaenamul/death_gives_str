@@ -33,7 +33,7 @@ public class Shadow : Enemy
 
     void FindPlayer()
     {
-        if (Vector2.Distance(target.transform.position, transform.position) <= sight)
+        if (Vector2.Distance(GameManager.instance.playerController.transform.position, transform.position) <= sight)
         {
             isAggressive = true;
             cloneRb.gameObject.SetActive(true);
@@ -46,7 +46,7 @@ public class Shadow : Enemy
 
     void Move()
     {
-        cloneRb.velocity += ((Vector2)(target.transform.position - cloneRb.transform.position)).normalized * 2;
+        cloneRb.velocity += ((Vector2)(GameManager.instance.playerController.transform.position - cloneRb.transform.position)).normalized * 2;
         if (cloneRb.velocity.magnitude > 8)
         {
             cloneRb.velocity = cloneRb.velocity.normalized * 8;

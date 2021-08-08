@@ -50,7 +50,7 @@ public class Ninja : Enemy
 
     void FindPlayer()
     {
-        var dist = Vector2.Distance(target.transform.position, transform.position);
+        var dist = Vector2.Distance(GameManager.instance.playerController.transform.position, transform.position);
 
         if (dist <= knifeRange)
         {
@@ -62,7 +62,7 @@ public class Ninja : Enemy
             }
             else
             {
-                nextMove = (target.transform.position.x - transform.position.x) > 0 ? 1 : -1;
+                nextMove = (GameManager.instance.playerController.transform.position.x - transform.position.x) > 0 ? 1 : -1;
                 KnifeAttack();
             }
         }
@@ -81,7 +81,7 @@ public class Ninja : Enemy
     {
         knifeAttackTimer += Time.deltaTime;
 
-        if (knifeAttackTimer >= attackDelay && Vector2.Distance(target.transform.position, transform.position) <= attackRange)
+        if (knifeAttackTimer >= attackDelay && Vector2.Distance(GameManager.instance.playerController.transform.position, transform.position) <= attackRange)
         {
             StartCoroutine(KnifeAttackCoroutine());
             knifeTimer = 0f;
@@ -92,7 +92,7 @@ public class Ninja : Enemy
 
     IEnumerator KnifeAttackCoroutine()
     {
-        hitbox.transform.position = (target.transform.position - transform.position).normalized * attackRange + transform.position;
+        hitbox.transform.position = (GameManager.instance.playerController.transform.position - transform.position).normalized * attackRange + transform.position;
         hitbox.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         hitbox.gameObject.SetActive(false);
@@ -101,8 +101,9 @@ public class Ninja : Enemy
     void DaggerAttack()
     {
         hitbox.gameObject.SetActive(true);
-        hitbox.GetComponent<Rigidbody2D>().AddForce((target.transform.position - transform.position).normalized * 4 * Time.deltaTime, ForceMode2D.Impulse);
+        hitbox.GetComponent<Rigidbody2D>().AddForce((GameManager.instance.playerController.transform.position - transform.position).normalized * 4 * Time.deltaTime, ForceMode2D.Impulse);
     }
+
     public override void GiveStr()
     {
         base.GiveStr();

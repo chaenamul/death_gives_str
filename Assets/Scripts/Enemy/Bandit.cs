@@ -56,11 +56,11 @@ public class Bandit : Enemy
 
     void FindPlayer()
     {
-        if (Vector2.Distance(target.transform.position, transform.position) <= sight && GameManager.instance.playerController.isGrounded)
+        if (Vector2.Distance(GameManager.instance.playerController.transform.position, transform.position) <= sight && GameManager.instance.playerController.isGrounded)
         {
             speed = 6f;
             isAggressive = true;
-            nextMove = (target.transform.position.x - transform.position.x) > 0 ? 1 : -1;
+            nextMove = (GameManager.instance.playerController.transform.position.x - transform.position.x) > 0 ? 1 : -1;
         }
         else
         {

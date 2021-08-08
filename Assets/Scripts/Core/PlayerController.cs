@@ -248,7 +248,7 @@ public class PlayerController : MonoBehaviour
             GameOver();
             return;
         }
-        Revive();
+        Invoke("Revive", 2f);
         /*
         switch(type)
         {

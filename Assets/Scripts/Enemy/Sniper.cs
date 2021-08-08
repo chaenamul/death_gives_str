@@ -21,7 +21,6 @@ public class Sniper : Enemy
         maxHp = 100;
         dmg = 50;
         
-        target = GameManager.instance.playerController.gameObject;
         sniping = new HitScanRangeAttack(dmg, delay, gameObject,this, 3.0f);
     }
 
