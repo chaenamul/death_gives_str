@@ -22,20 +22,23 @@ public class HitScanRangeAttack : Attack
     public override IEnumerator Normal()
     {
         yield return new WaitForSeconds(aimingDelay); // Aiming
-        Vector3 target = TargetUpdate();
-        RaycastHit2D hit = Physics2D.Raycast(subject.transform.position, target - subject.transform.position, Mathf.Infinity, ~(1<<subject.layer));
-        Debug.DrawRay(subject.transform.position, (target - subject.transform.position).normalized*hit.distance, Color.red, 0.3f);
-        Debug.Log(hit.distance);
-        if (hit)
+        if (subject && subject.activeSelf)
         {
-            if(subject.tag == "Player" && hit.transform.gameObject.tag.Contains("Enemy"))
+            Vector3 target = TargetUpdate();
+            RaycastHit2D hit = Physics2D.Raycast(subject.transform.position, target - subject.transform.position, Mathf.Infinity, ~(1 << subject.layer));
+            Debug.DrawRay(subject.transform.position, (target - subject.transform.position).normalized * hit.distance, Color.red, 0.3f);
+            Debug.Log(hit.distance);
+            if (hit)
             {
-                
-            }
-            else if(subject.tag.Contains("Enemy") && hit.transform.gameObject.tag == "Player")
-            {
-                Debug.Log("Hit");
-                GameManager.instance.playerController.GetDmg((Enemy)subjectClass, attackDamage);
+                if (subject.tag == "Player" && hit.transform.gameObject.tag.Contains("Enemy"))
+                {
+
+                }
+                else if (subject.tag.Contains("Enemy") && hit.transform.gameObject.tag == "Player")
+                {
+                    Debug.Log("Hit");
+                    GameManager.instance.playerController.GetDmg((Enemy)subjectClass, attackDamage);
+                }
             }
         }
     }
