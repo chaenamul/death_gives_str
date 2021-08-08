@@ -17,7 +17,8 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene(sceneToLoad);
+            GameManager.instance.playerController.gameObject.SetActive(true);
+            SaveManager.instance.MoveToNextScene(null, sceneToLoad);
         }
     }
 }
