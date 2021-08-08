@@ -293,6 +293,6 @@ public class PlayerController : MonoBehaviour
     void Damaged(Vector2 targetPos)
     {
         int dirx = transform.position.x - targetPos.x > 0 ? 1 : -1;
-        rb.AddForce(new Vector2(dirx, 1) * 3, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(dirx, 1) * 15, ForceMode2D.Impulse);
     }
 }

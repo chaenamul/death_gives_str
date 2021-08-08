@@ -27708,6 +27708,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504463558489097250, guid: c446bdda22603574483944804b4844a9, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 132905827}
+    - target: {fileID: 504463558489097250, guid: c446bdda22603574483944804b4844a9, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 506270748}
@@ -27715,6 +27719,10 @@ PrefabInstance:
       propertyPath: cloneRb
       value: 
       objectReference: {fileID: 8223227491378217776}
+    - target: {fileID: 504463558489097250, guid: c446bdda22603574483944804b4844a9, type: 3}
+      propertyPath: hpBarPrefab
+      value: 
+      objectReference: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
     - target: {fileID: 504463558489097251, guid: c446bdda22603574483944804b4844a9, type: 3}
       propertyPath: m_Name
       value: Shadow
