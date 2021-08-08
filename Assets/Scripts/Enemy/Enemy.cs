@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Die()
     {
+        GameManager.instance.money += Random.Range(2, 5);
         gameObject.SetActive(false);
     }
 
