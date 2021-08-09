@@ -26,7 +26,8 @@ public class SwordAttack : Attack
         hb.transform.position = TargetUpdate();
         hb.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        hb.gameObject.SetActive(false);
+        if(hb)
+            hb.gameObject.SetActive(false);
     }
 
     public override IEnumerator Skill()

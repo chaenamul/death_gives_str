@@ -23,10 +23,13 @@ public class TargetingRangeAttack : Attack
     public override IEnumerator Normal()
     {
         yield return new WaitForSeconds(aimingDelay); // Aiming
-        hb.gameObject.SetActive(true);
-        Vector3 target = TargetUpdate();
-        hb.transform.position = subject.transform.position + (target - subject.transform.position).normalized;
-        hb.GetComponent<Rigidbody2D>().velocity = (target - subject.transform.position).normalized * bulletSpeed;
+        if(subject && subject.activeSelf)
+        {
+            hb.gameObject.SetActive(true);
+            Vector3 target = TargetUpdate();
+            hb.transform.position = subject.transform.position + (target - subject.transform.position).normalized;
+            hb.GetComponent<Rigidbody2D>().velocity = (target - subject.transform.position).normalized * bulletSpeed;
+        }
     }
 
     public override IEnumerator Skill()
