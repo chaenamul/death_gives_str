@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     protected virtual void Update()
     {
         Vector3 hpBarPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
-        hpBar.position = hpBarPos;
+        hpBar.position   = hpBarPos;
     }
 
     protected virtual void Die()
