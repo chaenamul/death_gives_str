@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HitBox : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class HitBox : MonoBehaviour
         {
             GameManager.instance.playerController.GetDmg((Enemy)subject, dmg);
             inv = true;
+            Invoke("ShowHitimage",0f);
+            Invoke("StopHitimage", 0.1f);
             InvokeRepeating("light", 0f, 0.2f);
             Invoke("stoplight", 1f);
         }
@@ -49,6 +52,7 @@ public class HitBox : MonoBehaviour
             GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 180);
         countTime++;
     }
+
     void stoplight()
     {
         CancelInvoke("light");
@@ -57,5 +61,14 @@ public class HitBox : MonoBehaviour
         inv = false;
     }
 
-  
+    void ShowHitimage()
+    {
+        GameObject.Find("Hitimage").GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
+    }
+
+    void StopHitimage()
+    {
+        GameObject.Find("Hitimage").GetComponent<Image>().color = new Color(1, 0, 0, 0);
+    }
+
 }

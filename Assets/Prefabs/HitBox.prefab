@@ -145,3 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 0
+  Hitimage: {fileID: 6090036006959856022, guid: 7d8bfe97b9035124cbe0075a2ca63729, type: 3}
