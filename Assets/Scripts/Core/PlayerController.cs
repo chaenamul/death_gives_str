@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private float dashTimer = 0.3f;
 
     public HitBox Initsword;
+    private int countTime = 0;
+    public bool inv = false;
+
     private enum weapon
     {
         InitSword
@@ -231,6 +235,7 @@ public class PlayerController : MonoBehaviour
 
     public void GetDmg(Enemy sub, int dmg)
     {
+        PlayerAttacked();
         GameManager.instance.hp -= dmg;
         Damaged(sub.transform.position);
         if (GameManager.instance.hp <= 0)
@@ -294,5 +299,44 @@ public class PlayerController : MonoBehaviour
     {
         int dirx = transform.position.x - targetPos.x > 0 ? 1 : -1;
         rb.AddForce(new Vector2(dirx, 1) * 15, ForceMode2D.Impulse);
+    }
+    private void PlayerAttacked()
+    {
+        inv = true;
+        Invoke("ShowHitimage", 0f);
+        Invoke("StopHitimage", 0.1f);
+        InvokeRepeating("Light", 0f, 0.2f);
+        Invoke("StopLight", 3f);
+    }
+
+    void Light()
+    {
+        if (countTime % 2 == 0)
+        {
+            GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 90);
+        }
+        else
+        {
+            GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 180);
+        }
+        countTime++;
+    }
+
+    void StopLight()
+    {
+        CancelInvoke("Light");
+        GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        countTime = 0;
+        inv = false;
+    }
+
+    void ShowHitimage()
+    {
+        GameObject.Find("Hitimage").GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
+    }
+
+    void StopHitimage()
+    {
+        GameObject.Find("Hitimage").GetComponent<Image>().color = new Color(1, 0, 0, 0);
     }
 }

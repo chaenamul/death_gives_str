@@ -49,6 +49,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void GetDmg(int dmg)
     {
+        InvokeRepeating("Shaking", 0f, 0.005f);
+        Invoke("StopShaking", 0.2f);
         hp -= dmg;
         nowHpBar.fillAmount = (float)hp / (float)maxHp;
         if (hp <= 0)
@@ -61,5 +63,16 @@ public class Enemy : MonoBehaviour
     public virtual void GiveStr()
     {
         GameManager.instance.abilities.Add(abilityName);
+    }
+
+    private void Shaking()
+    {
+        Camera.main.transform.position = Random.insideUnitSphere * 0.05f + new Vector3(0f, 0f, -10f);
+    }
+
+    private void StopShaking()
+    {
+        CancelInvoke("Shaking");
+        Camera.main.transform.position = new Vector3(0f, 0f, -10f);
     }
 }
