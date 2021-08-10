@@ -13,7 +13,7 @@ public class ExplosionHitBox : HitBox
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        if (subject as Enemy && !collision.gameObject.tag.Contains("Enemy") || subject as PlayerController && !(collision.gameObject.tag == "Player"))
+        if (subject as Enemy && !collision.gameObject.tag.Contains("Enemy") && !collision.gameObject.tag.Contains("HitBox") || subject as PlayerController && !(collision.gameObject.tag == "Player"))
         {
             gameObject.SetActive(false);
             CoroutineManager.instance.Coroutine(Explosion(transform.position));

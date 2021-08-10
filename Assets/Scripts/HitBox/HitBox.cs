@@ -10,8 +10,6 @@ public class HitBox : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        print(subject as PlayerController);
-        print("collision: " + collision.gameObject);
 
         if (subject as Enemy && collision.tag == "Player" && !GameManager.instance.playerController.inv) // Enemy -> Player АјАн
         {

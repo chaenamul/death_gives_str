@@ -7791,6 +7791,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[345].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 3681448339849571837, guid: 7e87639eb26d6d543a770fbc54a413fb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3681448340980580676, guid: 7e87639eb26d6d543a770fbc54a413fb, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -17,18 +17,16 @@ public class Pirate : Enemy
     private float stiffAfterAttack;
     private float delayMax;
     bool isGhost = false;
-
     protected override void Start()
     {
         base.Start();
-
         delayMax = 6.0f;
         stiffAfterAttack = 3.0f;
         delay = 0.0f;
         found = false;
         rbody = GetComponent<Rigidbody2D>();
         initLoc = transform.position;
-        hp = 70;
+        maxHp = hp = 70;
         dmg = 30;
         speed = GameManager.instance.playerController.speed * 2f / 3f;
         sight = 25f;
@@ -96,17 +94,27 @@ public class Pirate : Enemy
     protected override void Die()
     {
         if (isGhost)
+        {
             gameObject.SetActive(false);
+            transform.parent.gameObject.SetActive(false);
+        }
         else
         {
-            isGhost = true;
-            hp = 10;
-            sight = 15;
-            dmg = 10;
-            stiffAfterAttack = 2.0f;
-            delayMax = 2.0f;
-            delay = 0.0f;
-            attack = new SwordAttack(dmg, delayMax, sword, gameObject, this);
+            Invoke("Revive", 1.0f);
+            this.enabled = false;
         }
+    }
+    private void Revive()
+    {
+        isGhost = true;
+        hp = 10;
+        sight = 15;
+        dmg = 10;
+        stiffAfterAttack = 2.0f;
+        delayMax = 2.0f;
+        delay = 0.0f;
+        attack = new SwordAttack(dmg, delayMax, sword, gameObject, this);
+        base.Start();
+        this.enabled = true;
     }
 }

@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public float sight;
     protected string abilityName; // 나중에 새로 클래스 만드는게 좋을듯
     public GameObject hpBarPrefab;
-    public GameObject canvas;
+    private GameObject canvas;
     private Image nowHpBar;
     public float height = 1.5f;
 
@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Start()
     {
+        canvas = GameObject.Find("Canvas");
         hpBar = Instantiate(hpBarPrefab, canvas.transform).GetComponent<RectTransform>();
         nowHpBar = hpBar.transform.GetChild(0).GetComponent<Image>();
     }
@@ -49,8 +50,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void GetDmg(int dmg)
     {
-        InvokeRepeating("Shaking", 0f, 0.005f);
-        Invoke("StopShaking", 0.2f);
+        //InvokeRepeating("Shaking", 0f, 0.005f);
+        //Invoke("StopShaking", 0.2f);
         hp -= dmg;
         nowHpBar.fillAmount = (float)hp / (float)maxHp;
         if (hp <= 0)
@@ -64,7 +65,7 @@ public class Enemy : MonoBehaviour
     {
         GameManager.instance.abilities.Add(abilityName);
     }
-
+    /* 카메라 위치가 달라질 때 버그 수정 필요
     private void Shaking()
     {
         Camera.main.transform.position = Random.insideUnitSphere * 0.05f + new Vector3(0f, 0f, -10f);
@@ -75,4 +76,5 @@ public class Enemy : MonoBehaviour
         CancelInvoke("Shaking");
         Camera.main.transform.position = new Vector3(0f, 0f, -10f);
     }
+    */
 }

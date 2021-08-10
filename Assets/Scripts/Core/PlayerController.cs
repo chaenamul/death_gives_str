@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public HitBox Initsword;
     private int countTime = 0;
     public bool inv = false;
-
+    private bool cameraRock = false;
     private enum weapon
     {
         InitSword
@@ -40,10 +40,9 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         weapons = new Dictionary<weapon, Attack>();
-        weapons[weapon.InitSword] = new SwordAttack(5, 1, Initsword, gameObject, this);
+        weapons[weapon.InitSword] = new SwordAttack(GameManager.instance.dmg, 1, Initsword, gameObject, this);
         attackManager = new PlayerAttackManager(weapons[weapon.InitSword]);
     }
-
     void Update()
     {
         Jump();
@@ -56,7 +55,36 @@ public class PlayerController : MonoBehaviour
         attackManager.weaponType.DelayUpdate();
         attackManager.AttackUpdate();
 
-
+        /// <summary>
+        /// 임시 키
+        /// y누르면 카메라 플레이어에게 고정
+        /// </summary>
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            cameraRock = !cameraRock;
+        }
+        if (cameraRock)
+        {
+            Camera.main.transform.position = transform.position - new Vector3(0,0,transform.position.z - Camera.main.transform.position.z);
+        }
+        /// <summary>
+        /// 임시 키
+        /// 2누르면 데미지 10증가 1누르면 10감소
+        /// </summary>
+        /// 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            GameManager.instance.dmg -= 10;
+            weapons[weapon.InitSword].UpdateDamage(GameManager.instance.dmg);
+            Debug.Log("DMG:" + GameManager.instance.dmg);
+        
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            GameManager.instance.dmg += 10;
+            weapons[weapon.InitSword].UpdateDamage(GameManager.instance.dmg);
+            Debug.Log("DMG:" + GameManager.instance.dmg);
+        }
         /// <summary>
         /// 개발자도구 8 ==> Die 실행
         /// </summary>
@@ -313,11 +341,11 @@ public class PlayerController : MonoBehaviour
     {
         if (countTime % 2 == 0)
         {
-            GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 90);
+            GameManager.instance.playerController.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 90);
         }
         else
         {
-            GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 180);
+            GameManager.instance.playerController.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 180);
         }
         countTime++;
     }
