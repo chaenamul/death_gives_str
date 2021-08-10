@@ -34,7 +34,7 @@ public class HitScanRangeAttack : Attack
                 {
 
                 }
-                else if (subject.tag.Contains("Enemy") && hit.transform.gameObject.tag == "Player")
+                else if (subject.tag.Contains("Enemy") && hit.transform.gameObject.tag == "Player" && !GameManager.instance.playerController.inv)
                 {
                     Debug.Log("Hit");
                     GameManager.instance.playerController.GetDmg((Enemy)subjectClass, attackDamage);

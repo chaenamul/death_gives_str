@@ -235,8 +235,8 @@ public class PlayerController : MonoBehaviour
 
     public void GetDmg(Enemy sub, int dmg)
     {
-        PlayerAttacked();
         GameManager.instance.hp -= dmg;
+        PlayerAttacked();
         Damaged(sub.transform.position);
         if (GameManager.instance.hp <= 0)
         {
@@ -302,13 +302,16 @@ public class PlayerController : MonoBehaviour
     }
     private void PlayerAttacked()
     {
-        inv = true;
+
         Invoke("ShowHitimage", 0f);
         Invoke("StopHitimage", 0.1f);
-        InvokeRepeating("Light", 0f, 0.2f);
-        Invoke("StopLight", 3f);
+        if (GameManager.instance.hp > 0)
+        {
+            inv = true;
+            InvokeRepeating("Light", 0f, 0.2f);
+            Invoke("StopLight", 3f);
+        }
     }
-
     void Light()
     {
         if (countTime % 2 == 0)
