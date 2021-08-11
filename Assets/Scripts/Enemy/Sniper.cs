@@ -40,6 +40,7 @@ public class Sniper : Enemy
         float sizeHRatio = Camera.main.orthographicSize / (float)Screen.height;
         return (math.abs(transform.position.x - Camera.main.transform.position.x) <= Screen.height * whRatio * sizeHRatio) & (math.abs(transform.position.y - Camera.main.transform.position.y) <= Screen.height * sizeHRatio);
     }
+
     public override void GiveStr()
     {
         base.GiveStr();

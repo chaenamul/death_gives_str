@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int maxHp;
     public int dmg;
     public List<string> abilities;
+    public List<int> items;
     public int money;
 
     public HitBox hitBox;

@@ -4,9 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
-    private void Awake()
+    void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        var obj = FindObjectsOfType<GameOver>();
+        if (obj.Length == 1)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         gameObject.SetActive(false);
     }
     public void BackToMainMenu()

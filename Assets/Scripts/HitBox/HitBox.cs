@@ -35,13 +35,13 @@ public class HitBox : MonoBehaviour
 
     void Shaking()
     {
-        Camera.main.transform.position = Random.insideUnitSphere * 0.05f + new Vector3(0f, 0f, -10f);
+        Camera.main.transform.position = Random.insideUnitSphere * 0.05f + new Vector3(GameManager.instance.playerController.transform.position.x, 0f, -10f);
     }
 
     void StopShaking()
     {
         CancelInvoke("Shaking");
-        Camera.main.transform.position = new Vector3(0f, 0f, -10f);
+        Camera.main.transform.position = new Vector3(GameManager.instance.playerController.transform.position.x, 0f, -10f);
     }
 
     void Light()

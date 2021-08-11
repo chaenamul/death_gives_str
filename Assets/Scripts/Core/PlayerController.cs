@@ -31,7 +31,16 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        var obj = FindObjectsOfType<PlayerController>();
+        if (obj.Length == 1)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -52,6 +61,45 @@ public class PlayerController : MonoBehaviour
         attackManager.weaponType.DelayUpdate();
         attackManager.AttackUpdate();
 
+        if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.items.Count != 0)
+        {
+            switch (GameManager.instance.items[GameManager.instance.items.Count - 1])
+            {
+                case 10001:
+                    GameManager.instance.hp += GameManager.instance.maxHp * 3 / 10;
+                    if (GameManager.instance.hp > GameManager.instance.maxHp)
+                    {
+                        GameManager.instance.hp = GameManager.instance.maxHp;
+                    }
+                    print("체력 30% 즉시 회복");
+                    break;
+                case 10002:
+                    GameManager.instance.hp += GameManager.instance.maxHp * 5 / 10;
+                    print("체력 50% 즉시 회복");
+                    if (GameManager.instance.hp > GameManager.instance.maxHp)
+                    {
+                        GameManager.instance.hp = GameManager.instance.maxHp;
+                    }
+                    break;
+                case 10003:
+                    GameManager.instance.hp += GameManager.instance.maxHp * 7 / 10;
+                    print("체력 70% 즉시 회복");
+                    if (GameManager.instance.hp > GameManager.instance.maxHp)
+                    {
+                        GameManager.instance.hp = GameManager.instance.maxHp;
+                    }
+                    break;
+                case 10004:
+                    GameManager.instance.hp = GameManager.instance.maxHp;
+                    print("체력 100% 즉시 회복");
+                    break;
+                case 20001:
+                    GameManager.instance.life++;
+                    print("목숨 하나 추가");
+                    break;
+            }
+            GameManager.instance.items.RemoveAt(GameManager.instance.items.Count - 1);
+        }
 
         /// <summary>
         /// 개발자도구 8 ==> Die 실행
