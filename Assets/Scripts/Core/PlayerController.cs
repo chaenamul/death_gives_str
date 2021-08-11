@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private float dashTimer = 0.3f;
 
     public HitBox Initsword;
+    private int countTime = 0;
+    public bool inv = false;
+    private bool cameraRock = false;
     private enum weapon
     {
         InitSword
@@ -45,10 +49,9 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         weapons = new Dictionary<weapon, Attack>();
-        weapons[weapon.InitSword] = new SwordAttack(5, 1, Initsword, gameObject, this);
+        weapons[weapon.InitSword] = new SwordAttack(GameManager.instance.dmg, 1, Initsword, gameObject, this);
         attackManager = new PlayerAttackManager(weapons[weapon.InitSword]);
     }
-
     void Update()
     {
         Jump();
@@ -99,6 +102,37 @@ public class PlayerController : MonoBehaviour
                     break;
             }
             GameManager.instance.items.RemoveAt(GameManager.instance.items.Count - 1);
+        }
+
+        /// <summary>
+        /// 임시 키
+        /// y누르면 카메라 플레이어에게 고정
+        /// </summary>
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            cameraRock = !cameraRock;
+        }
+        if (cameraRock)
+        {
+            Camera.main.transform.position = transform.position - new Vector3(0,0,transform.position.z - Camera.main.transform.position.z);
+        }
+        /// <summary>
+        /// 임시 키
+        /// 2누르면 데미지 10증가 1누르면 10감소
+        /// </summary>
+        /// 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            GameManager.instance.dmg -= 10;
+            weapons[weapon.InitSword].UpdateDamage(GameManager.instance.dmg);
+            Debug.Log("DMG:" + GameManager.instance.dmg);
+        
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            GameManager.instance.dmg += 10;
+            weapons[weapon.InitSword].UpdateDamage(GameManager.instance.dmg);
+            Debug.Log("DMG:" + GameManager.instance.dmg);
         }
 
         /// <summary>
@@ -279,6 +313,7 @@ public class PlayerController : MonoBehaviour
 
     public void GetDmg(Enemy sub, int dmg)
     {
+        PlayerAttacked();
         GameManager.instance.hp -= dmg;
         Damaged(sub.transform.position);
         if (GameManager.instance.hp <= 0)
@@ -342,5 +377,44 @@ public class PlayerController : MonoBehaviour
     {
         int dirx = transform.position.x - targetPos.x > 0 ? 1 : -1;
         rb.AddForce(new Vector2(dirx, 1) * 15, ForceMode2D.Impulse);
+    }
+    private void PlayerAttacked()
+    {
+        inv = true;
+        Invoke("ShowHitimage", 0f);
+        Invoke("StopHitimage", 0.1f);
+        InvokeRepeating("Light", 0f, 0.2f);
+        Invoke("StopLight", 3f);
+    }
+
+    void Light()
+    {
+        if (countTime % 2 == 0)
+        {
+            GameManager.instance.playerController.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 90);
+        }
+        else
+        {
+            GameManager.instance.playerController.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 180);
+        }
+        countTime++;
+    }
+
+    void StopLight()
+    {
+        CancelInvoke("Light");
+        GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        countTime = 0;
+        inv = false;
+    }
+
+    void ShowHitimage()
+    {
+        GameObject.Find("Hitimage").GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
+    }
+
+    void StopHitimage()
+    {
+        GameObject.Find("Hitimage").GetComponent<Image>().color = new Color(1, 0, 0, 0);
     }
 }

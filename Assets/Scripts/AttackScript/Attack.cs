@@ -11,10 +11,10 @@ public enum AttackType
 
 public abstract class Attack
 {
-    public int attackDamage;
+    protected int attackDamage;
     public float attackDelay;
     public float skillCoolTime;
-
+    public bool watingAttack = true;
     private float curNormalDelay = 0;
     private float curSkillDelay = 0;
 
@@ -23,17 +23,24 @@ public abstract class Attack
     protected object subjectClass;
 
     public abstract Vector3 TargetUpdate();
-
     public abstract IEnumerator Normal();
 
     public abstract IEnumerator Skill();
 
+    public void UpdateDamage(int dmg)
+    {
+        attackDamage = dmg;
+        hb.dmg = dmg;
+    }
+
     public void DelayUpdate() // 매 프레임 실행 필수
     {
         curNormalDelay -= Time.deltaTime;
-        curSkillDelay -= Time.deltaTime;
-        curNormalDelay = curNormalDelay < 0 ? 0 : curNormalDelay;
-        curSkillDelay = curSkillDelay < 0 ? 0 : curSkillDelay;
+        if (curNormalDelay <= 0)
+        {
+            curNormalDelay = 0;
+            watingAttack = true;
+        }
     }
 
     public void Execute(AttackType type) 
@@ -52,6 +59,7 @@ public abstract class Attack
                 {
                     CoroutineManager.instance.Coroutine(Normal());
                     curNormalDelay = attackDelay;
+                    watingAttack = false;
                 }
                 break;
             default:
@@ -67,7 +75,7 @@ public abstract class Attack
         this.subjectClass = component;
         if (hb)
         {
-            hb.dmg = attackdmg;
+            hb.dmg = this.attackDamage;
             hb.subject = component;
         }
         subject = sub;
