@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Start()
     {
+        canvas = GameObject.Find("Canvas");
         hpBar = Instantiate(hpBarPrefab, canvas.transform).GetComponent<RectTransform>();
         nowHpBar = hpBar.transform.GetChild(0).GetComponent<Image>();
     }
