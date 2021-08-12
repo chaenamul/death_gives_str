@@ -380,7 +380,10 @@ public class PlayerController : MonoBehaviour
     }
     private void PlayerAttacked()
     {
-
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySFX("hit_1", 0.3f);
+        }
         Invoke("ShowHitimage", 0f);
         Invoke("StopHitimage", 0.1f);
         if (GameManager.instance.hp > 0)
