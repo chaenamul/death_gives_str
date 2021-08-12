@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     public GameObject canvas;
     private Image nowHpBar;
     public float height = 1.5f;
+    private Vector3 CameraPos;
 
     private RectTransform hpBar;
 
@@ -49,8 +50,9 @@ public class Enemy : MonoBehaviour
 
     public virtual void GetDmg(int dmg)
     {
-        //InvokeRepeating("Shaking", 0f, 0.005f);
-        //Invoke("StopShaking", 0.2f);
+        CameraPos = Camera.main.transform.position;
+        InvokeRepeating("Shaking", 0f, 0.005f);
+        Invoke("StopShaking", 0.2f);
         hp -= dmg;
         nowHpBar.fillAmount = (float)hp / (float)maxHp;
         if (hp <= 0)
@@ -64,16 +66,17 @@ public class Enemy : MonoBehaviour
     {
         GameManager.instance.abilities.Add(abilityName);
     }
-    /* 카메라 위치가 달라질 때 버그 수정 필요
     private void Shaking()
     {
-        Camera.main.transform.position = Random.insideUnitSphere * 0.05f + new Vector3(0f, 0f, -10f);
+        Camera.main.transform.position = Random.insideUnitSphere * 0.05f + Camera.main.GetComponent<CameraController>().CameraShake;
     }
 
     private void StopShaking()
     {
         CancelInvoke("Shaking");
-        Camera.main.transform.position = new Vector3(0f, 0f, -10f);
+        CameraPos = Camera.main.GetComponent<CameraController>().CameraShake;
+        CameraPos.y = 0f;
+        Camera.main.transform.position = CameraPos;
     }
-    */
+    
 }

@@ -11,6 +11,8 @@ public class CameraController : MonoBehaviour
 
     private Vector3 targetPos;
 
+    public Vector3 CameraShake;
+
     void Awake()
     {
         var obj = FindObjectsOfType<CameraController>();
@@ -30,6 +32,7 @@ public class CameraController : MonoBehaviour
         {
             targetPos.Set(target.transform.position.x, transform.position.y, transform.position.z);
             this.transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
+            CameraShake = this.transform.position;
         }
     }
 }
