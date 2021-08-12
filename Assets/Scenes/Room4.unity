@@ -413,6 +413,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -28
       objectReference: {fileID: 0}
+    - target: {fileID: 8263770101793554693, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 286498664}
     - target: {fileID: 8761515590833345836, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
       propertyPath: m_Name
       value: Skeleton
@@ -474,6 +478,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8263770101793554693, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 286498664}
     - target: {fileID: 8761515590833345836, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
       propertyPath: m_Name
       value: Skeleton (1)
@@ -601,6 +609,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4412198746060655898, guid: 9357389987bc5cb4fb29a9520fda9a3c, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 286498664}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9357389987bc5cb4fb29a9520fda9a3c, type: 3}
 --- !u!1 &1231264976
@@ -36792,6 +36804,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4412198746060655898, guid: 9357389987bc5cb4fb29a9520fda9a3c, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 286498664}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9357389987bc5cb4fb29a9520fda9a3c, type: 3}
 --- !u!1001 &1464747885
@@ -36996,6 +37012,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4624125320595281180, guid: 2b8ba054c014fb24483e0c87b4f90700, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 286498664}
     - target: {fileID: 4624125321260088324, guid: 2b8ba054c014fb24483e0c87b4f90700, type: 3}
       propertyPath: m_Name
       value: Dragon
