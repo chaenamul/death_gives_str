@@ -7,13 +7,14 @@ public class Sniper : Enemy
 {
     [SerializeField]
     private float delay;
+    [SerializeField]
+    private LineRenderer laser;
     private Attack sniping;
     private Rigidbody2D rb;
 
     protected override void Start() 
     {
         base.Start();
-
         abilityName = "화약개조";
         rb = GetComponent<Rigidbody2D>();
         delay = 5.0f;
@@ -21,7 +22,7 @@ public class Sniper : Enemy
         maxHp = 100;
         dmg = 50;
         
-        sniping = new HitScanRangeAttack(dmg, delay, gameObject,this, 3.0f);
+        sniping = new HitScanRangeAttack(dmg, delay, gameObject,this, 3.0f, laser);
     }
 
     protected override void Update()
