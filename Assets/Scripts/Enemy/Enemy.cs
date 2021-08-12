@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public float sight;
     protected string abilityName; // 나중에 새로 클래스 만드는게 좋을듯
     public GameObject hpBarPrefab;
-    private GameObject canvas;
+    public GameObject canvas;
     private Image nowHpBar;
     public float height = 1.5f;
 
@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Start()
     {
-        canvas = GameObject.Find("Canvas");
         hpBar = Instantiate(hpBarPrefab, canvas.transform).GetComponent<RectTransform>();
         nowHpBar = hpBar.transform.GetChild(0).GetComponent<Image>();
     }
