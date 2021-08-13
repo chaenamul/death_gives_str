@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
+using System.Dynamic;
 using UnityEngine;
 
 public class HitScanRangeAttack : Attack
 {
     float aimingDelay;
+    LineRenderer route;
     public override Vector3 TargetUpdate()
     {
         Vector3 attackDir = new Vector3(0,0,0);
@@ -21,12 +24,14 @@ public class HitScanRangeAttack : Attack
 
     public override IEnumerator Normal()
     {
-        yield return new WaitForSeconds(aimingDelay); // Aiming
+        route.SetPosition(0, subject.transform.position);
+        Debug.Log(subject.transform.position);
+        yield return CoroutineManager.instance.StartCoroutine(Aiming()); // Aiming
         if (subject && subject.activeSelf)
         {
             Vector3 target = TargetUpdate();
             RaycastHit2D hit = Physics2D.Raycast(subject.transform.position, target - subject.transform.position, Mathf.Infinity, ~(1 << subject.layer));
-            Debug.DrawRay(subject.transform.position, (target - subject.transform.position).normalized * hit.distance, Color.red, 0.3f);
+            
             Debug.Log(hit.distance);
             if (hit)
             {
@@ -48,9 +53,30 @@ public class HitScanRangeAttack : Attack
         return null;
     }
 
-    public HitScanRangeAttack(int dmg, float delay, GameObject sub, object component, float aimingDel) : base(dmg, delay, null, sub, component)
+    public HitScanRangeAttack(int dmg, float delay, GameObject sub, object component, float aimingDel, LineRenderer route) : base(dmg, delay, null, sub, component)
     {
         hb = null;
         aimingDelay = aimingDel;
+        this.route = route;
+    }
+    private IEnumerator Aiming()
+    {
+        Transform tr = subject.transform;
+        if(route)
+            route.gameObject.SetActive(true);
+        float time = 0.0f;
+        RaycastHit2D hit;
+        while (time < aimingDelay)
+        {
+            route.SetPosition(0, tr.position);
+            Vector3 target = TargetUpdate();
+            time += 0.02f;
+            hit = Physics2D.Raycast(tr.position, target - tr.position, Mathf.Infinity, ~(1 << subject.layer));
+            if(route)
+                route.SetPosition(1, tr.position + (target + new Vector3(0,0.3f,0) - tr.position).normalized * (hit.distance+0.5f));
+            yield return new WaitForSeconds(0.02f);
+        }
+        if(route)
+            route.gameObject.SetActive(false);
     }
 }
