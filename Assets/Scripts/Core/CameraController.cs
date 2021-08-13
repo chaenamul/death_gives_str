@@ -6,10 +6,6 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     private GameObject target;
-    [SerializeField]
-    private float speed;
-
-    private Vector3 targetPos;
 
     public Vector3 CameraShake;
 
@@ -30,9 +26,8 @@ public class CameraController : MonoBehaviour
     {
         if (target.gameObject != null)
         {
-            targetPos.Set(target.transform.position.x, transform.position.y, transform.position.z);
-            this.transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
-            CameraShake = this.transform.position;
+            transform.position = new Vector3(target.transform.position.x, transform.position.y, transform.position.z);
+            CameraShake = transform.position;
         }
     }
 }

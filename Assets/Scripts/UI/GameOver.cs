@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
+    private static GameOver instance = null;
+
     void Awake()
     {
-        var obj = FindObjectsOfType<GameOver>();
-        if (obj.Length == 1)
+        if (instance == null)
         {
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -23,6 +25,7 @@ public class GameOver : MonoBehaviour
         GameManager.instance.Initialize();
         SaveManager.instance.Initialize();
         GameManager.instance.gameOverPanel.SetActive(false);
+        GameManager.instance.playerController.gameObject.SetActive(true);
         SaveManager.instance.BackToMainMenu();
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance = null;
+
     [SerializeField]
     public float speed;
     [SerializeField]
@@ -35,15 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        var obj = FindObjectsOfType<PlayerController>();
-        if (obj.Length == 1)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        DontDestroyOnLoad(gameObject);
 
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -52,6 +46,7 @@ public class PlayerController : MonoBehaviour
         weapons[weapon.InitSword] = new SwordAttack(GameManager.instance.dmg, 1, Initsword, gameObject, this);
         attackManager = new PlayerAttackManager(weapons[weapon.InitSword]);
     }
+
     void Update()
     {
         Jump();
@@ -144,6 +139,7 @@ public class PlayerController : MonoBehaviour
             Die();
         }
     }
+
     void FixedUpdate()
     {
         Move();
@@ -378,7 +374,8 @@ public class PlayerController : MonoBehaviour
         int dirx = transform.position.x - targetPos.x > 0 ? 1 : -1;
         rb.AddForce(new Vector2(dirx, 1) * 15, ForceMode2D.Impulse);
     }
-    private void PlayerAttacked()
+
+    void PlayerAttacked()
     {
         if (SoundManager.Instance != null)
         {
@@ -393,6 +390,7 @@ public class PlayerController : MonoBehaviour
             Invoke("StopLight", 3f);
         }
     }
+
     void Light()
     {
         if (countTime % 2 == 0)

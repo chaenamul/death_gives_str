@@ -82,7 +82,7 @@ public class SoundManager : MonoBehaviour
     {
         switch (scene.name)
         {
-            case "Main Menu":   // 메인 메뉴
+            case "MainMenu":   // 메인 메뉴
                 StopBGM();
                 PlayBGM("", 0.3f);
                 break;

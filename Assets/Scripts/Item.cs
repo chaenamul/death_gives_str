@@ -70,6 +70,7 @@ public class Item : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             info = Instantiate(infoPrefab, canvas.transform);
+            info.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 3f);
             info.transform.GetChild(0).GetComponent<Text>().text = infoText;
         }
     }

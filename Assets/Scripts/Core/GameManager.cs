@@ -15,12 +15,6 @@ public class GameManager : MonoBehaviour
 
     public HitBox hitBox;
     public PlayerController playerController;
-    public Skeleton skeleton;
-    public Bandit bandit;
-    public Ninja ninja;
-    public Sniper sniper;
-    public Zombie zombie;
-    public Shadow shadow;
     public GameObject gameOverPanel;
     public int life = 9;
 
@@ -30,10 +24,19 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
         initHp = hp;
         initMaxHp = maxHp;
         initDmg = dmg;
-        instance = this;
         abilities = new List<string>();
     }
 
