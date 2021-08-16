@@ -48,10 +48,6 @@ public class ParabolaAttack : Attack
         Debug.Log(rbody.velocity);
         yield return null;
     }
-    public override IEnumerator Skill()
-    {
-        return null;
-    }
     public ParabolaAttack(int dmg, float delay, HitBox hitbox, GameObject sub, object component, float xSpeed, bool ground) : base(dmg, delay, hitbox, sub, component)
     {
         this.xSpeed = xSpeed;

@@ -48,12 +48,12 @@ public class Pirate : Enemy
                 if (!isGhost)
                 {
                     ((ParabolaAttack)attack).xSpeed = (GameManager.instance.playerController.transform.position.x - transform.position.x) / 3.0f;
-                    attack.Execute(AttackType.normal);
+                    attack.Execute();
                     delay = delayMax;
                 }
                 else if(sword.transform.localScale.x>Mathf.Abs(transform.position.x - GameManager.instance.playerController.transform.position.x))
                 {                     
-                    attack.Execute(AttackType.normal);
+                    attack.Execute();
                     delay = delayMax;
                 }
                     

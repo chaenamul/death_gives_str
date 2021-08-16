@@ -140,8 +140,7 @@ MonoBehaviour:
   dmg: 12
   speed: 0
   sight: 6
-  target: {fileID: 0}
-  hpBarPrefab: {fileID: 0}
+  hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
   canvas: {fileID: 0}
   height: 1.5
   cloneRb: {fileID: 8223227490866529382}

@@ -140,7 +140,9 @@ MonoBehaviour:
   dmg: 5
   speed: 5
   sight: 30
-  target: {fileID: 0}
+  hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
+  canvas: {fileID: 0}
+  height: 1.5
   knifeRange: 10
   daggerRange: 20
   attackRange: 2

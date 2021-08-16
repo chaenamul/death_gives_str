@@ -48,10 +48,6 @@ public class HitScanRangeAttack : Attack
         }
     }
 
-    public override IEnumerator Skill()
-    {
-        return null;
-    }
 
     public HitScanRangeAttack(int dmg, float delay, GameObject sub, object component, float aimingDel, LineRenderer route) : base(dmg, delay, null, sub, component)
     {

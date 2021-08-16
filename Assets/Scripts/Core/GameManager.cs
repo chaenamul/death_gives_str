@@ -23,26 +23,34 @@ public class GameManager : MonoBehaviour
     public Shadow shadow;
     public GameObject gameOverPanel;
     public int life = 9;
+    public int skillDmg;
+    public float skillSpeed;
 
+    private int initSkillDmg;
     private int initHp;
     private int initMaxHp;
     private int initDmg;
+    private float initSkillSpeed;
 
     void Awake()
     {
+        initSkillDmg = skillDmg;
         initHp = hp;
         initMaxHp = maxHp;
         initDmg = dmg;
         instance = this;
         abilities = new List<string>();
+        initSkillSpeed = skillSpeed;
     }
 
     public void Initialize()
     {
+        skillSpeed = initSkillSpeed;
         abilities.Clear();
         hp = initHp;
         maxHp = initMaxHp;
         dmg = initDmg;
+        skillDmg = initSkillDmg;
         life = 9;
     }
 }

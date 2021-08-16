@@ -456,6 +456,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8263770101793554693, guid: 8272a2098886cfa4ca50854d3e9e163c, type: 3}
     - target: {fileID: 6757853504146639293, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
+      propertyPath: skillDmg
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757853504146639293, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
+      propertyPath: skillSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757853504146639293, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 534926839}

@@ -31,7 +31,7 @@ public class Sniper : Enemy
         sniping.DelayUpdate();
         if (InScreen())
         {
-            sniping.Execute(AttackType.normal);
+            sniping.Execute();
         }
     }
 
