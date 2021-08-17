@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce;
 
+    public bool isDmgBoosted;
+
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator anim;
@@ -320,6 +322,11 @@ public class PlayerController : MonoBehaviour
     }
     void Die()
     {
+        if (isDmgBoosted)
+        {
+            isDmgBoosted = false;
+            GameManager.instance.dmg--;
+        }
         gameObject.SetActive(false);
         GameManager.instance.life -= 1;
         if(GameManager.instance.life == 0)

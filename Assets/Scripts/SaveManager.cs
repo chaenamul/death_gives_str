@@ -52,6 +52,11 @@ public class SaveManager
 
     public void MoveToNextScene(string curScene, string sceneToLoad)
     {
+        if (GameManager.instance.playerController.isDmgBoosted)
+        {
+            GameManager.instance.playerController.isDmgBoosted = false;
+            GameManager.instance.dmg--;
+        }
         CoroutineManager.instance.Coroutine(moveToNextScene(curScene, sceneToLoad));
     }
 
@@ -65,6 +70,11 @@ public class SaveManager
 
     public void MoveToPrevScene()
     {
+        if (GameManager.instance.playerController.isDmgBoosted)
+        {
+            GameManager.instance.playerController.isDmgBoosted = false;
+            GameManager.instance.dmg--;
+        }
         CoroutineManager.instance.Coroutine(moveToPrevScene());
     }
 
