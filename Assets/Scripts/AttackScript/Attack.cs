@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AttackType
-{
-    normal,
-    skill,
-    neither
-};
 
 public abstract class Attack
 {
@@ -25,8 +19,6 @@ public abstract class Attack
     public abstract Vector3 TargetUpdate();
     public abstract IEnumerator Normal();
 
-    public abstract IEnumerator Skill();
-
     public void UpdateDamage(int dmg)
     {
         attackDamage = dmg;
@@ -43,28 +35,14 @@ public abstract class Attack
         }
     }
 
-    public void Execute(AttackType type) 
+    public void Execute() 
     {
-        switch (type)
+        if(curNormalDelay == 0)
         {
-            case AttackType.skill:
-                if (curSkillDelay == 0)
-                {
-                    CoroutineManager.instance.Coroutine(Skill());
-                    curSkillDelay = skillCoolTime;
-                }
-                break;
-            case AttackType.normal:
-                if(curNormalDelay == 0)
-                {
-                    CoroutineManager.instance.Coroutine(Normal());
-                    curNormalDelay = attackDelay;
-                    watingAttack = false;
-                }
-                break;
-            default:
-                break;
-        }
+            CoroutineManager.instance.Coroutine(Normal());
+            curNormalDelay = attackDelay;
+            watingAttack = false;
+        }    
     }
 
     public Attack(int attackdmg, float delay, HitBox hitbox, GameObject sub, object component)

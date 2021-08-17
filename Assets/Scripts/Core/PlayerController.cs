@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,18 +24,22 @@ public class PlayerController : MonoBehaviour
     public bool canDash = false;
     private bool checkDash = false;
     private float dashTimer = 0.3f;
+   
+    public HitBox initsword;
+    [SerializeField]
+    private HitBox initSkill;
 
-    public HitBox Initsword;
+
     private int countTime = 0;
     public bool inv = false;
     private bool cameraRock = false;
     private enum weapon
     {
-        InitSword
+        InitSword,
+        InitSkill,
     };
-    private Dictionary<weapon, Attack> weapons;
+    private Dictionary<weapon, Attack> attacks;
     private PlayerAttackManager attackManager;
-
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -42,9 +47,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        weapons = new Dictionary<weapon, Attack>();
-        weapons[weapon.InitSword] = new SwordAttack(GameManager.instance.dmg, 1, Initsword, gameObject, this);
-        attackManager = new PlayerAttackManager(weapons[weapon.InitSword]);
+        attacks = new Dictionary<weapon, Attack>();
+        attacks[weapon.InitSword] = new SwordAttack(GameManager.instance.dmg, 1, initsword, gameObject, this);
+        attacks[weapon.InitSkill] = new RangeAttack(GameManager.instance.skillDmg, 1, initSkill, this, gameObject, GameManager.instance.skillSpeed, 0.0f, false, true);
+        attackManager = new PlayerAttackManager(attacks[weapon.InitSword], attacks[weapon.InitSkill]);
     }
 
     void Update()
@@ -56,7 +62,8 @@ public class PlayerController : MonoBehaviour
             Dash();
         }
 
-        attackManager.weaponType.DelayUpdate();
+        attackManager.attack.DelayUpdate();
+        attackManager.skill.DelayUpdate();
         attackManager.AttackUpdate();
 
         if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.items.Count != 0)
@@ -101,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
         /// <summary>
         /// 임시 키
-        /// y누르면 카메라 플레이어에게 고정
+        /// y : 카메라 플레이어에게 고정
         /// </summary>
         if (Input.GetKeyDown(KeyCode.Y))
         {
@@ -113,25 +120,43 @@ public class PlayerController : MonoBehaviour
         }
         /// <summary>
         /// 임시 키
-        /// 2누르면 데미지 10증가 1누르면 10감소
+        /// 1 : 데미지 10 감소
+        /// 2 : 데미지 10 증가
+        /// +(keypad) : 스킬 데미지 10 증가
+        /// -(keypad) : 스킬 데미지 10 감소
         /// </summary>
         /// 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             GameManager.instance.dmg -= 10;
-            weapons[weapon.InitSword].UpdateDamage(GameManager.instance.dmg);
+            attacks[weapon.InitSword].UpdateDamage(GameManager.instance.dmg);
             Debug.Log("DMG:" + GameManager.instance.dmg);
         
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             GameManager.instance.dmg += 10;
-            weapons[weapon.InitSword].UpdateDamage(GameManager.instance.dmg);
+            attacks[weapon.InitSword].UpdateDamage(GameManager.instance.dmg);
             Debug.Log("DMG:" + GameManager.instance.dmg);
         }
 
+        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        {
+            GameManager.instance.skillDmg += 10;
+            attacks[weapon.InitSkill].UpdateDamage(GameManager.instance.skillDmg);
+            Debug.Log($"SkillDmg: {GameManager.instance.skillDmg}");
+        }
+
+        if (Input.GetKeyDown(KeyCode.KeypadMinus))
+        {
+            GameManager.instance.skillDmg -= 10;
+            attacks[weapon.InitSkill].UpdateDamage(GameManager.instance.skillDmg);
+            Debug.Log($"SkillDmg: {GameManager.instance.skillDmg}");
+        }
+
         /// <summary>
-        /// 개발자도구 8 ==> Die 실행
+        /// 개발자도구 
+        /// 8 : Die
         /// </summary>
         /// 
         if (Input.GetKeyDown(KeyCode.Alpha8))

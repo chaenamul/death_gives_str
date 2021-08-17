@@ -34,11 +34,6 @@ public class SwordAttack : Attack
             hb.gameObject.SetActive(false);
     }
 
-    public override IEnumerator Skill()
-    {
-        //기획 나오면 수정
-        return null;
-    }
 
     public SwordAttack(int attackdmg, float delay, HitBox sword, GameObject subject, object component) : base(attackdmg, delay, sword, subject, component)
     {

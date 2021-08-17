@@ -52,12 +52,11 @@ MonoBehaviour:
   dmg: 10
   speed: 3.3
   sight: 7
-  target: {fileID: 6470565612054610464, guid: 4f19d35734f922940b814ac5b4751b79, type: 3}
-  hpBarPrefab: {fileID: 0}
+  hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
   canvas: {fileID: 0}
   height: 1.5
   attackDelay: 3
-  zombieattack: {fileID: 0}
+  zombieattack: {fileID: 3070199839505444508}
   attackRange: 1.5
 --- !u!70 &8844571757386604878
 CapsuleCollider2D:
@@ -213,3 +212,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1524654503504910553, guid: 0439ca43e1effaa40bb02fadde6cdaf3, type: 3}
   m_PrefabInstance: {fileID: 4260753953595014016}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3070199839505444508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1277535040153179420, guid: 0439ca43e1effaa40bb02fadde6cdaf3, type: 3}
+  m_PrefabInstance: {fileID: 4260753953595014016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0972b5dbdfb746c459e4db39f957b167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

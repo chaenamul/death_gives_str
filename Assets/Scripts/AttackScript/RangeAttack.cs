@@ -15,7 +15,9 @@ public class RangeAttack : Attack
         Vector3 target = new Vector3(0, 0, 0);
         if (subject.tag == "Player")
         {
-
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            target.z = 0;
+            Debug.Log(target);
         }
         else
         {
@@ -50,11 +52,6 @@ public class RangeAttack : Attack
                 hb.GetComponent<Rigidbody2D>().velocity = target.normalized * bulletSpeed;
             }
         }
-    }
-
-    public override IEnumerator Skill()
-    {
-        return null;
     }
 
     public RangeAttack(int dmg, float delay, HitBox hitbox, object component, GameObject sub, float hbSpeed, float aimingDel, bool guiding, bool targetting, Vector3? direction = null) : base(dmg, delay, hitbox, sub, component)

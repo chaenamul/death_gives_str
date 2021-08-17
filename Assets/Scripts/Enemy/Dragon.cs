@@ -59,7 +59,7 @@ public class Dragon : Enemy
         if (thornAttack.watingAttack)
         {
             ((RangeAttack)thornAttack).StartPointUpdate(TraceThornStartPoint());
-            thornAttack.Execute(AttackType.normal);
+            thornAttack.Execute();
             StartCoroutine(ThornAttackAfter());
         }
         else if(dmgCount>=50 && fireBallCurDel<=0)
@@ -106,7 +106,7 @@ public class Dragon : Enemy
         HitBox hb = Instantiate(fireBallHitBox, transform.parent);
         Attack fireBall = new RangeAttack(fireBallDmg, 0f, hb, this, gameObject, fireBallSpeed, 1.0f, false, true);
         ((RangeAttack)fireBall).StartPointUpdate(transform.position + new Vector3(0, transform.localScale.y + 2, 0));
-        fireBall.Execute(AttackType.normal);
+        fireBall.Execute();
     }
     private void SummonSkeleton()
     {

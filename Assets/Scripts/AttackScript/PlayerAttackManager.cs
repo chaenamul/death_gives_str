@@ -4,32 +4,37 @@ using UnityEngine;
 
 public class PlayerAttackManager
 {
-    public Attack weaponType;
-    public PlayerAttackManager(Attack init)
+    public Attack attack;
+    public Attack skill;
+    public PlayerAttackManager(Attack init, Attack skill)
     {
-        this.weaponType = init;
+        this.attack = init;
+        this.skill = skill;
     }
 
-    public void TypeChange(Attack newWeapon)
+    public void AttackChange(Attack newAttack)
     {
-        this.weaponType = newWeapon;
+        this.attack = newAttack;
+    }
+    public void SkillChange(Attack newSkill)
+    {
+        this.skill = newSkill;
     }
     
     public void AttackUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            weaponType.Execute(AttackType.normal);
+            attack.Execute();
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            weaponType.Execute(AttackType.skill);
+            if(skill is RangeAttack)
+            {
+                ((RangeAttack)skill).StartPointUpdate(GameManager.instance.playerController.transform.position);
+            }
+            skill.Execute();
         }
-        else
-        {
-            weaponType.Execute(AttackType.neither);
-        }
-        
     }
 
 }
