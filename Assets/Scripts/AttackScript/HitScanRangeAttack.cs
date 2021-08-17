@@ -66,11 +66,11 @@ public class HitScanRangeAttack : Attack
         {
             route.SetPosition(0, tr.position);
             Vector3 target = TargetUpdate();
-            time += 0.02f;
+            time += Time.deltaTime;
             hit = Physics2D.Raycast(tr.position, target - tr.position, Mathf.Infinity, ~(1 << subject.layer));
             if(route)
                 route.SetPosition(1, tr.position + (target + new Vector3(0,0.3f,0) - tr.position).normalized * (hit.distance+0.5f));
-            yield return new WaitForSeconds(0.02f);
+            yield return null;
         }
         if(route)
             route.gameObject.SetActive(false);

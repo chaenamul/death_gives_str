@@ -55,7 +55,7 @@ public class SaveManager
         if (GameManager.instance.playerController.isDmgBoosted)
         {
             GameManager.instance.playerController.isDmgBoosted = false;
-            GameManager.instance.dmg--;
+            GameManager.instance.Dmg--;
         }
         CoroutineManager.instance.Coroutine(moveToNextScene(curScene, sceneToLoad));
     }
@@ -73,7 +73,7 @@ public class SaveManager
         if (GameManager.instance.playerController.isDmgBoosted)
         {
             GameManager.instance.playerController.isDmgBoosted = false;
-            GameManager.instance.dmg--;
+            GameManager.instance.Dmg--;
         }
         CoroutineManager.instance.Coroutine(moveToPrevScene());
     }

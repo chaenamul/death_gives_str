@@ -8,7 +8,20 @@ public class GameManager : MonoBehaviour
 
     public int hp;
     public int maxHp;
-    public int dmg;
+    [SerializeField]
+    private int dmg;
+    public int Dmg
+    {
+        get
+        {
+            return dmg;
+        }
+        set
+        {
+            playerController.AttackManager.attack.UpdateDamage(value);
+            dmg = value;
+        }
+    }
     public List<string> abilities;
     public List<int> items;
     public int money;

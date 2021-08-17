@@ -87,7 +87,7 @@ public class Skeleton : Enemy
     public override void GiveStr()
     {
         base.GiveStr();
-        GameManager.instance.dmg += 5;
+        GameManager.instance.Dmg += 5;
     }
 
     IEnumerator SwordAttackCoroutine()

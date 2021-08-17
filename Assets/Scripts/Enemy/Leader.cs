@@ -80,6 +80,6 @@ public class Leader : Enemy
     public override void GiveStr()
     {
         base.GiveStr();
-
+        GameManager.instance.playerController.gainedInvincible = true;
     }
 }

@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     private float jumpForce;
 
     public bool isDmgBoosted;
-
+    public bool gainedInvincible;
+    public bool isInvincible;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator anim;
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public bool canDash = false;
     private bool checkDash = false;
     private float dashTimer = 0.3f;
-   
+
     public HitBox initsword;
     [SerializeField]
     private HitBox initSkill;
@@ -35,22 +36,37 @@ public class PlayerController : MonoBehaviour
     private int countTime = 0;
     public bool inv = false;
     private bool cameraRock = false;
-    private enum weapon
+    public enum weapon
     {
         InitSword,
         InitSkill,
     };
     private Dictionary<weapon, Attack> attacks;
+    public Dictionary<weapon, Attack> Attacks
+    {
+        get
+        {
+            return attacks;
+        }
+    }
     private PlayerAttackManager attackManager;
+    public PlayerAttackManager AttackManager
+    {
+        get
+        {
+            return attackManager;
+        }
+    }
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
-
+        gainedInvincible = false;
+        isInvincible = false;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         attacks = new Dictionary<weapon, Attack>();
-        attacks[weapon.InitSword] = new SwordAttack(GameManager.instance.dmg, 1, initsword, gameObject, this);
+        attacks[weapon.InitSword] = new SwordAttack(GameManager.instance.Dmg, 1, initsword, gameObject, this);
         attacks[weapon.InitSkill] = new RangeAttack(GameManager.instance.skillDmg, 1, initSkill, this, gameObject, GameManager.instance.skillSpeed, 0.0f, false, true);
         attackManager = new PlayerAttackManager(attacks[weapon.InitSword], attacks[weapon.InitSkill]);
     }
@@ -130,16 +146,12 @@ public class PlayerController : MonoBehaviour
         /// 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            GameManager.instance.dmg -= 10;
-            attacks[weapon.InitSword].UpdateDamage(GameManager.instance.dmg);
-            Debug.Log("DMG:" + GameManager.instance.dmg);
+            GameManager.instance.Dmg -= 10;
         
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            GameManager.instance.dmg += 10;
-            attacks[weapon.InitSword].UpdateDamage(GameManager.instance.dmg);
-            Debug.Log("DMG:" + GameManager.instance.dmg);
+            GameManager.instance.Dmg += 10;
         }
 
         if (Input.GetKeyDown(KeyCode.KeypadPlus))
@@ -336,6 +348,10 @@ public class PlayerController : MonoBehaviour
 
     public void GetDmg(Enemy sub, int dmg)
     {
+        if (isInvincible)
+        {
+            return;
+        }
         GameManager.instance.hp -= dmg;
         PlayerAttacked();
         Damaged(sub.transform.position);
@@ -350,7 +366,7 @@ public class PlayerController : MonoBehaviour
         if (isDmgBoosted)
         {
             isDmgBoosted = false;
-            GameManager.instance.dmg--;
+            GameManager.instance.Dmg--;
         }
         gameObject.SetActive(false);
         GameManager.instance.life -= 1;
@@ -452,5 +468,14 @@ public class PlayerController : MonoBehaviour
     void StopHitimage()
     {
         GameObject.Find("Hitimage").GetComponent<Image>().color = new Color(1, 0, 0, 0);
+    }
+    public void Invincible()
+    {
+        isInvincible = true;
+        Invoke("NotInvincible", 2.0f);
+    }
+    void NotInvincible()
+    {
+        isInvincible = false;
     }
 }

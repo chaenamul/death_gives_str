@@ -41,6 +41,6 @@ public class Member : Enemy
     {
         base.GiveStr();
         GameManager.instance.playerController.isDmgBoosted = true;
-        GameManager.instance.dmg++;
+        GameManager.instance.Dmg++;
     }
 }

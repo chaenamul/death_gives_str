@@ -33,6 +33,10 @@ public class PlayerAttackManager
             {
                 ((RangeAttack)skill).StartPointUpdate(GameManager.instance.playerController.transform.position);
             }
+            if (GameManager.instance.playerController.gainedInvincible)
+            {
+                GameManager.instance.playerController.Invincible();
+            }
             skill.Execute();
         }
     }
