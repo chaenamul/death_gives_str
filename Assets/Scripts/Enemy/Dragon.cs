@@ -113,7 +113,7 @@ public class Dragon : Enemy
         for(int i = 1; i <= 10; i++)
         {
             Skeleton sk = Instantiate(skeleton);
-            sk.transform.position = transform.position - new Vector3(i * 3+3, 0, 0);
+            sk.transform.position = transform.position - new Vector3(i * 3 + 3, 0, 0);
         }
         SummonSkeletonCurDel = SummonSkeletonDelay;
     }

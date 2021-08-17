@@ -388,8 +388,7 @@ MonoBehaviour:
   speed: 0
   sight: 0
   hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
-  canvas: {fileID: 0}
-  height: 10.5
+  height: 3.5
   thorn: {fileID: 4624125321133408596}
   fireBallHitBox: {fileID: 6619160673708102882, guid: 036f94b4e2abab94dacb5ddcbe958e30, type: 3}
   fireBallSpeed: 10
