@@ -40,6 +40,7 @@ public class Member : Enemy
     public override void GiveStr()
     {
         base.GiveStr();
-
+        GameManager.instance.playerController.isDmgBoosted = true;
+        GameManager.instance.dmg++;
     }
 }
