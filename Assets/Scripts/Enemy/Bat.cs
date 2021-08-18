@@ -26,7 +26,7 @@ public class Bat : Enemy
     private bool wingbool=true;
     
 
-    void Start()
+    protected override void Start()
     {
         base.Start();
 
@@ -39,7 +39,7 @@ public class Bat : Enemy
         InvokeRepeating("WingMovement", 0f, 0.5f);
     }
 
-    void Update()
+    protected override void Update()
     {
         base.Update();
         if(Movecheck)
