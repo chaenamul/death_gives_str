@@ -18,6 +18,7 @@ TagManager:
   - EnemyDragon
   - FireBall
   - HitBox
+  - EnemyBat
   layers:
   - Default
   - TransparentFX
