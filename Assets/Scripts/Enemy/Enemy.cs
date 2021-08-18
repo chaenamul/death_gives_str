@@ -11,7 +11,8 @@ public enum EnemyType
     sniper,
     zombie,
     shadow,
-    ranger
+    ranger,
+    bat
 };
 
 public class Enemy : MonoBehaviour
