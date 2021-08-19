@@ -29,13 +29,12 @@ public class SoundManager : MonoBehaviour
 
     // 배경음악
     [SerializeField]
-    private AudioClip[] bgmAudioClips;
+    private Bgm[] bgmAudioClips;
 
     // 효과음들 지정하는 배열
     [SerializeField]
     private AudioClip[] sfxAudioClips;
 
-    Dictionary<string, AudioClip> bgmAudioClipsDic = new Dictionary<string, AudioClip>(); // BGM들을 string으로 관리할 수 있게 만든 딕셔너리
     Dictionary<string, AudioClip> sfxAudioClipsDic = new Dictionary<string, AudioClip>(); // 효과음들을 string으로 관리할 수 있게 만든 딕셔너리
 
     private void Awake()
@@ -56,12 +55,6 @@ public class SoundManager : MonoBehaviour
         bgmChild.transform.SetParent(transform);
         bgmPlayer = bgmChild.AddComponent<AudioSource>();
 
-        // BGM 배열에 있는 AudioClip들을 딕셔너리에 저장
-        foreach (AudioClip audioclip in bgmAudioClips)
-        {
-            bgmAudioClipsDic.Add(audioclip.name, audioclip);
-        }
-
         // 효과음 배열에 있는 AudioClip들을 딕셔너리에 저장
         foreach (AudioClip audioclip in sfxAudioClips)
         {
@@ -71,7 +64,6 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        //PlayBGM(0.3f);
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         
         SceneManager_sceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);  // 테스트용
@@ -80,26 +72,13 @@ public class SoundManager : MonoBehaviour
     // 씬이 바뀔때마다 씬에 맞는 BGM 재생
     private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        switch (scene.name)
+        if (Bgm.ContainsScene(bgmAudioClips, scene.name))
         {
-            case "MainMenu":   // 메인 메뉴
+            if (bgmPlayer.clip == null || bgmPlayer.clip.name != Bgm.GetAudioClip(bgmAudioClips, scene.name).name)
+            {
                 StopBGM();
-                PlayBGM("", 0.3f);
-                break;
-            case "Merchant":    // 상점 맵
-                StopBGM();
-                PlayBGM("BGM_Shop", 0.3f);
-                break;
-            case "Room4":       // 보스 맵
-                StopBGM();
-                PlayBGM("BGM_Boss", 0.3f);
-                break;
-            default:            // 일반 맵
-                if (bgmPlayer.clip != bgmAudioClipsDic["BGM_1"]) {
-                    StopBGM();
-                    PlayBGM("BGM_1", 0.3f);
-                }
-                break;
+                PlayBGM(Bgm.GetAudioClip(bgmAudioClips, scene.name), 0.2f);
+            }
         }
     }
 
@@ -108,28 +87,21 @@ public class SoundManager : MonoBehaviour
     {
         if (sfxAudioClipsDic.ContainsKey(name) == false)
         {
-            Debug.Log(name + " is not Contained audioClipsDic");
+            Debug.Log(name + " is not Contained in audioClipsDic");
             return;
         }
 
         sfxPlayer.PlayOneShot(sfxAudioClipsDic[name], volume * masterVolumeSFX);
     }
 
-    // BGM 재생
-    public void PlayBGM(string name, float volume = 1f)
+    public void PlayBGM(AudioClip clip, float volume = 1f)
     {
-        if (bgmAudioClipsDic.ContainsKey(name) == false)
-        {
-            Debug.Log(name + " is not Contained audioClipsDic");
-            return;
-        }
-
         volumeBGM = volume;
 
         bgmPlayer.loop = true; // 루프로 설정
         bgmPlayer.volume = volume * masterVolumeBGM;
 
-        bgmPlayer.clip = bgmAudioClipsDic[name];
+        bgmPlayer.clip = clip;
         bgmPlayer.Play();
     }
 
