@@ -25,12 +25,17 @@ public class Dragon : Enemy
     public GameObject Minions;
     private int MinionCount;
     private bool recognized=false;
-
+    [SerializeField]
+    private GameObject spawnPoint;
+    private Vector3 spawnPosition;
+    [SerializeField]
+    private float spawnDelay;
     private void Awake()
     {
         MinionCount = Minions.transform.childCount;
         thornAttack = new RangeAttack(20, 8.6f, thorn, this, gameObject, ThornSize/0.3f, 0.3f, false, false, new Vector3(0,1,0));
         rbThorn = thorn.GetComponent<Rigidbody2D>();
+        spawnPosition = spawnPoint.transform.position;
     }
     protected override void Start()
     {
@@ -48,7 +53,7 @@ public class Dragon : Enemy
         SummonSkeletonCurDel -= Time.deltaTime;
         if (SummonSkeletonCurDel <= 0)
         {
-            SummonSkeleton();
+            StartCoroutine(SummonSkeleton());
         }
         if (hp <= maxHp / 2 && !gigantized)
         {
@@ -62,9 +67,9 @@ public class Dragon : Enemy
             thornAttack.Execute();
             StartCoroutine(ThornAttackAfter());
         }
-        else if(dmgCount>=50 && fireBallCurDel<=0)
+        else if(dmgCount>=100 && fireBallCurDel<=0)
         {
-            dmgCount -= 50;
+            dmgCount = 0;
             fireBallPattern();
             fireBallCurDel = fireBallDelay;
         }
@@ -105,18 +110,22 @@ public class Dragon : Enemy
     {
         HitBox hb = Instantiate(fireBallHitBox, transform.parent);
         Attack fireBall = new RangeAttack(fireBallDmg, 0f, hb, this, gameObject, fireBallSpeed, 1.0f, false, true);
-        ((RangeAttack)fireBall).StartPointUpdate(transform.position + new Vector3(0, transform.localScale.y + 2, 0));
+        ((RangeAttack)fireBall).StartPointUpdate(new Vector3(transform.position.x, Camera.main.transform.position.y + Camera.main.orthographicSize, 0));
         fireBall.Execute();
     }
-    private void SummonSkeleton()
+    private IEnumerator SummonSkeleton()
     {
+        SummonSkeletonCurDel = 0xff;
         for(int i = 1; i <= 10; i++)
         {
             Skeleton sk = Instantiate(skeleton);
-            sk.transform.position = transform.position - new Vector3(i * 3 + 3, 0, 0);
+            sk.transform.position = spawnPosition;
+            yield return new WaitForSeconds(spawnDelay);
         }
         SummonSkeletonCurDel = SummonSkeletonDelay;
     }
+    
+  
     private void isRecognized()
     {
         int cnt=0;
@@ -134,5 +143,11 @@ public class Dragon : Enemy
             recognized= true;
         }
         else recognized= false;
+    }
+    protected override void Die()
+    {
+        base.Die();
+
+        Camera.main.orthographicSize /= 2;
     }
 }

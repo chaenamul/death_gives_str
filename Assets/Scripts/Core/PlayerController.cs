@@ -147,11 +147,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             GameManager.instance.Dmg -= 10;
+            Debug.Log($"Dmg:{GameManager.instance.Dmg}");
         
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             GameManager.instance.Dmg += 10;
+            Debug.Log($"Dmg:{GameManager.instance.Dmg}");
         }
 
         if (Input.GetKeyDown(KeyCode.KeypadPlus))
