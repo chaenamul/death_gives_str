@@ -84,6 +84,12 @@ public class Skeleton : Enemy
         }
     }
 
+    public override void GetDmg(int dmg)
+    {
+        base.GetDmg(dmg);
+        SoundManager.Instance.PlaySFX("skeleton_hit", 0.6f);
+    }
+
     public override void GiveStr()
     {
         base.GiveStr();
@@ -95,6 +101,7 @@ public class Skeleton : Enemy
         yield return new WaitForSeconds(0.5f);
         skeletonSword.transform.position = (GameManager.instance.playerController.transform.position - transform.position).normalized * attackRange + transform.position;
         skeletonSword.gameObject.SetActive(true);
+        SoundManager.Instance.PlaySFX("skeleton_attack", 0.3f);
         yield return new WaitForSeconds(0.1f);
         skeletonSword.gameObject.SetActive(false);
     }
