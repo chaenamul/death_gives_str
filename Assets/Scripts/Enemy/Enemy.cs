@@ -29,6 +29,9 @@ public class Enemy : MonoBehaviour
     public float height = 1.5f;
     private Vector3 CameraPos;
 
+    protected Rigidbody2D rb;
+    protected Animator anim;
+    private SpriteRenderer spriteRenderer;
     private RectTransform hpBar;
 
     protected virtual void Start()
@@ -36,12 +39,21 @@ public class Enemy : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         hpBar = Instantiate(hpBarPrefab, canvas.transform).GetComponent<RectTransform>();
         nowHpBar = hpBar.transform.GetChild(0).GetComponent<Image>();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     protected virtual void Update()
     {
         Vector3 hpBarPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
         hpBar.position = hpBarPos;
+        Flip();
+    }
+
+    void Flip()
+    {
+        spriteRenderer.flipX = rb.velocity.x > 0;
     }
 
     protected virtual void Die()

@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         attacks = new Dictionary<weapon, Attack>();
-        attacks[weapon.InitSword] = new SwordAttack(GameManager.instance.Dmg, 1, initsword, gameObject, this);
+        attacks[weapon.InitSword] = new SwordAttack(GameManager.instance.Dmg, 0.25f, initsword, gameObject, this);
         attacks[weapon.InitSkill] = new RangeAttack(GameManager.instance.skillDmg, 1, initSkill, this, gameObject, GameManager.instance.skillSpeed, 0.0f, false, true);
         attackManager = new PlayerAttackManager(attacks[weapon.InitSword], attacks[weapon.InitSkill]);
     }
@@ -83,6 +83,15 @@ public class PlayerController : MonoBehaviour
         attackManager.attack.DelayUpdate();
         attackManager.skill.DelayUpdate();
         attackManager.AttackUpdate();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartCoroutine(AttackAnimation());
+        }
+        if (Input.GetMouseButton(1))
+        {
+            StartCoroutine(MagicAnimation());
+        }
 
         if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.items.Count != 0)
         {
@@ -348,6 +357,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator AttackAnimation()
+    {
+        anim.SetBool("isAttacking", true);
+        yield return new WaitForSeconds(0.2f);
+        anim.SetBool("isAttacking", false);
+    }
+
+    IEnumerator MagicAnimation()
+    {
+        anim.SetBool("isCasting", true);
+        yield return new WaitForSeconds(0.5f);
+        anim.SetBool("isCasting", false);
+    }
+
     public void GetDmg(Enemy sub, int dmg)
     {
         if (isInvincible)
@@ -437,7 +460,7 @@ public class PlayerController : MonoBehaviour
         {
             inv = true;
             InvokeRepeating("Light", 0f, 0.2f);
-            Invoke("StopLight", 3f);
+            Invoke("StopLight", 1f);
         }
     }
 
