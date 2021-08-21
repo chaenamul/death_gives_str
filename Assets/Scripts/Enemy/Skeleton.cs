@@ -11,8 +11,6 @@ public class Skeleton : Enemy
     [SerializeField]
     private float attackRange;
 
-    private Rigidbody2D rb;
-
     private float timer;
     private int nextMove;
     private bool isAggressive;
@@ -24,12 +22,12 @@ public class Skeleton : Enemy
         abilityName = "ฟ๘วั";
         timer = attackDelay;
         isAggressive = false;
-        rb = GetComponent<Rigidbody2D>();
 
         skeletonSword.dmg = dmg;
         skeletonSword.subject = this;
 
         Move();
+        anim.SetBool("isWalking", true);
     }
 
     protected override void Update()
@@ -43,7 +41,6 @@ public class Skeleton : Enemy
     {
         rb.velocity = new Vector2(nextMove * speed, rb.velocity.y);
     }
-
 
     void Move()
     {
@@ -92,10 +89,12 @@ public class Skeleton : Enemy
 
     IEnumerator SwordAttackCoroutine()
     {
+        anim.SetBool("isAttacking", true);
         yield return new WaitForSeconds(0.5f);
         skeletonSword.transform.position = (GameManager.instance.playerController.transform.position - transform.position).normalized * attackRange + transform.position;
         skeletonSword.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
+        anim.SetBool("isAttacking", false);
         skeletonSword.gameObject.SetActive(false);
     }
 }

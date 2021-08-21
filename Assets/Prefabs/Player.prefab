@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4476125420565002239}
   - component: {fileID: 7620333468705374088}
   - component: {fileID: 6933348630828626954}
+  - component: {fileID: 1255316928411225877}
   - component: {fileID: 1986368755368457180}
   - component: {fileID: 1487327090204220177}
   m_Layer: 6
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 0
   range: 15
+--- !u!114 &1255316928411225877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246231143309335369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18be2a1c827ddb3489e9bdc18224a72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &1986368755368457180
 Rigidbody2D:
   serializedVersion: 4
@@ -270,6 +283,9 @@ MonoBehaviour:
   speed: 10
   dashSpeed: 0
   jumpForce: 30
+  isDmgBoosted: 0
+  gainedInvincible: 0
+  isInvincible: 0
   isGrounded: 0
   canDash: 0
   initsword: {fileID: 5221543877130121968}

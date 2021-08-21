@@ -11,8 +11,6 @@ public class Bat : Enemy
     [SerializeField]
     private float attackRange;
 
-    private Rigidbody2D rb;
-
     private float timer;
     private int nextMovex;
     private int nextMovey;
@@ -35,7 +33,6 @@ public class Bat : Enemy
 
         timer = attackDelay;
         isAggressive = false;
-        rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("WingMovement", 0f, 0.5f);
     }
 

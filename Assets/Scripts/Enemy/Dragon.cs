@@ -67,7 +67,7 @@ public class Dragon : Enemy
             thornAttack.Execute();
             StartCoroutine(ThornAttackAfter());
         }
-        else if(dmgCount>=100 && fireBallCurDel<=0)
+        else if (dmgCount >= 100 && fireBallCurDel <= 0)
         {
             dmgCount = 0;
             fireBallPattern();
@@ -94,8 +94,8 @@ public class Dragon : Enemy
 
     private Vector3 TraceThornStartPoint()
     {
-        RaycastHit2D hit = Physics2D.Raycast(GameManager.instance.playerController.transform.position, new Vector3(0, -1,0), Mathf.Infinity, 1 << 8);
-        return GameManager.instance.playerController.transform.position - new Vector3(0, hit.distance+ThornSize/2f, -3);
+        RaycastHit2D hit = Physics2D.Raycast(GameManager.instance.playerController.transform.position, new Vector3(0, -1, 0), Mathf.Infinity, 1 << 8);
+        return GameManager.instance.playerController.transform.position - new Vector3(0, hit.distance + ThornSize / 2f, -3);
     }
 
     private IEnumerator ThornAttackAfter() 
@@ -128,7 +128,7 @@ public class Dragon : Enemy
   
     private void isRecognized()
     {
-        int cnt=0;
+        int cnt = 0;
         for(int i = 0; i < MinionCount; i++)
         {
             if (Minions.transform.GetChild(i).gameObject.activeSelf)
@@ -137,12 +137,12 @@ public class Dragon : Enemy
             }
         }
         //Debug.Log(cnt + "\t" + MinionCount + "\t" + MinionCount*0.3);
-        if (cnt <= MinionCount*0.3)
+        if (cnt <= MinionCount * 0.3)
         {
             base.Start();
-            recognized= true;
+            recognized = true;
         }
-        else recognized= false;
+        else recognized = false;
     }
     protected override void Die()
     {

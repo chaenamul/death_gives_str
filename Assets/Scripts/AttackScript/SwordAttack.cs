@@ -30,8 +30,10 @@ public class SwordAttack : Attack
             SoundManager.Instance.PlaySFX("sword_attack_1", 0.3f);
         }
         yield return new WaitForSeconds(0.1f);
-        if(hb)
+        if (hb)
+        {
             hb.gameObject.SetActive(false);
+        }
     }
 
 
