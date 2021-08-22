@@ -7,8 +7,6 @@ public class Leader : Enemy
     [SerializeField]
     private GameObject memberPrefab;
 
-    private Rigidbody2D rb;
-
     private float stopTimer = 2f;
     private float spawnTimer = 7f;
     private int nextMove;
@@ -19,7 +17,6 @@ public class Leader : Enemy
 
         abilityName = "Á¶Á¾";
         Move();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     protected override void Update()

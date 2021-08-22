@@ -7,8 +7,6 @@ public class Bandit : Enemy
     [SerializeField]
     private float jumpForce;
 
-    private Rigidbody2D rb;
-
     private bool isGrounded;
     private bool isAggressive;
     private int nextMove;
@@ -21,7 +19,6 @@ public class Bandit : Enemy
         isGrounded = false;
         isAggressive = false;
         nextMove = 1;
-        rb = GetComponent<Rigidbody2D>();
 
         Invoke("Jump", Random.Range(1f, 2.5f));
         Move();

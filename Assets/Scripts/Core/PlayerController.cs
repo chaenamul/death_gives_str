@@ -420,7 +420,7 @@ public class PlayerController : MonoBehaviour
         SaveManager.instance.MoveToPrevScene();
     }
 
-    void Damaged(Vector2 targetPos)
+    public void Damaged(Vector2 targetPos)
     {
         int dirx = transform.position.x - targetPos.x > 0 ? 1 : -1;
         rb.AddForce(new Vector2(dirx, 1) * 15, ForceMode2D.Impulse);

@@ -10,13 +10,11 @@ public class Sniper : Enemy
     [SerializeField]
     private LineRenderer laser;
     private Attack sniping;
-    private Rigidbody2D rb;
 
     protected override void Start() 
     {
         base.Start();
         abilityName = "화약개조";
-        rb = GetComponent<Rigidbody2D>();
         delay = 5.0f;
         hp = 100;
         maxHp = 100;

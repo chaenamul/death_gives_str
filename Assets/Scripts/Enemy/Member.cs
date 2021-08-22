@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Member : Enemy
 {
-    private Rigidbody2D rb;
-
     private int nextMove;
 
     protected override void Start()
     {
         base.Start();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     protected override void Update()

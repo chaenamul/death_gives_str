@@ -15,8 +15,6 @@ public class Ninja : Enemy
     [SerializeField]
     private HitBox hitbox;
 
-    private Rigidbody2D rb;
-
     private float knifeTimer;
     private float knifeAttackTimer;
     private float daggerTimer;

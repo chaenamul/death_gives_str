@@ -8,7 +8,6 @@ public class Pirate : Enemy
     // Start is called before the first frame update
     Vector3 initLoc;
     public int moveVector; // -1 이면 초기에 왼쪽으로 움직임
-    Rigidbody2D rbody;
     private bool found;
     private float delay;
     public HitBox bomb;
@@ -24,7 +23,6 @@ public class Pirate : Enemy
         stiffAfterAttack = 3.0f;
         delay = 0.0f;
         found = false;
-        rbody = GetComponent<Rigidbody2D>();
         initLoc = transform.position;
         maxHp = hp = 70;
         dmg = 30;

@@ -11,8 +11,6 @@ public class Zombie : Enemy
     [SerializeField]
     private float attackRange;
 
-    private Rigidbody2D rb;
-
     private float timer;
     private int nextMove;
     private bool isAggressive;
@@ -27,7 +25,6 @@ public class Zombie : Enemy
         abilityName = "한도 증가";
         timer = attackDelay;
         isAggressive = false;
-        rb = GetComponent<Rigidbody2D>();
     }
 
     protected override void Update()

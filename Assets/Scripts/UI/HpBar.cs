@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class HpBar : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
+    [SerializeField]
+    private Image hpBar;
+    
     void Update()
     {
-        
+        hpBar.fillAmount = GameManager.instance.hp / 100f;
     }
 }

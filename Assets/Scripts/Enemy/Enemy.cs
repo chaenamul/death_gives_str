@@ -51,6 +51,14 @@ public class Enemy : MonoBehaviour
         Flip();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameManager.instance.playerController.GetDmg(this, dmg);
+        }
+    }
+
     void Flip()
     {
         spriteRenderer.flipX = rb.velocity.x > 0;
@@ -67,6 +75,7 @@ public class Enemy : MonoBehaviour
         CameraPos = Camera.main.transform.position;
         InvokeRepeating("Shaking", 0f, 0.005f);
         Invoke("StopShaking", 0.2f);
+        Damaged(GameManager.instance.playerController.transform.position);
         hp -= dmg;
         nowHpBar.fillAmount = (float)hp / (float)maxHp;
         if (hp <= 0)
@@ -74,6 +83,13 @@ public class Enemy : MonoBehaviour
             Destroy(hpBar.gameObject);
             Die();
         }
+    }
+
+    void Damaged(Vector2 targetPos)
+    {
+        int dirx = transform.position.x - targetPos.x > 0 ? 1 : -1;
+        rb.AddForce(new Vector2(dirx, 1) * 3, ForceMode2D.Impulse);
+        print(dirx);
     }
 
     public virtual void GiveStr()

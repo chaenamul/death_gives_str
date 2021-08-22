@@ -11,8 +11,8 @@ public class HitScanRangeAttack : Attack
     public Color c1 = new Color(1, 0, 0, 1);
     public Color c2 = new Color(1, 1, 1, 0);
     public Color c3;
-    private float fade=0.5f;
-    private int x=5;
+    private float fade = 0.5f;
+    private int x = 5;
     public override Vector3 TargetUpdate()
     {
         Vector3 attackDir = new Vector3(0,0,0);
@@ -51,7 +51,7 @@ public class HitScanRangeAttack : Attack
                 }
             }
         }
-        while (x!=0) // 발사 후 궤적 서서히 사라짐
+        while (x != 0) // 발사 후 궤적 서서히 사라짐
         {
             c3 = new Color(1, 1, 1, fade);
             fade -= 0.1f;
@@ -74,7 +74,7 @@ public class HitScanRangeAttack : Attack
     private IEnumerator Aiming() 
     {
         Transform tr = subject.transform;
-        if(route)
+        if (route)
         {
             route.SetColors(c1, c1);
             route.gameObject.SetActive(true);
