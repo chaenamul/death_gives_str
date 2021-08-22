@@ -10,7 +10,6 @@ public class Sniper : Enemy
     [SerializeField]
     private LineRenderer laser;
     private Attack sniping;
-    private Rigidbody2D rb;
 
     protected override void Start() 
     {
