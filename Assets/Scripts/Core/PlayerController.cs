@@ -332,29 +332,7 @@ public class PlayerController : MonoBehaviour
 
     void Dash()
     {
-        if (Input.GetButtonUp("Horizontal"))
-        {
-            checkDash = true;
-        }
-
-        if (checkDash)
-        {
-            dashTimer -= Time.deltaTime;
-            if (dashTimer <= 0)
-            {
-                checkDash = false;
-                dashTimer = 0.3f;
-            }
-        }
-
-        if (Input.GetButtonDown("Horizontal") && !checkDash)
-        {
-            speed = 10f;
-        }
-        else if (Input.GetButtonDown("Horizontal") && checkDash)
-        {
-            speed = dashSpeed;
-        }
+        // Á¤¿ø¹è
     }
 
     IEnumerator AttackAnimation()
