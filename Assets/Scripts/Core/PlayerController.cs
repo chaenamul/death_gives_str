@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public float speed;
     [SerializeField]
-    public float dashSpeed;
-    [SerializeField]
     private float jumpForce;
 
     public bool isDmgBoosted;
@@ -25,8 +23,11 @@ public class PlayerController : MonoBehaviour
 
     public bool isGrounded;
     public bool canDash = false;
+    public float dashDistance = 5f;
     private bool checkDash = false;
-    private float dashTimer = 0.3f;
+    private const float checkDashTimeLimit = 0.3f;
+    private float dashTimer = 0f;
+    private float dashDir = 0f;
 
     public HitBox initsword;
     [SerializeField]
@@ -332,7 +333,43 @@ public class PlayerController : MonoBehaviour
 
     void Dash()
     {
-        // 정원배
+        if (dashTimer > 0)
+        {
+            dashTimer -= Time.deltaTime;
+            if (dashTimer <= 0)
+            {
+                checkDash = false;
+            }
+        }
+
+        if (Input.GetButtonDown("Horizontal"))
+        {
+            if (checkDash && dashDir == Input.GetAxisRaw("Horizontal"))
+            {
+                // 바라보는 방향으로 일정 거리 이동 (벽 유무 감지)
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * dashDir, dashDistance, LayerMask.GetMask("Ground"));
+                if (hit.collider != null)
+                {
+                    // 대쉬 중 벽에 부딪힘
+                    transform.position += Vector3.right * dashDir * (hit.distance - 0.8f);
+                }
+                else
+                {
+                    // 대쉬 중 벽에 부딪히지 않음
+                    transform.position += Vector3.right * dashDir * dashDistance;
+                }
+
+                checkDash = false;
+                dashTimer = 0;
+            }
+            else
+            {
+                dashDir = Input.GetAxisRaw("Horizontal");
+
+                checkDash = true;
+                dashTimer = checkDashTimeLimit;
+            }
+        }
     }
 
     IEnumerator AttackAnimation()
