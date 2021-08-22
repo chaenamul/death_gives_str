@@ -10,6 +10,6 @@ public class HpBar : MonoBehaviour
     
     void Update()
     {
-        hpBar.fillAmount = GameManager.instance.hp / 100f;
+        hpBar.fillAmount = (float)GameManager.instance.hp / (float)GameManager.instance.maxHp;
     }
 }
