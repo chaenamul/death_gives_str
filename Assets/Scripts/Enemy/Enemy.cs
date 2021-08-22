@@ -34,6 +34,10 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private RectTransform hpBar;
 
+    protected virtual void Awake()
+    {
+        GameManager.instance.monsterCount += 1;
+    }
     protected virtual void Start()
     {
         canvas = GameObject.Find("Canvas");
@@ -66,6 +70,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Die()
     {
+        GameManager.instance.monsterCount -= 1;
         GameManager.instance.money += Random.Range(2, 5);
         gameObject.SetActive(false);
     }

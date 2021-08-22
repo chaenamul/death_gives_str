@@ -9,9 +9,13 @@ public class Door : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && Input.GetKey(KeyCode.W))
+        if (GameManager.instance.monsterCount == 0 && collision.gameObject.tag == "Player" && Input.GetKey(KeyCode.W))
         {
             SaveManager.instance.MoveToNextScene(curScene, sceneToLoad);
+        }
+        else if(collision.gameObject.tag == "Player" && Input.GetKey(KeyCode.W))
+        {
+            Debug.Log("Door is closed");
         }
     }
 

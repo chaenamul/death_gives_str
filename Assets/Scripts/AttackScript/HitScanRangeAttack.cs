@@ -83,6 +83,7 @@ public class HitScanRangeAttack : Attack
         RaycastHit2D hit;
         while (time < aimingDelay)
         {
+            if (!subject || !subject.activeSelf) yield break;
             route.SetPosition(0, tr.position);
             Vector3 target = TargetUpdate();
             time += Time.deltaTime;

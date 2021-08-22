@@ -30,8 +30,9 @@ public class Dragon : Enemy
     private Vector3 spawnPosition;
     [SerializeField]
     private float spawnDelay;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         MinionCount = Minions.transform.childCount;
         thornAttack = new RangeAttack(20, 8.6f, thorn, this, gameObject, ThornSize/0.3f, 0.3f, false, false, new Vector3(0,1,0));
         rbThorn = thorn.GetComponent<Rigidbody2D>();

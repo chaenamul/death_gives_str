@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
             dmg = value;
         }
     }
+    [HideInInspector]
+    public int monsterCount;
     public List<string> abilities;
     public List<int> items;
     public int money;
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        monsterCount = 0;
         initSkillDmg = skillDmg;
         initHp = hp;
         initMaxHp = maxHp;
