@@ -264,7 +264,6 @@ MonoBehaviour:
   speed: 0
   sight: 0
   hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
-  canvas: {fileID: 0}
   height: 1.5
   delay: 0
   laser: {fileID: 2997636072970106389}
@@ -304,4 +303,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4

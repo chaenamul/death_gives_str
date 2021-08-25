@@ -46,10 +46,10 @@ public class Shadow : Enemy
 
     void Move()
     {
-        cloneRb.velocity += ((Vector2)(GameManager.instance.playerController.transform.position - cloneRb.transform.position)).normalized * 2;
-        if (cloneRb.velocity.magnitude > 8)
+        cloneRb.velocity += ((Vector2)(GameManager.instance.playerController.transform.position - cloneRb.transform.position)).normalized;
+        if (cloneRb.velocity.magnitude > 6)
         {
-            cloneRb.velocity = cloneRb.velocity.normalized * 8;
+            cloneRb.velocity = cloneRb.velocity.normalized * 6;
         }
     }
     public override void GiveStr()

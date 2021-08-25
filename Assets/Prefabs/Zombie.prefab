@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8844571757386604878}
   - component: {fileID: 7754363577923800872}
   - component: {fileID: 8427940825861405175}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Zombie
   m_TagString: EnemyZombie
   m_Icon: {fileID: 0}
@@ -53,7 +53,6 @@ MonoBehaviour:
   speed: 3.3
   sight: 7
   hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
-  canvas: {fileID: 0}
   height: 1.5
   attackDelay: 3
   zombieattack: {fileID: 3070199839505444508}

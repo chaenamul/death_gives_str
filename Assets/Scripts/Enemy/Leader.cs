@@ -27,7 +27,10 @@ public class Leader : Enemy
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(nextMove * speed, rb.velocity.y);
+        if (!isAttacked)
+        {
+            rb.velocity = new Vector2(nextMove * speed, rb.velocity.y);
+        }
     }
 
     void Move()

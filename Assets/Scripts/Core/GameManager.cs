@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
             dmg = value;
         }
     }
-    [HideInInspector]
     public int monsterCount;
     public List<string> abilities;
     public List<int> items;

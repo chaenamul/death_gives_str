@@ -43,7 +43,10 @@ public class Zombie : Enemy
         else
         {
             isAggressive = false;
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            if (!isAttacked)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
     }
 
@@ -56,7 +59,10 @@ public class Zombie : Enemy
             if (Vector2.Distance(GameManager.instance.playerController.transform.position, transform.position) > attackRange)
             {
                 nextMove = (GameManager.instance.playerController.transform.position.x - transform.position.x) > 0 ? 1 : -1;
-                rb.velocity = new Vector2(nextMove * speed, rb.velocity.y);
+                if (!isAttacked)
+                {
+                    rb.velocity = new Vector2(nextMove * speed, rb.velocity.y);
+                }
             }
             else if (timer >= attackDelay)
             {

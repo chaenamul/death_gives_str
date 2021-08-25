@@ -519,6 +519,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.89
       objectReference: {fileID: 0}
+    - target: {fileID: 6710904061677623080, guid: fce4f7627c874314eb393f54375dd371, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6710904061677623081, guid: fce4f7627c874314eb393f54375dd371, type: 3}
       propertyPath: canvas
       value: 

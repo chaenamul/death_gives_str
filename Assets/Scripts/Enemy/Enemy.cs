@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     public float height = 1.5f;
     private Vector3 CameraPos;
 
+    protected bool isAttacked;
     protected Rigidbody2D rb;
     protected Animator anim;
     private SpriteRenderer spriteRenderer;
@@ -38,6 +39,7 @@ public class Enemy : MonoBehaviour
     {
         GameManager.instance.monsterCount += 1;
     }
+
     protected virtual void Start()
     {
         canvas = GameObject.Find("Canvas");
@@ -81,6 +83,7 @@ public class Enemy : MonoBehaviour
         InvokeRepeating("Shaking", 0f, 0.005f);
         Invoke("StopShaking", 0.2f);
         Damaged(GameManager.instance.playerController.transform.position);
+        StartCoroutine(IsAttacked());
         hp -= dmg;
         nowHpBar.fillAmount = (float)hp / (float)maxHp;
         if (hp <= 0)
@@ -90,11 +93,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    IEnumerator IsAttacked()
+    {
+        isAttacked = true;
+        yield return new WaitForSeconds(2f);
+        isAttacked = false;
+    }
+
     void Damaged(Vector2 targetPos)
     {
         int dirx = transform.position.x - targetPos.x > 0 ? 1 : -1;
         rb.AddForce(new Vector2(dirx, 1) * 3, ForceMode2D.Impulse);
-        print(dirx);
     }
 
     public virtual void GiveStr()

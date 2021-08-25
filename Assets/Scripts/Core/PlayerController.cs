@@ -409,6 +409,7 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.Dmg--;
         }
         gameObject.SetActive(false);
+        GameManager.instance.monsterCount = 0;
         GameManager.instance.life -= 1;
         if(GameManager.instance.life == 0)
         {
