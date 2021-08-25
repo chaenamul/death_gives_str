@@ -187,7 +187,8 @@ public class PlayerController : MonoBehaviour
         /// 
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            Die();
+            isInvincible = false;
+            GetDmg(null, 99999999);
         }
     }
 
@@ -394,11 +395,13 @@ public class PlayerController : MonoBehaviour
         }
         GameManager.instance.hp -= dmg;
         PlayerAttacked();
-        Damaged(sub.transform.position);
+        if(sub!=null)
+            Damaged(sub.transform.position);
         if (GameManager.instance.hp <= 0)
         {
             Die();
-            sub.GiveStr();
+            if(sub!=null)
+                sub.GiveStr(); 
         }
     }
     void Die()

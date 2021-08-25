@@ -53,6 +53,8 @@ public class HitScanRangeAttack : Attack
         }
         while (x != 0) // 발사 후 궤적 서서히 사라짐
         {
+            if (!route) 
+                yield break;
             c3 = new Color(1, 1, 1, fade);
             fade -= 0.1f;
             route.SetColors(c2, c3);

@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     private int initMaxHp;
     private int initDmg;
     private float initSkillSpeed;
-
+    public float defaultCameraSize { get; private set; }
     void Awake()
     {
         if (instance == null)
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
+        defaultCameraSize = Camera.main.orthographicSize;
         monsterCount = 0;
         initSkillDmg = skillDmg;
         initHp = hp;

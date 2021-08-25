@@ -66,6 +66,7 @@ public class SaveManager
         SceneManager.LoadScene(sceneToLoad);
         yield return null;
         GameManager.instance.playerController.transform.position = GameObject.Find("StartPoint").transform.position;
+        Camera.main.orthographicSize = GameManager.instance.defaultCameraSize;
     }
 
     public void MoveToPrevScene()
@@ -91,5 +92,6 @@ public class SaveManager
         }
         yield return null;
         GameManager.instance.playerController.transform.position = GameObject.Find("StartPoint").transform.position;
+        Camera.main.orthographicSize = GameManager.instance.defaultCameraSize;
     }
 }

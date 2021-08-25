@@ -91,6 +91,7 @@ public class Dragon : Enemy
         transform.position += new Vector3(0, (7.0f / 2.5f - 1) * transform.localScale.y, 0);
         Camera.main.orthographicSize *= 2;
         transform.localScale *= 7.0f / 2.5f;
+        GameManager.instance.playerController.transform.position = GameObject.Find("StartPoint").transform.position;
     }
 
     private Vector3 TraceThornStartPoint()
@@ -148,7 +149,5 @@ public class Dragon : Enemy
     protected override void Die()
     {
         base.Die();
-
-        Camera.main.orthographicSize /= 2;
     }
 }
