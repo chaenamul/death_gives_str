@@ -29,6 +29,10 @@ public class Enemy : MonoBehaviour
     public float height = 1.5f;
     private Vector3 CameraPos;
 
+    private int getMoney;
+    public Text getMoneyPrefab;
+    private Text getMoneyText;
+
     protected Rigidbody2D rb;
     protected Animator anim;
     private SpriteRenderer spriteRenderer;
@@ -43,6 +47,8 @@ public class Enemy : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         hpBar = Instantiate(hpBarPrefab, canvas.transform).GetComponent<RectTransform>();
         nowHpBar = hpBar.transform.GetChild(0).GetComponent<Image>();
+        getMoneyText = Instantiate(getMoneyPrefab, canvas.transform);
+        getMoneyText.enabled = false;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -52,6 +58,7 @@ public class Enemy : MonoBehaviour
     {
         Vector3 hpBarPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
         hpBar.position = hpBarPos;
+        getMoneyText.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
         Flip();
     }
 
@@ -71,8 +78,16 @@ public class Enemy : MonoBehaviour
     protected virtual void Die()
     {
         GameManager.instance.monsterCount -= 1;
-        GameManager.instance.money += Random.Range(2, 5);
+        getMoney = Random.Range(2, 5);
+        GameManager.instance.money += getMoney;
         gameObject.SetActive(false);
+        if (getMoneyPrefab != null) 
+        {
+            getMoneyText.text = "+" + getMoney + "Gold";
+            getMoneyText.enabled = true;
+            Destroy(getMoneyText, 0.5f);
+        }
+
     }
 
     public virtual void GetDmg(int dmg)
@@ -113,5 +128,4 @@ public class Enemy : MonoBehaviour
         CameraPos.y = 0f;
         Camera.main.transform.position = CameraPos;
     }
-    
 }

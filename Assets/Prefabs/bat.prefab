@@ -142,6 +142,7 @@ MonoBehaviour:
   sight: 1000
   hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
   height: 1.5
+  getMoneyPrefab: {fileID: 7787076758605759940, guid: 3924e0238a5ae0c409ba0e14727ea17a, type: 3}
   attackDelay: 1
   batattack: {fileID: 2918904988369524550}
   attackRange: 2
