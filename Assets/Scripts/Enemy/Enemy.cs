@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float sight;
     protected string abilityName; // 나중에 새로 클래스 만드는게 좋을듯
+    public string abilityText;
     public GameObject hpBarPrefab;
     private GameObject canvas;
     private Image nowHpBar;

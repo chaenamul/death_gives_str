@@ -25,6 +25,7 @@ public class Ninja : Enemy
         base.Start();
 
         abilityName = "대쉬";
+        abilityText = "방향 키 더블 클릭으로 대쉬 사용 가능";
         knifeTimer = 2f;
         knifeAttackTimer = 1f;
         daggerTimer = 0f;

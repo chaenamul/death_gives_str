@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public HitBox hitBox;
     public PlayerController playerController;
     public GameObject gameOverPanel;
+    public GameObject abilityCheckPanel;
     public int life = 9;
     public int skillDmg;
     public float skillSpeed;

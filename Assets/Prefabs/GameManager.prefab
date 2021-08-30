@@ -44,10 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d13af292c4074044b609d4ad3934b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
+  maxHp: 0
+  dmg: 0
+  monsterCount: 0
+  abilities: []
+  items: 
+  money: 0
   hitBox: {fileID: 1277535040153179420, guid: 0439ca43e1effaa40bb02fadde6cdaf3, type: 3}
   playerController: {fileID: 0}
-  skeleton: {fileID: 0}
-  bandit: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  abilityCheckPanel: {fileID: 5844944318228103404, guid: 9333690273d4bb841a57099f51edae6d, type: 3}
+  life: 9
+  skillDmg: 0
+  skillSpeed: 0
 --- !u!114 &579557884
 MonoBehaviour:
   m_ObjectHideFlags: 0

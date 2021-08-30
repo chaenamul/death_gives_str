@@ -20,6 +20,7 @@ public class Skeleton : Enemy
         base.Start();
 
         abilityName = "원한";
+        abilityText = "공격력 5 증가";
         timer = attackDelay;
         isAggressive = false;
 

@@ -15,6 +15,7 @@ public class Sniper : Enemy
     {
         base.Start();
         abilityName = "화약개조";
+        abilityText = "거리에 따른 마법 공격 추가피해";
         delay = 5.0f;
         hp = 100;
         maxHp = 100;

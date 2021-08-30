@@ -16,6 +16,7 @@ public class Leader : Enemy
         base.Start();
 
         abilityName = "조종";
+        abilityText = "스킬 사용 시 2초간 모든 데미지 무력화";
         Move();
     }
 

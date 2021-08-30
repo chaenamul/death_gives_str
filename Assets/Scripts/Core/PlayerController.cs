@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     private float dashTimer = 0f;
     private float dashDir = 0f;
 
+    public int Getability = 0;
+    public string Whatability;
+
     public HitBox initsword;
     [SerializeField]
     private HitBox initSkill;
@@ -401,7 +404,9 @@ public class PlayerController : MonoBehaviour
         {
             Die();
             if(sub!=null)
-                sub.GiveStr(); 
+                sub.GiveStr();
+            if (sub.abilityText != null)
+                Whatability = sub.abilityText;
         }
     }
     void Die()
@@ -447,6 +452,7 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }*/
+
     }
 
     void GameOver()
@@ -459,6 +465,14 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.hp = GameManager.instance.maxHp;
         gameObject.SetActive(true);
         SaveManager.instance.MoveToPrevScene();
+        GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        if (GameManager.instance.abilities[Getability] != null)
+        {
+            GameManager.instance.abilityCheckPanel.GetComponent<AbilityCheck>().abilityNameCheck(Whatability);
+            GameManager.instance.abilityCheckPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+        Getability += 1;
     }
 
     public void Damaged(Vector2 targetPos)
