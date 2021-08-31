@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(MagicAnimation());
         }
-
+        /*
         if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.items.Count != 0)
         {
             switch (GameManager.instance.items[GameManager.instance.items.Count - 1])
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
             }
             GameManager.instance.items.RemoveAt(GameManager.instance.items.Count - 1);
         }
-
+        */
         /// <summary>
         /// 임시 키
         /// y : 카메라 플레이어에게 고정
