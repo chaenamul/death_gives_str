@@ -33,8 +33,7 @@ public class PlayerController : MonoBehaviour
     public string Whatability;
 
     public HitBox initsword;
-    [SerializeField]
-    private HitBox initSkill;
+    public HitBox initSkill;
 
 
     private int countTime = 0;
@@ -71,8 +70,8 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         attacks = new Dictionary<weapon, Attack>();
         attacks[weapon.InitSword] = new SwordAttack(GameManager.instance.Dmg, 0.25f, initsword, gameObject, this);
-        attacks[weapon.InitSkill] = new RangeAttack(GameManager.instance.skillDmg, 1, initSkill, this, gameObject, GameManager.instance.skillSpeed, 0.0f, false, true);
-        attackManager = new PlayerAttackManager(attacks[weapon.InitSword], attacks[weapon.InitSkill]);
+        attacks[weapon.InitSkill] = new RangeAttack(GameManager.instance.skillDmg, 1, null, this, gameObject, GameManager.instance.skillSpeed, 0.0f, false, true);
+        attackManager = new PlayerAttackManager(attacks[weapon.InitSword], attacks[weapon.InitSkill], initSkill);
     }
 
     void Update()

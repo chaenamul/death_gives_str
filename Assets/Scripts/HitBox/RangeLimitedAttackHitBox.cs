@@ -19,7 +19,10 @@ public class RangeLimitedAttackHitBox : RangeAttackHitBox
     {
         if(Vector2.Distance(startPoint, transform.position) > range)
         {
-            gameObject.SetActive(false);
+            if (!isDisposable)
+                gameObject.SetActive(false);
+            else
+                Destroy(gameObject);
         }
     }
 }
