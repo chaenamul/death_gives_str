@@ -8,6 +8,7 @@ public class HitBox : MonoBehaviour
     public int dmg;
     public object subject;
 
+
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (subject as Enemy && collision.tag == "Player" && !GameManager.instance.playerController.inv) // Enemy -> Player АјАн

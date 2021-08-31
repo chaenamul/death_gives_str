@@ -6,19 +6,22 @@ public class PlayerAttackManager
 {
     public Attack attack;
     public Attack skill;
-    public PlayerAttackManager(Attack init, Attack skill)
+    public HitBox skillHitBox { get; private set; }
+    public PlayerAttackManager(Attack init, Attack skill, HitBox skillHitBox)
     {
         this.attack = init;
         this.skill = skill;
+        this.skillHitBox = skillHitBox;
     }
 
     public void AttackChange(Attack newAttack)
     {
         this.attack = newAttack;
     }
-    public void SkillChange(Attack newSkill)
+    public void SkillChange(Attack newSkill, HitBox skillHitBox)
     {
         this.skill = newSkill;
+        this.skillHitBox = skillHitBox;
     }
     
     public void AttackUpdate()
@@ -31,6 +34,9 @@ public class PlayerAttackManager
         {
             if(skill is RangeAttack)
             {
+                RangeAttackHitBox newHitBox = GameObject.Instantiate(skillHitBox as RangeAttackHitBox);
+                newHitBox.isDisposable = true;
+                skill.HitBoxUpdate(newHitBox);  
                 ((RangeAttack)skill).StartPointUpdate(GameManager.instance.playerController.transform.position);
             }
             if (GameManager.instance.playerController.gainedInvincible)

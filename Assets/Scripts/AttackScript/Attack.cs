@@ -45,6 +45,16 @@ public abstract class Attack
         }    
     }
 
+    public void HitBoxUpdate(HitBox hitBox)
+    {
+        this.hb = hitBox;
+        if (hb)
+        {
+            hb.dmg = this.attackDamage;
+            hb.subject = subjectClass;
+        }
+    }
+
     public Attack(int attackdmg, float delay, HitBox hitbox, GameObject sub, object component)
     {
         this.attackDamage = attackdmg;
