@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
     {
         if (target.gameObject != null)
         {
-            transform.position = new Vector3(target.transform.position.x, transform.position.y, transform.position.z);
+            transform.position = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
             CameraShake = transform.position;
         }
     }
