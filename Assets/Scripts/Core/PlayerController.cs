@@ -488,12 +488,12 @@ public class PlayerController : MonoBehaviour
             SoundManager.Instance.PlaySFX("player_hit", 0.3f);
         }
         Invoke("ShowHitimage", 0f);
-        Invoke("StopHitimage", 0.1f);
+        Invoke("StopHitimage", 0.3f);
         if (GameManager.instance.hp > 0)
         {
             inv = true;
             InvokeRepeating("Light", 0f, 0.2f);
-            Invoke("StopLight", 1f);
+            Invoke("StopLight", 3f);
         }
     }
 

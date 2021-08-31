@@ -725,6 +725,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6757853504146639293, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 423979799701734162, guid: c2dcbd1fa7ba5ba418ab8459af39d351, type: 3}
+    - target: {fileID: 6757853504146639293, guid: 1610c688d36c89744859a4e26de0be05, type: 3}
       propertyPath: life
       value: 9
       objectReference: {fileID: 0}
