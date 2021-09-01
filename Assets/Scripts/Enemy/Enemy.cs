@@ -102,6 +102,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(IsAttacked());
         hp -= dmg;
         nowHpBar.fillAmount = (float)hp / (float)maxHp;
+        SoundManager.Instance.PlaySFX("skeleton_hit");
         if (hp <= 0)
         {
             Destroy(hpBar.gameObject);

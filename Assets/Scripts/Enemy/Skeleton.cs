@@ -85,7 +85,6 @@ public class Skeleton : Enemy
     public override void GetDmg(int dmg)
     {
         base.GetDmg(dmg);
-        SoundManager.Instance.PlaySFX("skeleton_hit", 0.6f);
     }
 
     public override void GiveStr()
