@@ -79,6 +79,7 @@ public class Zombie : Enemy
         yield return new WaitForSeconds(1.0f);
         zombieattack.transform.position = (GameManager.instance.playerController.transform.position - transform.position).normalized * attackRange + transform.position - new Vector3(0.5f, 0f, 0f) * nextMove;
         zombieattack.gameObject.SetActive(true);
+        SoundManager.Instance.PlaySFX("zombie_attack");
         yield return new WaitForSeconds(0.1f);
         zombieattack.gameObject.SetActive(false);
         yield return new WaitForSeconds(3.0f);

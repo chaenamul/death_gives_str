@@ -135,6 +135,22 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: sfxAudioClips.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: sfxAudioClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 397fec7816edba74a9480b5f44e8d934, type: 3}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: sfxAudioClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: d8fc940232b8ace4f83eff7a3cb597f4, type: 3}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: sfxAudioClips.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: fe630c61df6fe96478f3bf9f9e214306, type: 3}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: bgmAudioClips.Array.data[0].audio
       value: 
       objectReference: {fileID: 8300000, guid: 34623d8f02453d944a99a62ab8fa019f, type: 3}

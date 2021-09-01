@@ -31,6 +31,7 @@ public class HitScanRangeAttack : Attack
     {
         route.SetPosition(0, subject.transform.position);
         Debug.Log(subject.transform.position);
+        SoundManager.Instance.PlaySFX("sniper_load");
         yield return CoroutineManager.instance.StartCoroutine(Aiming()); // Aiming
         if (subject && subject.activeSelf)
         {
@@ -38,6 +39,7 @@ public class HitScanRangeAttack : Attack
             RaycastHit2D hit = Physics2D.Raycast(subject.transform.position, target - subject.transform.position, Mathf.Infinity, ~(1 << subject.layer));
             
             Debug.Log(hit.distance);
+            SoundManager.Instance.PlaySFX("sniper_shot");
             if (hit)
             {
                 if (subject.tag == "Player" && hit.transform.gameObject.tag.Contains("Enemy"))

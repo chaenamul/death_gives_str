@@ -80,6 +80,10 @@ public class SoundManager : MonoBehaviour
                 PlayBGM(Bgm.GetAudioClip(bgmAudioClips, scene.name), 0.2f);
             }
         }
+        else
+        {
+            StopBGM();
+        }
     }
 
     // 효과음 재생
@@ -108,6 +112,7 @@ public class SoundManager : MonoBehaviour
     // BGM 중단
     public void StopBGM()
     {
+        bgmPlayer.clip = null;
         bgmPlayer.Stop();
     }
 
