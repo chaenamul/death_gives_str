@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private float dashTimer = 0f;
     private float dashDir = 0f;
 
+    [HideInInspector]
+    public int doublecoin = 1;
     public int Getability = 0;
     public string Whatability;
     public Sprite MonsterImage;
@@ -99,6 +101,7 @@ public class PlayerController : MonoBehaviour
             switch (GameManager.instance.items[GameManager.instance.items.Count - 1])
             {
                 case 30001:
+                    doublecoin = 2;
                     break;
                 case 30002:
                     break;
@@ -397,6 +400,7 @@ public class PlayerController : MonoBehaviour
         }
         gameObject.SetActive(false);
         GameManager.instance.monsterCount = 0;
+        doublecoin = 1;
         GameManager.instance.life -= 1;
         if(GameManager.instance.life == 0)
         {

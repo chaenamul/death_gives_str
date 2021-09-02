@@ -31,7 +31,7 @@ public class DoubleCoin : Item
 
     void Buy()
     {
-        if (items.Count != 0)
+        if (GameManager.instance.items.Count != 0)
         {
             StopCoroutine(Full());
             StartCoroutine(Full());
@@ -39,7 +39,7 @@ public class DoubleCoin : Item
         else
         {
             GameManager.instance.money -= cost;
-            items.Add(itemCode);
+            GameManager.instance.items.Add(itemCode);
         }
     }
 

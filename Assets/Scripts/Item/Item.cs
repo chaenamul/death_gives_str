@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    protected List<int> items = new List<int>();
-
     [SerializeField]
     protected int itemCode;
     [SerializeField]

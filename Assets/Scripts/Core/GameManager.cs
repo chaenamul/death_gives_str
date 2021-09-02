@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         initMaxHp = maxHp;
         initDmg = dmg;
         abilities = new List<string>();
+        items = new List<int>();
         initSkillSpeed = skillSpeed;
     }
 
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
     {
         skillSpeed = initSkillSpeed;
         abilities.Clear();
+        items.Clear();
         hp = initHp;
         maxHp = initMaxHp;
         dmg = initDmg;

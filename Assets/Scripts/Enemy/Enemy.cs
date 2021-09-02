@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
     protected virtual void Die()
     {
         GameManager.instance.monsterCount -= 1;
-        getMoney = Random.Range(2, 5);
+        getMoney = Random.Range(2, 5) * GameManager.instance.playerController.doublecoin;
         GameManager.instance.money += getMoney;
         gameObject.SetActive(false);
         if (getMoneyPrefab != null) 
