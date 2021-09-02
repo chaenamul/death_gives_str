@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -35,7 +33,6 @@ public class PlayerController : MonoBehaviour
 
     public HitBox initsword;
     public HitBox initSkill;
-
 
     private int countTime = 0;
     public bool inv = false;
@@ -96,47 +93,17 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(MagicAnimation());
         }
-        /*
+
         if (Input.GetKeyDown(KeyCode.E) && GameManager.instance.items.Count != 0)
         {
             switch (GameManager.instance.items[GameManager.instance.items.Count - 1])
             {
-                case 10001:
-                    GameManager.instance.hp += GameManager.instance.maxHp * 3 / 10;
-                    if (GameManager.instance.hp > GameManager.instance.maxHp)
-                    {
-                        GameManager.instance.hp = GameManager.instance.maxHp;
-                    }
-                    print("체력 30% 즉시 회복");
-                    break;
-                case 10002:
-                    GameManager.instance.hp += GameManager.instance.maxHp * 5 / 10;
-                    print("체력 50% 즉시 회복");
-                    if (GameManager.instance.hp > GameManager.instance.maxHp)
-                    {
-                        GameManager.instance.hp = GameManager.instance.maxHp;
-                    }
-                    break;
-                case 10003:
-                    GameManager.instance.hp += GameManager.instance.maxHp * 7 / 10;
-                    print("체력 70% 즉시 회복");
-                    if (GameManager.instance.hp > GameManager.instance.maxHp)
-                    {
-                        GameManager.instance.hp = GameManager.instance.maxHp;
-                    }
-                    break;
-                case 10004:
-                    GameManager.instance.hp = GameManager.instance.maxHp;
-                    print("체력 100% 즉시 회복");
-                    break;
-                case 20001:
-                    GameManager.instance.life++;
-                    print("목숨 하나 추가");
-                    break;
+                case 30001:
+
             }
             GameManager.instance.items.RemoveAt(GameManager.instance.items.Count - 1);
         }
-        */
+
         /// <summary>
         /// 임시 키
         /// y : 카메라 플레이어에게 고정
