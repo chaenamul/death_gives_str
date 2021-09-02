@@ -99,7 +99,13 @@ public class PlayerController : MonoBehaviour
             switch (GameManager.instance.items[GameManager.instance.items.Count - 1])
             {
                 case 30001:
-
+                    break;
+                case 30002:
+                    break;
+                case 30003:
+                    break;
+                case 30004:
+                    break;
             }
             GameManager.instance.items.RemoveAt(GameManager.instance.items.Count - 1);
         }
