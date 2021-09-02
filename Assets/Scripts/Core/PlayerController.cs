@@ -397,15 +397,21 @@ public class PlayerController : MonoBehaviour
         }
         GameManager.instance.hp -= dmg;
         PlayerAttacked();
-        if(sub!=null)
+        if (sub != null)
+        {
             Damaged(sub.transform.position);
+        }
         if (GameManager.instance.hp <= 0)
         {
             Die();
-            if(sub!=null)
+            if (sub != null)
+            {
                 sub.GiveStr();
+            }
             if (sub.abilityText != null)
+            {
                 Whatability = sub.abilityText;
+            }
         }
     }
     void Die()
@@ -490,6 +496,7 @@ public class PlayerController : MonoBehaviour
         Invoke("StopHitimage", 0.3f);
         if (GameManager.instance.hp > 0)
         {
+            gameObject.layer = 7;
             inv = true;
             InvokeRepeating("Light", 0f, 0.2f);
             Invoke("StopLight", 3f);
@@ -500,11 +507,11 @@ public class PlayerController : MonoBehaviour
     {
         if (countTime % 2 == 0)
         {
-            GameManager.instance.playerController.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 90);
+            spriteRenderer.color = new Color32(255, 255, 255, 90);
         }
         else
         {
-            GameManager.instance.playerController.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 180);
+            spriteRenderer.color = new Color32(255, 255, 255, 180);
         }
         countTime++;
     }
@@ -512,9 +519,10 @@ public class PlayerController : MonoBehaviour
     void StopLight()
     {
         CancelInvoke("Light");
-        GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        spriteRenderer.color = new Color32(255, 255, 255, 255);
         countTime = 0;
         inv = false;
+        gameObject.layer = 6;
     }
 
     void ShowHitimage()

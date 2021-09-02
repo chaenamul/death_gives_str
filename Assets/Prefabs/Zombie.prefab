@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 594122097923131372}
   - component: {fileID: 9212342253672902234}
-  - component: {fileID: 8844571757386604878}
   - component: {fileID: 7754363577923800872}
   - component: {fileID: 8427940825861405175}
+  - component: {fileID: 3465506023487842814}
   m_Layer: 3
   m_Name: Zombie
   m_TagString: EnemyZombie
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5239111220923986975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.2, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 3317345414453338969}
   m_Father: {fileID: 0}
@@ -52,28 +52,13 @@ MonoBehaviour:
   dmg: 10
   speed: 3.3
   sight: 7
+  abilityText: 
   hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
   height: 1.5
   getMoneyPrefab: {fileID: 7787076758605759940, guid: 3924e0238a5ae0c409ba0e14727ea17a, type: 3}
   attackDelay: 3
   zombieattack: {fileID: 3070199839505444508}
   attackRange: 1.5
---- !u!70 &8844571757386604878
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5239111220923986975}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!212 &7754363577923800872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114,7 +99,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2238f1d5f1e96d49848bc8fa50a8c66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,6 +131,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &3465506023487842814
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5239111220923986975}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.19930601, y: 0.00000023841858}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8, y: 8}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.685173, y: 5.4533124}
+  m_EdgeRadius: 0
 --- !u!1001 &4260753953595014016
 PrefabInstance:
   m_ObjectHideFlags: 0

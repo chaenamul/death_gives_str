@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class AbilityCheck : MonoBehaviour
 {
     private static AbilityCheck instance = null;
