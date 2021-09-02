@@ -29,6 +29,8 @@ public class Pirate : Enemy
         speed = GameManager.instance.playerController.speed * 2f / 3f;
         sight = 25f;
         attack = new ParabolaAttack(dmg, 6.0f, bomb, gameObject, this, 0, true);
+        abilityName = "유체이탈";
+        abilityText = "플레이어가 죽은 뒤, 체력이 15인 플레이어의 유령 생성.\n 이 몬스터에게 죽을 때마다 유령의 체력 +15";
     }
 
     // Update is called once per frame

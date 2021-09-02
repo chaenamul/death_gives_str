@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     public int Getability = 0;
     public string Whatability;
+    public Sprite MonsterImage;
 
     public HitBox initsword;
     public HitBox initSkill;
@@ -405,7 +406,10 @@ public class PlayerController : MonoBehaviour
             if(sub!=null)
                 sub.GiveStr();
             if (sub.abilityText != null)
+            { 
                 Whatability = sub.abilityText;
+                MonsterImage = sub.monsterImage;
+            }
         }
     }
     void Die()

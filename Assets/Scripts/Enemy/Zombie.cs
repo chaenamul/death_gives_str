@@ -23,7 +23,7 @@ public class Zombie : Enemy
         zombieattack.subject = this;
 
         abilityName = "한도 증가";
-        abilityText = "최대체력 20증가";
+        abilityText = "최대체력 +20";
         timer = attackDelay;
         isAggressive = false;
     }
