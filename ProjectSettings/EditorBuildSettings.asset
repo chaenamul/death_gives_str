@@ -47,6 +47,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GR3-bat.unity
     guid: 0d1e3183948485245a0adbce24c99561
+  - enabled: 1
+    path: Assets/Scenes/Merchant 2.unity
+    guid: 7fc7c90bfd1c9f841930676113bcbc3b
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
