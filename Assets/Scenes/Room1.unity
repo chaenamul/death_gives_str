@@ -37492,7 +37492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 423979799701734162, guid: c2dcbd1fa7ba5ba418ab8459af39d351, type: 3}
       propertyPath: sceneToLoad
-      value: Room2
+      value: HN Scene 1
       objectReference: {fileID: 0}
     - target: {fileID: 423979799701734165, guid: c2dcbd1fa7ba5ba418ab8459af39d351, type: 3}
       propertyPath: m_RootOrder
