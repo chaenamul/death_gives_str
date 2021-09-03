@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d6053962aab1e479ef6190128fa497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Room1
+  sceneToLoad: GR3-bat
 --- !u!1001 &1059306283
 PrefabInstance:
   m_ObjectHideFlags: 0
