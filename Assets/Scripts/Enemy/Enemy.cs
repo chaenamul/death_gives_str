@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
@@ -32,6 +33,11 @@ public class Enemy : MonoBehaviour
     protected virtual void Awake()
     {
         GameManager.instance.monsterCount += 1;
+        if (SaveManager.instance.clearList.ContainsKey(SceneManager.GetActiveScene().name))
+        {
+            GameManager.instance.monsterCount -= 1;
+            gameObject.SetActive(false);
+        }
     }
 
     protected virtual void Start()
