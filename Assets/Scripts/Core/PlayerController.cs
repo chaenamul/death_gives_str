@@ -104,6 +104,19 @@ public class PlayerController : MonoBehaviour
                     doublecoin = 2;
                     break;
                 case 30002:
+                    int ran = Random.Range(0, 3);
+                    switch(ran)
+                    {
+                        case 0:
+                            GameManager.instance.hp += 10;
+                            break;
+                        case 1:
+                            GameManager.instance.hp += 30;
+                            break;
+                        case 2:
+                            GameManager.instance.hp += 50;
+                            break;
+                    }
                     break;
                 case 30003:
                     break;

@@ -31,7 +31,7 @@ public class HealthKit : Item
 
     void Buy()
     {
-        if (GameManager.instance.items.Count != 0)
+        if (GameManager.instance.items.Count > 2 || (GameManager.instance.items.Count != 0 && GameManager.instance.items[0] != 30002))
         {
             StopCoroutine(Full());
             StartCoroutine(Full());
