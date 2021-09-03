@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: bgmAudioClips.Array.size
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: sfxAudioClips.Array.size
@@ -160,11 +160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: bgmAudioClips.Array.data[1].scene
-      value: Room1
+      value: GR3-bat
       objectReference: {fileID: 0}
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: bgmAudioClips.Array.data[2].scene
-      value: Room2
+      value: GR1-leader
       objectReference: {fileID: 0}
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: bgmAudioClips.Array.data[3].audio
@@ -172,23 +172,71 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 34623d8f02453d944a99a62ab8fa019f, type: 3}
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: bgmAudioClips.Array.data[3].scene
-      value: Room3
+      value: HN Scene 1
       objectReference: {fileID: 0}
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: bgmAudioClips.Array.data[4].audio
       value: 
-      objectReference: {fileID: 8300000, guid: 7b72c567daee963419de4be1475eff20, type: 3}
+      objectReference: {fileID: 8300000, guid: 92e44c6aa69ef6140aa67e13bba2700d, type: 3}
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: bgmAudioClips.Array.data[4].scene
-      value: Room4
+      value: Merchant 2
       objectReference: {fileID: 0}
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: bgmAudioClips.Array.data[5].audio
       value: 
-      objectReference: {fileID: 8300000, guid: 92e44c6aa69ef6140aa67e13bba2700d, type: 3}
+      objectReference: {fileID: 8300000, guid: 7b72c567daee963419de4be1475eff20, type: 3}
     - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: bgmAudioClips.Array.data[5].scene
-      value: Merchant
+      value: HN middle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[6].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 34623d8f02453d944a99a62ab8fa019f, type: 3}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[6].scene
+      value: HN Scene 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[7].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 34623d8f02453d944a99a62ab8fa019f, type: 3}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[7].scene
+      value: HN Scene 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[8].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 34623d8f02453d944a99a62ab8fa019f, type: 3}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[8].scene
+      value: GR2-shadow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[9].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 34623d8f02453d944a99a62ab8fa019f, type: 3}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[9].scene
+      value: HN Scene 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[10].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 92e44c6aa69ef6140aa67e13bba2700d, type: 3}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[10].scene
+      value: Merchant 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[11].audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b72c567daee963419de4be1475eff20, type: 3}
+    - target: {fileID: 1031761485763073260, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
+      propertyPath: bgmAudioClips.Array.data[11].scene
+      value: HN Scene Boss
       objectReference: {fileID: 0}
     - target: {fileID: 1031761485763073261, guid: 01ed819ffc49f9a4fb711537641ea4fb, type: 3}
       propertyPath: m_RootOrder
