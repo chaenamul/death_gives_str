@@ -119,10 +119,6 @@ public class PlayerController : MonoBehaviour
                             break;
                     }
                     break;
-                case 30003:
-                    break;
-                case 30004:
-                    break;
             }
             GameManager.instance.items.RemoveAt(GameManager.instance.items.Count - 1);
         }
