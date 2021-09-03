@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isGrounded;
     public bool canDash = false;
+    private bool speedIncreased = false;
     public float dashDistance = 5f;
     private bool checkDash = false;
     private const float checkDashTimeLimit = 0.3f;
@@ -406,10 +407,23 @@ public class PlayerController : MonoBehaviour
     }
     void Die()
     {
+        if(GameManager.instance.items.Count != 0 && GameManager.instance.items[0] == 30004)
+        {
+            GameManager.instance.items.Clear();
+            GameManager.instance.hp = GameManager.instance.maxHp / 10;
+            Invincible();
+            return;
+        }
+
         if (isDmgBoosted)
         {
             isDmgBoosted = false;
             GameManager.instance.Dmg--;
+        }
+        if (speedIncreased)
+        {
+            speed /= 1.2f;
+            speedIncreased = false;
         }
         gameObject.SetActive(false);
         GameManager.instance.monsterCount = 0;
@@ -462,7 +476,7 @@ public class PlayerController : MonoBehaviour
         gameObject.SetActive(true);
         SaveManager.instance.MoveToPrevScene();
         GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
-        if (GameManager.instance.abilities[Getability] != null)
+        if (Getability<GameManager.instance.abilities.Count && GameManager.instance.abilities[Getability] != null)
         {
             GameManager.instance.abilityCheckPanel.GetComponent<AbilityCheck>().abilityNameCheck(Whatability);
             GameManager.instance.abilityCheckPanel.SetActive(true);
@@ -533,5 +547,18 @@ public class PlayerController : MonoBehaviour
     void NotInvincible()
     {
         isInvincible = false;
+    }
+    public void IncreaseSpeed()
+    {
+        speed *= 1.2f;
+        speedIncreased = true;
+        Invoke("EndIncreaseSpeed", 40.0f);
+    }
+    private void EndIncreaseSpeed()
+    {
+        if (!speedIncreased)
+            return;
+        speedIncreased = false;
+        speed /= 1.2f;
     }
 }

@@ -57,6 +57,10 @@ public class SaveManager
             GameManager.instance.playerController.isDmgBoosted = false;
             GameManager.instance.Dmg--;
         }
+        if (GameManager.instance.items.Count!=0 && GameManager.instance.items[0] == 30003 && !sceneToLoad.Contains("Merchant"))
+        {
+            GameManager.instance.playerController.IncreaseSpeed();
+        }
         CoroutineManager.instance.Coroutine(moveToNextScene(curScene, sceneToLoad));
     }
 
