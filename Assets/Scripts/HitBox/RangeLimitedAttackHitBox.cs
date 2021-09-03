@@ -5,8 +5,7 @@ using UnityEngine;
 public class RangeLimitedAttackHitBox : RangeAttackHitBox
 {
     private Vector3 startPoint;
-    [SerializeField]
-    private float range;
+    public float range;
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
@@ -23,6 +22,10 @@ public class RangeLimitedAttackHitBox : RangeAttackHitBox
                 gameObject.SetActive(false);
             else
                 Destroy(gameObject);
+        }
+        if(subject is PlayerController && GameManager.instance.abilities.Contains("화약개조"))
+        {
+            dmg = GameManager.instance.playerController.AttackManager.skill.attackDamage + (int)Vector2.Distance(startPoint, transform.position);
         }
     }
 }

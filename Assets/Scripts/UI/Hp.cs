@@ -9,6 +9,9 @@ public class Hp : MonoBehaviour
 
     void Update()
     {
-        hpText.text = string.Format("HP {0}/{1}", GameManager.instance.hp, GameManager.instance.maxHp);
+        if(!GameManager.instance.playerController.isGhost)
+            hpText.text = string.Format("HP {0}/{1}", GameManager.instance.hp, GameManager.instance.maxHp);
+        else
+            hpText.text = string.Format("HP {0}/{1}", GameManager.instance.hp, GameManager.instance.ghostHp);
     }
 }

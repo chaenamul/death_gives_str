@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce;
 
+    public bool isGhost { get; private set; } = false;
     public bool isDmgBoosted;
     public bool gainedInvincible;
     public bool isInvincible;
@@ -191,7 +192,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
-        }/*
+        }
+        /*
         if (collision.gameObject.tag == "EnemySkeleton")
         {
             GameManager.instance.hp -= GameManager.instance.skeleton.dmg;
@@ -395,7 +397,7 @@ public class PlayerController : MonoBehaviour
             {
                 sub.GiveStr();
             }
-            if (sub.abilityText != null) {
+            if (sub!= null && sub.abilityText != null) {
                 Whatability = sub.abilityText;
                 MonsterImage = sub.monsterImage;
             }
@@ -403,6 +405,21 @@ public class PlayerController : MonoBehaviour
     }
     void Die()
     {
+        if (GameManager.instance.abilities.Contains("¿Ø√º¿Ã≈ª"))
+        {
+            if (!isGhost)
+            {
+                isGhost = true;
+                GameManager.instance.hp = GameManager.instance.ghostHp;
+                spriteRenderer.color = new Color32(255,255,255,95);
+                return;
+            }
+            else
+            {
+                spriteRenderer.color = new Color(255,255,255,255);
+                isGhost = false;
+            }
+        }
         if(GameManager.instance.items.Count != 0 && GameManager.instance.items[0] == 30004)
         {
             GameManager.instance.items.Clear();
@@ -508,11 +525,11 @@ public class PlayerController : MonoBehaviour
     {
         if (countTime % 2 == 0)
         {
-            spriteRenderer.color = new Color32(255, 255, 255, 90);
+            spriteRenderer.color = new Color32(255, 255, 255, (byte)(isGhost ? 30 : 90));
         }
         else
         {
-            spriteRenderer.color = new Color32(255, 255, 255, 180);
+            spriteRenderer.color = new Color32(255, 255, 255, (byte)(isGhost ? 60 : 180));
         }
         countTime++;
     }
@@ -520,7 +537,7 @@ public class PlayerController : MonoBehaviour
     void StopLight()
     {
         CancelInvoke("Light");
-        spriteRenderer.color = new Color32(255, 255, 255, 255);
+        spriteRenderer.color = new Color32(255, 255, 255, (byte)(isGhost ? 95 : 255));
         countTime = 0;
         inv = false;
         gameObject.layer = 6;

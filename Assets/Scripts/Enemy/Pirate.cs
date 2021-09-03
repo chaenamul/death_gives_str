@@ -117,4 +117,10 @@ public class Pirate : Enemy
         base.Start();
         this.enabled = true;
     }
+
+    public override void GiveStr()
+    {
+        base.GiveStr();
+        GameManager.instance.ghostHp += 15;
+    }
 }

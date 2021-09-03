@@ -41,6 +41,6 @@ public class Sniper : Enemy
     public override void GiveStr()
     {
         base.GiveStr();
-        ///마법 구현 후 구현 필요
+        (GameManager.instance.playerController.AttackManager.skillHitBox as RangeLimitedAttackHitBox).range += 1;
     }
 }

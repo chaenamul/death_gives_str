@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public int life = 9;
     public int skillDmg;
     public float skillSpeed;
+    public int ghostHp;
 
     private int initSkillDmg;
     private int initHp;
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         abilities = new List<string>();
         items = new List<int>();
         initSkillSpeed = skillSpeed;
+        ghostHp = 0;
     }
 
     public void Initialize()
@@ -73,5 +75,6 @@ public class GameManager : MonoBehaviour
         dmg = initDmg;
         skillDmg = initSkillDmg;
         life = 9;
+        ghostHp = 0;
     }
 }
