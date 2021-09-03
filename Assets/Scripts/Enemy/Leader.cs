@@ -7,9 +7,7 @@ public class Leader : Enemy
     [SerializeField]
     private GameObject memberPrefab;
 
-    private float stopTimer = 2f;
     private float spawnTimer = 7f;
-    private int nextMove;
 
     protected override void Start()
     {
@@ -17,7 +15,6 @@ public class Leader : Enemy
 
         abilityName = "조종";
         abilityText = "스킬 사용 시 2초간 모든 데미지 무력화";
-        Move();
     }
 
     protected override void Update()
@@ -26,46 +23,16 @@ public class Leader : Enemy
         FindPlayer();
     }
 
-    void FixedUpdate()
-    {
-        if (!isAttacked)
-        {
-            rb.velocity = new Vector2(nextMove * speed, rb.velocity.y);
-        }
-    }
-
-    void Move()
-    {
-        nextMove = nextMove == 1 ? -1 : 1;
-
-        Invoke("Move", 1.5f);
-    }
-
     void FindPlayer()
     {
         if (Vector3.Distance(GameManager.instance.playerController.transform.position, transform.position) <= sight)
         {
-            stopTimer -= Time.deltaTime;
-            if (stopTimer >= 0)
-            {
-                speed = 0f;
-            }
-            else
-            {
-                speed = 4f;
-            }
-
             spawnTimer -= Time.deltaTime;
             if (spawnTimer <= 0)
             {
                 Spawn();
                 spawnTimer = 7f;
             }
-        }
-        else
-        {
-            stopTimer = 2f;
-            speed = 4f;
         }
     }
 
