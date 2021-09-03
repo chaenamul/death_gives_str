@@ -413,7 +413,7 @@ public class PlayerController : MonoBehaviour
             {
                 isGhost = true;
                 GameManager.instance.hp = GameManager.instance.ghostHp;
-                spriteRenderer.color = new Color32(255,255,255,95);
+                spriteRenderer.color = new Color32(255, 255, 255, 95);
                 return;
             }
             else
@@ -422,7 +422,7 @@ public class PlayerController : MonoBehaviour
                 isGhost = false;
             }
         }
-        if(GameManager.instance.items.Count != 0 && GameManager.instance.items[0] == 30004)
+        if (GameManager.instance.items.Count != 0 && GameManager.instance.items[0] == 30004)
         {
             GameManager.instance.items.Clear();
             GameManager.instance.hp = GameManager.instance.maxHp / 10;

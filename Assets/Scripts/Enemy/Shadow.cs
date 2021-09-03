@@ -15,6 +15,7 @@ public class Shadow : Enemy
         abilityName = "도플갱어";
         abilityText = "플레이어의 행동을 따라하는 그림자 생성";
     }
+
     protected override void Update()
     {
         base.Update();
@@ -56,5 +57,6 @@ public class Shadow : Enemy
     public override void GiveStr()
     {
         base.GiveStr();
+        GameManager.instance.Dmg *= (5 / 6);
     }
 }
