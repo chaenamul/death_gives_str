@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
         Flip();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
     protected virtual void Die()
     {
         GameManager.instance.monsterCount -= 1;
-        getMoney = Random.Range(2, 5) * GameManager.instance.playerController.doublecoin;
+        getMoney = Random.Range(2, 5) * GameManager.instance.playerController.doublecoin + GameManager.instance.playerController.coinBoost;
         GameManager.instance.money += getMoney;
         gameObject.SetActive(false);
         if (getMoneyPrefab != null) 

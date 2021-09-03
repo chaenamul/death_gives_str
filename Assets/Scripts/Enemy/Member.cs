@@ -10,7 +10,7 @@ public class Member : Enemy
     {
         base.Start();
         abilityName = "신앙";
-        abilityText = "이 몬스터에게 가하는 데미지 +1";
+        abilityText = "몬스터에게 가하는 데미지 + 1";
     }
 
     protected override void Update()

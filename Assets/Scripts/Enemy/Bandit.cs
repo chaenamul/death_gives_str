@@ -16,7 +16,7 @@ public class Bandit : Enemy
         base.Start();
 
         abilityName = "소매치기";
-        abilityText = "상자에서 얻는 코인 + 1";
+        abilityText = "적에게서 얻는 코인 + 1";
         isGrounded = false;
         isAggressive = false;
         nextMove = 1;
@@ -39,8 +39,9 @@ public class Bandit : Enemy
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
+        base.OnCollisionEnter2D(collision);
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
@@ -90,6 +91,6 @@ public class Bandit : Enemy
     public override void GiveStr()
     {
         base.GiveStr();
-        ///상자 구현 후 구현 필요
+        GameManager.instance.playerController.coinBoost = 1;
     }
 }

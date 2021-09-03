@@ -21,8 +21,8 @@ public class Bat : Enemy
     private bool Movecheck=true;
 
     private float wing;
-    private bool wingbool=true;
-    
+    private bool wingbool= true;
+
 
     protected override void Start()
     {
@@ -34,6 +34,9 @@ public class Bat : Enemy
         timer = attackDelay;
         isAggressive = false;
         InvokeRepeating("WingMovement", 0f, 0.5f);
+
+        abilityName = "코로나";
+        abilityText = "공격력 + 5";
     }
 
     protected override void Update()
@@ -113,5 +116,9 @@ public class Bat : Enemy
 
     }
 
-    
+    public override void GiveStr()
+    {
+        base.GiveStr();
+        GameManager.instance.Dmg += 5;
+    }
 }
