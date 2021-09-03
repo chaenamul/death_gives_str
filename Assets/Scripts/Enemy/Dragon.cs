@@ -20,7 +20,7 @@ public class Dragon : Enemy
     private float SummonSkeletonDelay = 30.0f;
     private float SummonSkeletonCurDel = 0.0f;
     private int fireBallDmg = 45;
-    bool gigantized = false;
+    //bool gigantized = false;
     public Skeleton skeleton;
     public GameObject Minions;
     private int MinionCount;
@@ -30,6 +30,8 @@ public class Dragon : Enemy
     private Vector3 spawnPosition;
     [SerializeField]
     private float spawnDelay;
+    [SerializeField]
+    private bool isFinalBoss;
     protected override void Awake()
     {
         base.Awake();
@@ -56,9 +58,9 @@ public class Dragon : Enemy
         {
             StartCoroutine(SummonSkeleton());
         }
-        if (hp <= maxHp / 2 && !gigantized)
+        if (hp <= maxHp / 2 && !isFinalBoss)
         {
-            Gigantization();
+            Die();
         }
         fireBallCurDel -= Time.deltaTime;
         thornAttack.DelayUpdate();
@@ -81,7 +83,7 @@ public class Dragon : Enemy
         base.GetDmg(dmg);
         dmgCount += dmg;
     }
-
+    /*
     private void Gigantization()
     {
         gigantized = true;
@@ -92,7 +94,7 @@ public class Dragon : Enemy
         Camera.main.orthographicSize *= 2;
         transform.localScale *= 7.0f / 2.5f;
         GameManager.instance.playerController.transform.position = GameObject.Find("StartPoint").transform.position;
-    }
+    }*/
 
     private Vector3 TraceThornStartPoint()
     {

@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,11 +10,11 @@ public class SaveManager
 {
     public static SaveManager instance = new SaveManager();
     private List<string> dataList = new List<string>();
+    public Dictionary<string, bool> clearList { get; } = new Dictionary<string, bool>();
     private string mainMenu = "MainMenu";
 
     private SaveManager()
     {
-
     }
 
     void pushData(string data) // Scene¿Ã πŸ≤Ó±‚ ¡˜¿¸∏∂¥Ÿ »£√‚«ÿ ¡‡æﬂµ 
@@ -48,10 +51,16 @@ public class SaveManager
     public void Initialize()
     {
         dataList.Clear();
+        clearList.Clear();
     }
 
     public void MoveToNextScene(string curScene, string sceneToLoad)
     {
+        GameManager.instance.monsterCount = 0;
+        if (curScene != null && !clearList.ContainsKey(curScene))
+        {
+            clearList.Add(curScene, true);
+        }
         if (GameManager.instance.playerController.isDmgBoosted)
         {
             GameManager.instance.playerController.isDmgBoosted = false;
@@ -75,6 +84,7 @@ public class SaveManager
 
     public void MoveToPrevScene()
     {
+        GameManager.instance.monsterCount = 0;
         if (GameManager.instance.playerController.isDmgBoosted)
         {
             GameManager.instance.playerController.isDmgBoosted = false;
