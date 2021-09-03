@@ -150,6 +150,7 @@ public class Dragon : Enemy
     }
     protected override void Die()
     {
+        Destroy(hpBar.gameObject);
         base.Die();
     }
 }

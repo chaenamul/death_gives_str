@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float sight;
     protected string abilityName; // 나중에 새로 클래스 만드는게 좋을듯
+    [HideInInspector]
     public string abilityText;
     public Sprite monsterImage;
     public GameObject hpBarPrefab;
@@ -28,7 +29,7 @@ public class Enemy : MonoBehaviour
     protected Rigidbody2D rb;
     protected Animator anim;
     private SpriteRenderer spriteRenderer;
-    private RectTransform hpBar;
+    protected RectTransform hpBar;
 
     protected virtual void Awake()
     {

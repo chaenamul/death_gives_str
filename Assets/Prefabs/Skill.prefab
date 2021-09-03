@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3737829789692439455}
   - component: {fileID: 5221849415369452617}
   - component: {fileID: 5135035549105947780}
+  - component: {fileID: 1708496418384815005}
   m_Layer: 6
   m_Name: Skill
   m_TagString: Untagged
@@ -146,3 +147,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1708496418384815005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569116117816427740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18be2a1c827ddb3489e9bdc18224a72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
