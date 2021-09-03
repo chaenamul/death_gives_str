@@ -3,18 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum EnemyType
-{
-    skeleton,
-    bandit,
-    ninja,
-    sniper,
-    zombie,
-    shadow,
-    ranger,
-    bat
-};
-
 public class Enemy : MonoBehaviour
 {
     public int hp;

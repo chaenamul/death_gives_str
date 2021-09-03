@@ -11,7 +11,7 @@ public class SwordAttack : Attack
         {
             Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousepos.z -= Camera.main.transform.position.z;
-            attackDir = (mousepos - subject.transform.position).normalized;
+            attackDir = (mousepos - subject.transform.position).normalized * 1.5f;
         }
         else
         {
