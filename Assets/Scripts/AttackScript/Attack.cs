@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Attack
 {
-    protected int attackDamage;
+    public int attackDamage { get; protected set; }
     public float attackDelay;
     public float skillCoolTime;
     public bool watingAttack = true;
