@@ -56,6 +56,5 @@ public class Shadow : Enemy
     public override void GiveStr()
     {
         base.GiveStr();
-        ///나중에 구현
     }
 }
