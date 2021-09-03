@@ -127,8 +127,8 @@ MonoBehaviour:
   monsterImage: {fileID: 21300000, guid: a560393f7a968004aa2c77961e7435c3, type: 3}
   hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
   height: 1.5
-  getMoneyPrefab: {fileID: 0}
-  memberPrefab: {fileID: 0}
+  getMoneyPrefab: {fileID: 7787076758605759940, guid: 3924e0238a5ae0c409ba0e14727ea17a, type: 3}
+  memberPrefab: {fileID: 7102492774365692560, guid: 8491c5fb079ea4c43b6519611e2ac3f5, type: 3}
 --- !u!61 &8201421513053112290
 BoxCollider2D:
   m_ObjectHideFlags: 0

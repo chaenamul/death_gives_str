@@ -397,8 +397,11 @@ MonoBehaviour:
   dmg: 0
   speed: 0
   sight: 0
+  abilityText: 
+  monsterImage: {fileID: 21300000, guid: d85fc5c90b55bdd48ab0c75dc8ef788f, type: 3}
   hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
   height: 3.5
+  getMoneyPrefab: {fileID: 7787076758605759940, guid: 3924e0238a5ae0c409ba0e14727ea17a, type: 3}
   thorn: {fileID: 4624125321133408596}
   fireBallHitBox: {fileID: 6619160673708102882, guid: 036f94b4e2abab94dacb5ddcbe958e30, type: 3}
   fireBallSpeed: 8
