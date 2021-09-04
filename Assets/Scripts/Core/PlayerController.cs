@@ -192,14 +192,11 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+        CheckGround();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-        }
         /*
         if (collision.gameObject.tag == "EnemySkeleton")
         {
@@ -244,14 +241,6 @@ public class PlayerController : MonoBehaviour
                 Die(EnemyType.shadow);
             }
         }*/
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = false;
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -312,6 +301,21 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isWalking", true);
         }
+    }
+
+    void CheckGround()
+    {
+        Debug.DrawRay(rb.position, Vector3.down * 1.5f, Color.red);
+        RaycastHit2D rayHit = Physics2D.Raycast(rb.position, Vector3.down, 1.5f, LayerMask.GetMask("Ground"));
+        if (rayHit.collider != null)
+        {
+            if (rayHit.distance < 1.5f)
+            {
+                isGrounded = true;
+                return;
+            }
+        }
+        isGrounded = false;
     }
 
     void Jump()
@@ -526,7 +530,7 @@ public class PlayerController : MonoBehaviour
             gameObject.layer = 7;
             inv = true;
             InvokeRepeating("Light", 0f, 0.2f);
-            Invoke("StopLight", 3f);
+            Invoke("StopLight", 2f);
         }
     }
 

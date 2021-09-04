@@ -25,7 +25,7 @@ public class Pirate : Enemy
         found = false;
         initLoc = transform.position;
         maxHp = hp = 70;
-        dmg = 30;
+        dmg = 20;
         speed = GameManager.instance.playerController.speed * 2f / 3f;
         sight = 25f;
         attack = new ParabolaAttack(dmg, 6.0f, bomb, gameObject, this, 0, true);
