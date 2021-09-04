@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool isDmgBoosted;
     public bool gainedInvincible;
     public bool isInvincible;
+    private bool dead = false;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator anim;
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         attacks = new Dictionary<weapon, Attack>();
         attacks[weapon.InitSword] = new SwordAttack(GameManager.instance.Dmg, 0.25f, initsword, gameObject, this);
-        attacks[weapon.InitSkill] = new RangeAttack(GameManager.instance.skillDmg, 1, null, this, gameObject, GameManager.instance.skillSpeed, 0.0f, false, true);
+        attacks[weapon.InitSkill] = new RangeAttack(GameManager.instance.skillDmg, 3, null, this, gameObject, GameManager.instance.skillSpeed, 0.0f, false, true);
         attackManager = new PlayerAttackManager(attacks[weapon.InitSword], attacks[weapon.InitSkill], initSkill);
     }
 
@@ -400,11 +401,11 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.instance.hp = 0;
             Die();
-            if (sub != null)
+            if (sub != null && !isGhost)
             {
                 sub.GiveStr();
             }
-            if (sub!= null && sub.abilityText != null) {
+            if (sub!= null && sub.abilityText != null && !isGhost) {
                 Whatability = sub.abilityText;
                 MonsterImage = sub.monsterImage;
             }
@@ -412,11 +413,13 @@ public class PlayerController : MonoBehaviour
     }
     void Die()
     {
+        if (dead) return;
         if (GameManager.instance.abilities.Contains("¿Ø√º¿Ã≈ª"))
         {
             if (!isGhost)
             {
                 isGhost = true;
+                Invincible();
                 GameManager.instance.hp = GameManager.instance.ghostHp;
                 spriteRenderer.color = new Color32(255, 255, 255, 95);
                 return;
@@ -434,7 +437,7 @@ public class PlayerController : MonoBehaviour
             Invincible();
             return;
         }
-
+        dead = true;
         if (isDmgBoosted)
         {
             isDmgBoosted = false;
@@ -492,6 +495,7 @@ public class PlayerController : MonoBehaviour
 
     void Revive()
     {
+        dead = false;
         GameManager.instance.hp = GameManager.instance.maxHp;
         gameObject.SetActive(true);
         SaveManager.instance.MoveToPrevScene();
