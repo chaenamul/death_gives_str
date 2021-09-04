@@ -103,7 +103,7 @@ public class Ninja : Enemy
     void DaggerAttack()
     {
         hitbox.gameObject.SetActive(true);
-        hitbox.GetComponent<Rigidbody2D>().AddForce((GameManager.instance.playerController.transform.position - transform.position).normalized * 4 * Time.deltaTime, ForceMode2D.Impulse);
+        hitbox.GetComponent<Rigidbody2D>().AddForce((GameManager.instance.playerController.transform.position - transform.position).normalized * 6 * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     public override void GiveStr()

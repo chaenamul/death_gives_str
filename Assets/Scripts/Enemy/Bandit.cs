@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Bandit : Enemy
 {
-    [SerializeField]
-    private float jumpForce;
-
     private bool isGrounded;
     private bool isAggressive;
     private int nextMove;
