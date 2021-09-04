@@ -411,6 +411,16 @@ public class PlayerController : MonoBehaviour
     void Die(Enemy sub)
     {
         if (dead) return;
+        dead = true;
+        
+        if (GameManager.instance.items.Count != 0 && GameManager.instance.items[0] == 30004)
+        {
+            GameManager.instance.items.Clear();
+            GameManager.instance.hp = GameManager.instance.maxHp / 10;
+            Invincible();
+            dead = false;
+            return;
+        }
         if (GameManager.instance.abilities.Contains("¿Ø√º¿Ã≈ª"))
         {
             if (!isGhost)
@@ -419,6 +429,7 @@ public class PlayerController : MonoBehaviour
                 Invincible();
                 GameManager.instance.hp = GameManager.instance.ghostHp;
                 spriteRenderer.color = new Color32(255, 255, 255, 95);
+                dead = false;
                 return;
             }
             else
@@ -426,13 +437,6 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.color = new Color(255,255,255,255);
                 isGhost = false;
             }
-        }
-        if (GameManager.instance.items.Count != 0 && GameManager.instance.items[0] == 30004)
-        {
-            GameManager.instance.items.Clear();
-            GameManager.instance.hp = GameManager.instance.maxHp / 10;
-            Invincible();
-            return;
         }
         dead = true;
         sub?.GiveStr();
