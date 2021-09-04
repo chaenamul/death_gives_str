@@ -29,11 +29,12 @@ public class AbilityCheck : MonoBehaviour
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
+        GameManager.instance.playerController.Getability = null;
     }
 
     public void abilityNameCheck(string Wability)
     {
-        abilityText.text = "<" + GameManager.instance.abilities[GameManager.instance.playerController.Getability] + ">\n\n" + Wability;
+        abilityText.text = "<" + GameManager.instance.playerController.Getability + ">\n\n" + Wability;
         mobimage.sprite = GameManager.instance.playerController.MonsterImage;
     }
 }

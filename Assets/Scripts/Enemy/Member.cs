@@ -9,7 +9,7 @@ public class Member : Enemy
     protected override void Start()
     {
         base.Start();
-        abilityName = "신앙";
+        abilityName = "?";
         abilityText = "몬스터에게 가하는 데미지 + 1";
     }
 
