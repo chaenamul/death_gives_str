@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ExplosionHitBox : HitBox
 {
@@ -21,10 +22,11 @@ public class ExplosionHitBox : HitBox
     }
     IEnumerator Explosion(Vector3 pos)
     {
-        explosion.gameObject.transform.position = pos;
-        explosion.gameObject.SetActive(true);
+        if(explosion.gameObject)
+            explosion.gameObject.transform.position = pos;
+        explosion?.gameObject?.SetActive(true);
         yield return new WaitForSeconds(0.3f);
-        explosion.gameObject.SetActive(false);
+        explosion?.gameObject?.SetActive(false);
         
     }
 }
