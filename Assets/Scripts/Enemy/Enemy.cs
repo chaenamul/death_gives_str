@@ -116,7 +116,8 @@ public class Enemy : MonoBehaviour
     void Damaged(Vector2 targetPos)
     {
         int dirx = transform.position.x - targetPos.x > 0 ? 1 : -1;
-        rb.AddForce(new Vector2(dirx, 1) * 3, ForceMode2D.Impulse);
+        if(rb)
+            rb.AddForce(new Vector2(dirx, 1) * 3, ForceMode2D.Impulse);
     }
 
     public virtual void GiveStr()

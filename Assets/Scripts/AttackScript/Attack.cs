@@ -9,7 +9,7 @@ public abstract class Attack
     public float attackDelay;
     public float skillCoolTime;
     public bool watingAttack = true;
-    private float curNormalDelay = 0;
+    public float curNormalDelay { get; private set; } = 0;
     private float curSkillDelay = 0;
 
     public HitBox hb;

@@ -130,7 +130,7 @@ MonoBehaviour:
   dashDistance: 5
   doublecoin: 1
   coinBoost: 0
-  Getability: 
+  Getability: 0
   Whatability: 
   MonsterImage: {fileID: 0}
   initsword: {fileID: 5221543877130121968}

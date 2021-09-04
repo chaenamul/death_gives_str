@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
         set
         {
             playerController.AttackManager.attack.UpdateDamage(value);
+            if (PlayerShadow.instance != null)
+                PlayerShadow.instance.attack.UpdateDamage(value/5);
             dmg = value;
         }
     }

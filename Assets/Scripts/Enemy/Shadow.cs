@@ -7,6 +7,8 @@ public class Shadow : Enemy
     public Rigidbody2D cloneRb;
 
     private bool isAggressive = false;
+    [SerializeField]
+    private PlayerShadow playerShadow;
 
     protected override void Start()
     {
@@ -56,7 +58,12 @@ public class Shadow : Enemy
     }
     public override void GiveStr()
     {
+        if (!GameManager.instance.abilities.Contains(abilityName))
+        {
+            Instantiate(playerShadow, GameManager.instance.playerController.transform);
+        }
         base.GiveStr();
-        GameManager.instance.Dmg *= (5 / 6);
+        
+        
     }
 }

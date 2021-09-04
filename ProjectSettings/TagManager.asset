@@ -20,6 +20,7 @@ TagManager:
   - HitBox
   - EnemyLeader
   - EnemyMember
+  - PlayerShadow
   layers:
   - Default
   - TransparentFX

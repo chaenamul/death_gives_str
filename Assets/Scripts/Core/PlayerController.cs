@@ -559,16 +559,23 @@ public class PlayerController : MonoBehaviour
 
     void ShowHitimage()
     {
-        Color? c = GameObject.Find("Hitimage")?.GetComponent<Image>()?.color;
-        if (c != null)
-            c = new Color(1, 0, 0, 0.2f);
+        Image i = null;
+        GameObject hitImage = GameObject.Find("Hitimage");
+        if(hitImage!=null)
+            i = hitImage.GetComponent<Image>();
+        if (i !=null)
+            i.color = new Color(1, 0, 0, 0.2f);
+        
     }
 
     void StopHitimage()
     {
-        Color? c = GameObject.Find("Hitimage")?.GetComponent<Image>()?.color;
-        if(c!=null)
-            c = new Color(1, 0, 0, 0);
+        Image i = null;
+        GameObject hitImage = GameObject.Find("Hitimage");
+        if (hitImage != null)
+            i = hitImage.GetComponent<Image>();
+        if (i != null)
+            i.color = new Color(1, 0, 0, 0);
     }
     public void Invincible()
     {
