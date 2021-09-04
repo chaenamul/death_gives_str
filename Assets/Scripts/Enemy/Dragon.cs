@@ -52,7 +52,11 @@ public class Dragon : Enemy
             isRecognized();
             return;
         }
-        base.Update();
+
+        Vector3 hpBarPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
+        hpBar.position = hpBarPos;
+        getMoneyText.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
+
         SummonSkeletonCurDel -= Time.deltaTime;
         if (SummonSkeletonCurDel <= 0)
         {

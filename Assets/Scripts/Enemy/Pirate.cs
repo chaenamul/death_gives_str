@@ -95,8 +95,8 @@ public class Pirate : Enemy
     {
         if (isGhost)
         {
-            gameObject.SetActive(false);
             transform.parent.gameObject.SetActive(false);
+            base.Die();
         }
         else
         {

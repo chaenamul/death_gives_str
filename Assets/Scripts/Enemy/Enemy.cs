@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     protected bool isAttacked;
     private int getMoney;
     public Text getMoneyPrefab;
-    private Text getMoneyText;
+    protected Text getMoneyText;
 
     protected Rigidbody2D rb;
     protected Animator anim;

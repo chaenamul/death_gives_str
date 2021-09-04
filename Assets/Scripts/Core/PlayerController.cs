@@ -121,6 +121,10 @@ public class PlayerController : MonoBehaviour
                             GameManager.instance.hp += 50;
                             break;
                     }
+                    if (GameManager.instance.hp > GameManager.instance.maxHp)
+                    {
+                        GameManager.instance.hp = GameManager.instance.maxHp;
+                    }
                     break;
             }
             GameManager.instance.items.RemoveAt(GameManager.instance.items.Count - 1);
