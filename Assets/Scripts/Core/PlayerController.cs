@@ -400,18 +400,10 @@ public class PlayerController : MonoBehaviour
         if (GameManager.instance.hp <= 0)
         {
             GameManager.instance.hp = 0;
-            Die();
-            if (sub != null && !isGhost)
-            {
-                sub.GiveStr();
-            }
-            if (sub!= null && sub.abilityText != null && !isGhost) {
-                Whatability = sub.abilityText;
-                MonsterImage = sub.monsterImage;
-            }
+            Die(sub);
         }
     }
-    void Die()
+    void Die(Enemy sub)
     {
         if (dead) return;
         if (GameManager.instance.abilities.Contains("À¯Ã¼ÀÌÅ»"))
@@ -438,6 +430,12 @@ public class PlayerController : MonoBehaviour
             return;
         }
         dead = true;
+        sub?.GiveStr();
+        if (sub != null && sub.abilityText != null)
+        {
+            Whatability = sub.abilityText;
+            MonsterImage = sub.monsterImage;
+        }
         if (isDmgBoosted)
         {
             isDmgBoosted = false;
@@ -561,7 +559,9 @@ public class PlayerController : MonoBehaviour
 
     void StopHitimage()
     {
-        GameObject.Find("Hitimage").GetComponent<Image>().color = new Color(1, 0, 0, 0);
+        Color? c = GameObject.Find("Hitimage")?.GetComponent<Image>()?.color;
+        if(c!=null)
+            c = new Color(1, 0, 0, 0);
     }
     public void Invincible()
     {
