@@ -6,12 +6,17 @@ public class SwordAttack : Attack
 {
     public override Vector3 TargetUpdate()
     {
-        Vector3 attackDir;
+        Vector3 attackDir = new Vector3(0,0,0);
         if(subject.tag == "Player")
         {
             Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousepos.z -= Camera.main.transform.position.z;
             attackDir = (mousepos - subject.transform.position).normalized * 1.5f;
+        }
+        else if(subject.tag == "PlayerShadow")
+        {
+            if(PlayerShadow.instance)
+                attackDir = PlayerShadow.instance.attackDir;
         }
         else
         {

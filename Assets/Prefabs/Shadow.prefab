@@ -146,6 +146,7 @@ MonoBehaviour:
   height: 1.5
   getMoneyPrefab: {fileID: 7787076758605759940, guid: 3924e0238a5ae0c409ba0e14727ea17a, type: 3}
   cloneRb: {fileID: 8223227490866529382}
+  playerShadow: {fileID: 2473407903600376630, guid: 5f1923d280fbcc1479a94484fe685e93, type: 3}
 --- !u!1 &8223227490866529384
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +159,7 @@ GameObject:
   - component: {fileID: 8223227490866529380}
   - component: {fileID: 8223227490866529381}
   - component: {fileID: 8223227490866529382}
+  - component: {fileID: 1178472125}
   m_Layer: 0
   m_Name: Clone
   m_TagString: EnemyShadow
@@ -267,3 +269,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1178472125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8223227490866529384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f7540a40f5d644898ebf4079077923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  maxHp: 0
+  dmg: 12
+  speed: 0
+  sight: 0
+  abilityText: 
+  monsterImage: {fileID: 0}
+  hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
+  height: 1.5
+  getMoneyPrefab: {fileID: 7787076758605759940, guid: 3924e0238a5ae0c409ba0e14727ea17a, type: 3}
+  parent: {fileID: 504463558489097250}

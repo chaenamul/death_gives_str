@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShadowClone : Enemy
 {
+    [SerializeField]
+    private Shadow parent;
     protected override void Awake()
     {
 
@@ -17,5 +19,9 @@ public class ShadowClone : Enemy
     protected override void Update()
     {
 
+    }
+    public override void GiveStr()
+    {
+        parent.GiveStr();
     }
 }

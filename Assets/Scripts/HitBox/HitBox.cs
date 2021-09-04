@@ -17,7 +17,9 @@ public class HitBox : MonoBehaviour
         }
         else if (subject as PlayerController && collision.tag.Contains("Enemy"))
         {
-            collision.GetComponent<Enemy>().GetDmg(dmg);
+            Enemy tmp = collision.GetComponent<Enemy>();
+            if (tmp)
+                tmp.GetDmg(dmg);
         }
     }
 }

@@ -128,8 +128,11 @@ MonoBehaviour:
   isGrounded: 0
   canDash: 0
   dashDistance: 5
+  doublecoin: 1
+  coinBoost: 0
   Getability: 0
   Whatability: 
+  MonsterImage: {fileID: 0}
   initsword: {fileID: 5221543877130121968}
   initSkill: {fileID: 0}
   inv: 0
