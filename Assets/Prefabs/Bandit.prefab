@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 30
-  maxHp: 0
+  maxHp: 30
   dmg: 8
   speed: 8
   sight: 10
@@ -107,7 +107,6 @@ MonoBehaviour:
   hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
   height: 1.5
   getMoneyPrefab: {fileID: 7787076758605759940, guid: 3924e0238a5ae0c409ba0e14727ea17a, type: 3}
-  jumpForce: 10
 --- !u!50 &6655710730636264932
 Rigidbody2D:
   serializedVersion: 4
