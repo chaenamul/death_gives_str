@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1000
   maxHp: 1000
-  dmg: 0
+  dmg: 10
   speed: 0
   sight: 0
   abilityText: 

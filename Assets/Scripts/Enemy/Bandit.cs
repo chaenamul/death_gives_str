@@ -20,8 +20,6 @@ public class Bandit : Enemy
         isGrounded = false;
         isAggressive = false;
         nextMove = 1;
-
-        Invoke("Jump", Random.Range(1f, 2.5f));
         Move();
     }
 
@@ -39,23 +37,6 @@ public class Bandit : Enemy
         }
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
-    {
-        base.OnCollisionEnter2D(collision);
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = false;
-        }
-    }
-
     void FindPlayer()
     {
         if (Vector2.Distance(GameManager.instance.playerController.transform.position, transform.position) <= sight && GameManager.instance.playerController.isGrounded)
@@ -69,16 +50,6 @@ public class Bandit : Enemy
             isAggressive = false;
             speed = 4f;
         }
-    }
-
-    void Jump()
-    {
-        if (isGrounded && isAggressive)
-        {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
-
-        Invoke("Jump", Random.Range(1f, 2.5f));
     }
 
     void Move()

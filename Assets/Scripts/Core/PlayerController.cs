@@ -398,6 +398,7 @@ public class PlayerController : MonoBehaviour
         }
         if (GameManager.instance.hp <= 0)
         {
+            GameManager.instance.hp = 0;
             Die();
             if (sub != null)
             {
