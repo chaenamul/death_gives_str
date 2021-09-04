@@ -42,7 +42,7 @@ public class Dragon : Enemy
     }
     protected override void Start()
     {
-
+        abilityName = null;
     }
 
     protected override void Update()

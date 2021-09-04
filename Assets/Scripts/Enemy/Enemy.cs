@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public int dmg;
     public float speed;
     public float sight;
-    protected string abilityName; // 나중에 새로 클래스 만드는게 좋을듯
+    public string abilityName; // 나중에 새로 클래스 만드는게 좋을듯
     [HideInInspector]
     public string abilityText;
     public Sprite monsterImage;
@@ -132,7 +132,6 @@ public class Enemy : MonoBehaviour
     {
         CancelInvoke("Shaking");
         CameraPos = Camera.main.GetComponent<CameraController>().CameraShake;
-        CameraPos.y = 0f;
         Camera.main.transform.position = CameraPos;
     }
 }

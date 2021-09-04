@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public int doublecoin = 1;
     [HideInInspector]
     public int coinBoost = 0;
-    public int Getability = 0;
+    public string Getability = null;
     public string Whatability;
     public Sprite MonsterImage;
 
@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         gainedInvincible = false;
         isInvincible = false;
+        Getability = null;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -435,8 +436,9 @@ public class PlayerController : MonoBehaviour
         }
         dead = true;
         sub?.GiveStr();
-        if (sub != null && sub.abilityText != null)
+        if (sub.abilityName != null)
         {
+            Getability = sub.abilityName;
             Whatability = sub.abilityText;
             MonsterImage = sub.monsterImage;
         }
@@ -502,13 +504,12 @@ public class PlayerController : MonoBehaviour
         gameObject.SetActive(true);
         SaveManager.instance.MoveToPrevScene();
         GameObject.Find("Player").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
-        if (Getability < GameManager.instance.abilities.Count && GameManager.instance.abilities[Getability] != null)
+        if (Getability != null)
         {
             GameManager.instance.abilityCheckPanel.GetComponent<AbilityCheck>().abilityNameCheck(Whatability);
             GameManager.instance.abilityCheckPanel.SetActive(true);
             Time.timeScale = 0;
         }
-        Getability += 1;
     }
 
     public void Damaged(Vector2 targetPos)
