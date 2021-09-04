@@ -22,11 +22,13 @@ public class ExplosionHitBox : HitBox
     }
     IEnumerator Explosion(Vector3 pos)
     {
-        if(explosion.gameObject)
+        if(explosion)
             explosion.gameObject.transform.position = pos;
-        explosion?.gameObject?.SetActive(true);
+        if(explosion)
+            explosion.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.3f);
-        explosion?.gameObject?.SetActive(false);
+        if(explosion)
+            explosion.gameObject.SetActive(false);
         
     }
 }

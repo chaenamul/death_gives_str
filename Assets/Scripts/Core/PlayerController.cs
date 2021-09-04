@@ -554,7 +554,9 @@ public class PlayerController : MonoBehaviour
 
     void ShowHitimage()
     {
-        GameObject.Find("Hitimage").GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
+        Color? c = GameObject.Find("Hitimage")?.GetComponent<Image>()?.color;
+        if (c != null)
+            c = new Color(1, 0, 0, 0.2f);
     }
 
     void StopHitimage()
