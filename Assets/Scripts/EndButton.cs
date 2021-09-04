@@ -12,6 +12,7 @@ public class EndButton : MonoBehaviour
         {
             GameManager.instance.hp = GameManager.instance.maxHp;
             GameManager.instance.life = 9;
+            SaveManager.instance.clearList.Clear();
         }
     }
 

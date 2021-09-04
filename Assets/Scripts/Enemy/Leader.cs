@@ -6,8 +6,10 @@ public class Leader : Enemy
 {
     [SerializeField]
     private GameObject memberPrefab;
+    [SerializeField]
+    private GameObject warningZone;
 
-    private float spawnTimer = 7f;
+    private float spawnTimer = 4.5f;
 
     protected override void Start()
     {
@@ -27,11 +29,16 @@ public class Leader : Enemy
     {
         if (Vector3.Distance(GameManager.instance.playerController.transform.position, transform.position) <= sight)
         {
+            if (0 < spawnTimer && spawnTimer <= 3)
+            {
+                warningZone.SetActive(true);
+            }
             spawnTimer -= Time.deltaTime;
             if (spawnTimer <= 0)
             {
+                warningZone.SetActive(false);
                 Spawn();
-                spawnTimer = 7f;
+                spawnTimer = 4.5f;
             }
         }
     }
