@@ -6,40 +6,40 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Prefabs/Scenes/MainMenu.unity
     guid: 1b61ff5d0e2466b4f85b22eaf964df4b
   - enabled: 1
-    path: Assets/Scenes/HN Scene 1.unity
+    path: Assets/Prefabs/Scenes/HN Scene 1.unity
     guid: 9391d5d8c4bd10343b88178e320c6be1
   - enabled: 1
-    path: Assets/Scenes/HN Scene 2.unity
+    path: Assets/Prefabs/Scenes/HN Scene 2.unity
     guid: f72b212282fc4064bb454d820af61b84
   - enabled: 1
-    path: Assets/Scenes/Merchant 2.unity
+    path: Assets/Prefabs/Scenes/Merchant 2.unity
     guid: 7fc7c90bfd1c9f841930676113bcbc3b
   - enabled: 1
-    path: Assets/Scenes/HN Scene 3.unity
+    path: Assets/Prefabs/Scenes/HN Scene 3.unity
     guid: 7059b762d262ef34289a8854a087f78a
   - enabled: 1
-    path: Assets/Scenes/HN Scene 4.unity
+    path: Assets/Prefabs/Scenes/HN Scene 4.unity
     guid: e8025c675a684ed488629a30608d8e39
   - enabled: 1
-    path: Assets/Scenes/HN middle.unity
+    path: Assets/Prefabs/Scenes/HN middle.unity
     guid: 175a99d56de9bd4469d43b6995d5569d
   - enabled: 1
-    path: Assets/Scenes/HN Scene Boss.unity
+    path: Assets/Prefabs/Scenes/HN Scene Boss.unity
     guid: 9c15957a79f2b1c42a369fad44e5787e
   - enabled: 1
-    path: Assets/Scenes/GR1-leader.unity
+    path: Assets/Prefabs/Scenes/GR1-leader.unity
     guid: 94dcd7d8e14d84341aa684257e9b0f24
   - enabled: 1
-    path: Assets/Scenes/GR2-shadow.unity
+    path: Assets/Prefabs/Scenes/GR2-shadow.unity
     guid: 3a01fbf4504dca042ae1a43a14bc95ee
   - enabled: 1
-    path: Assets/Scenes/GR3-bat.unity
+    path: Assets/Prefabs/Scenes/GR3-bat.unity
     guid: 0d1e3183948485245a0adbce24c99561
   - enabled: 1
-    path: Assets/Scenes/Merchant 1.unity
+    path: Assets/Prefabs/Scenes/Merchant 1.unity
     guid: e025f2773f9a05e40a6f9254670576e4
   - enabled: 0
     path: 

@@ -33,7 +33,7 @@ public class AbilityCheck : MonoBehaviour
 
     public void abilityNameCheck(string Wability)
     {
-        abilityText.text = "<" + GameManager.instance.abilities[GameManager.instance.playerController.Getability] + ">\n" + Wability;
+        abilityText.text = "<" + GameManager.instance.abilities[GameManager.instance.playerController.Getability] + ">\n\n" + Wability;
         mobimage.sprite = GameManager.instance.playerController.MonsterImage;
     }
 }
