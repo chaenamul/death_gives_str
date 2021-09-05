@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 504463558489097244}
   - component: {fileID: 504463558489097250}
   - component: {fileID: 2191275600184572712}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: EnemyShadow
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 8223227490866529381}
   - component: {fileID: 8223227490866529382}
   - component: {fileID: 1178472125}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Clone
   m_TagString: EnemyShadow
   m_Icon: {fileID: 0}
