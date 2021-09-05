@@ -125,7 +125,7 @@ MonoBehaviour:
   sight: 8
   abilityName: 
   abilityText: 
-  monsterImage: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
+  monsterImage: {fileID: 21300000, guid: 57980a1475281f342aa2c6970e98a445, type: 3}
   hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
   height: 1.5
   getMoneyPrefab: {fileID: 7787076758605759940, guid: 3924e0238a5ae0c409ba0e14727ea17a, type: 3}

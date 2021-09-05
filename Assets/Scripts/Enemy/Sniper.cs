@@ -26,7 +26,10 @@ public class Sniper : Enemy
 
     protected override void Update()
     {
-        base.Update();
+        Vector3 hpBarPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
+        hpBar.position = hpBarPos;
+        getMoneyText.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
+
         sniping.DelayUpdate();
         sniping.Execute();
     }
