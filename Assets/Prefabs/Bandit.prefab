@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6655710730636264931}
   - component: {fileID: 6655710730636264932}
   - component: {fileID: 1294750060741020331}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bandit
   m_TagString: EnemyBandit
   m_Icon: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   dmg: 8
   speed: 8
   sight: 10
+  abilityName: 
   abilityText: 
   monsterImage: {fileID: 21300000, guid: 3982b65958159b64c9af8a00081ae32c, type: 3}
   hpBarPrefab: {fileID: 2313834320546923348, guid: 1407db8ca2e170743bf7c5244c8821fb, type: 3}
