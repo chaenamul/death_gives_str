@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     private float jumpForce;
 
     public bool isGhost { get; private set; } = false;
-    public bool isDmgBoosted;
     public bool gainedInvincible;
     public bool isInvincible;
     private bool dead = false;
@@ -445,11 +444,6 @@ public class PlayerController : MonoBehaviour
             Getability = sub.abilityName;
             Whatability = sub.abilityText;
             MonsterImage = sub.monsterImage;
-        }
-        if (isDmgBoosted)
-        {
-            isDmgBoosted = false;
-            GameManager.instance.Dmg--;
         }
         if (speedIncreased)
         {

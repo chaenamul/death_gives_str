@@ -61,11 +61,6 @@ public class SaveManager
         {
             clearList.Add(curScene, true);
         }
-        if (GameManager.instance.playerController.isDmgBoosted)
-        {
-            GameManager.instance.playerController.isDmgBoosted = false;
-            GameManager.instance.Dmg--;
-        }
         if (GameManager.instance.items.Count!=0 && GameManager.instance.items[0] == 30003 && !sceneToLoad.Contains("Merchant"))
         {
             GameManager.instance.playerController.IncreaseSpeed();
@@ -85,11 +80,6 @@ public class SaveManager
     public void MoveToPrevScene()
     {
         GameManager.instance.monsterCount = 0;
-        if (GameManager.instance.playerController.isDmgBoosted)
-        {
-            GameManager.instance.playerController.isDmgBoosted = false;
-            GameManager.instance.Dmg--;
-        }
         CoroutineManager.instance.Coroutine(moveToPrevScene());
     }
 

@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   maxHp: 100
-  dmg: 0
+  dmg: 20
   speed: 4
   sight: 10
   abilityName: 

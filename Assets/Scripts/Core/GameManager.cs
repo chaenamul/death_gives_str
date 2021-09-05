@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public int skillDmg;
     public float skillSpeed;
     public int ghostHp;
-
+    
     private int initSkillDmg;
     private int initHp;
     private int initMaxHp;

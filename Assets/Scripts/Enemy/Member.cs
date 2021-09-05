@@ -9,8 +9,8 @@ public class Member : Enemy
     protected override void Start()
     {
         base.Start();
-        abilityName = "?";
-        abilityText = "몬스터에게 가하는 데미지 + 1";
+        abilityName = "광기";
+        abilityText = "몬스터에게 가하는 데미지 +5";
     }
 
     protected override void Update()
@@ -39,7 +39,6 @@ public class Member : Enemy
     public override void GiveStr()
     {
         base.GiveStr();
-        GameManager.instance.playerController.isDmgBoosted = true;
-        GameManager.instance.Dmg++;
+        GameManager.instance.Dmg+=5;
     }
 }
