@@ -13,7 +13,7 @@ public class Bandit : Enemy
         base.Start();
 
         abilityName = "소매치기";
-        abilityText = "적에게서 얻는 코인 + 1";
+        abilityText = "적에게서 얻는 골드 + 1";
         isGrounded = false;
         isAggressive = false;
         nextMove = 1;
